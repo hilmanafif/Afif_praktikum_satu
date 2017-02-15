@@ -31,5 +31,13 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('team-member', function ($user, $team) {
             return ($user->teams->find($team->id));
         });
+
+        Gate::define('permission', function ($user, $permission) {
+            return $user->hasPermission($permission);
+        });
+
+        Gate::define('role', function ($user, $role) {
+            return ($user->hasRole($role));
+        });
     }
 }

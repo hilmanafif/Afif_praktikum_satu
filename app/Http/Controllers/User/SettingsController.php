@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserUpdateRequest;
+use App\Models\UserMeta;
 
 class SettingsController extends Controller
 {
@@ -47,4 +48,13 @@ class SettingsController extends Controller
 
         return back()->withErrors(['Could not update user']);
     }
+
+    public function updatemeta($id, Request $request)
+    {
+        $usermeta = UserMeta::findOrFail($id);
+        $usermeta->update($request->all());
+        return back()->with('message', 'User data updated successfully');
+    }
+
+
 }

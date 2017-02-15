@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
+use Gate;
 use App\Models\Logsystem;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;

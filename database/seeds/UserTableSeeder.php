@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
     public function run()
     {
         $service = app(UserService::class);
-        
+
         if (!User::where('name', 'admin')->first()) {
             $user = User::create([
                 'name' => 'Admin',
@@ -24,5 +24,15 @@ class UserTableSeeder extends Seeder
         }
 
         $service->create($user, 'admin', 'admin', false);
+
+        if (!User::where('name', 'member')->first()) {
+            $user = User::create([
+                'name' => 'Member',
+                'email' => 'member@member.com',
+                'password' => bcrypt('member'),
+            ]);
+        }
+
+        $service->create($user, 'member', 'member', false);
     }
 }

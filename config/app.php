@@ -165,6 +165,7 @@ return [
         Yab\Laracogs\LaracogsProvider::class,
         AlfredoRamos\ParsedownExtra\ParsedownExtraServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+        Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
 
         /*
          * Package Service Providers...
