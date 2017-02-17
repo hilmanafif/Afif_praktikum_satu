@@ -7,7 +7,34 @@
             </div>
       </div>
 
-      @if (Gate::allows('role','member'))
+      @if (Gate::allows('role','admin'))
+
+      <div class="panel panel-default">
+            <div class="panel-heading">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapsecontent"><span class="fa fa-newspaper-o"></span> Content</a>
+            </div>
+            <div id="collapsecontent" class="panel-collapse collapse">
+                <div class="panel-body">
+                  <ul class="nav nav-sidebar">
+                    <li @if(Request::is('companies', 'companies/1/edit')) class="active" @endif>
+                        <a href="{!! url('contents') !!}"><span class="fa fa-file-text"></span> Articles</a>
+                    </li>
+                    <li @if(Request::is('companies', 'companies/1/edit')) class="active" @endif>
+                        <a href="{!! url('comments') !!}"><span class="fa fa-comment-o"></span> Comments</a>
+                    </li>
+                    <li @if(Request::is('companies', 'companies/1/edit')) class="active" @endif>
+                        <a href="{!! url('categories') !!}"><span class="fa fa-paperclip"></span> Referensi - Categories</a>
+                    </li>
+                    <li @if(Request::is('companies', 'companies/1/edit')) class="active" @endif>
+                        <a href="{!! url('topics') !!}"><span class="fa fa-quote-right"></span> Referensi - Topics</a>
+                    </li>
+                    <li @if(Request::is('companies', 'companies/1/edit')) class="active" @endif>
+                        <a href="{!! url('offlinewriters') !!}"><span class="fa fa-male"></span> Referensi - Offline Writers</a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+      </div>
 
       <div class="panel panel-default">
             <div class="panel-heading">

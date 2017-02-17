@@ -52,12 +52,9 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading">APLIKASI HUMAN RESOURCE YANG SEDERHANA &amp; MUDAH DIGUNAKAN</h1>
+                <h1 id="homeHeading">{{ $contentcopywritings[0]->name }}</h1>
                 <hr>
-                <p>Dibangun pada awalnya untuk perusahaan start-up dan wirausaha kecil,
-                  <strong>JerbeeHRM</strong> fokus kepada kemudahan penggunaan terutama di organisasi kecil/slim
-                  yang ingin segera bergerak cepat tanpa harus terlalu tergantung kepada
-                  departemen dan sistem sumber daya manusia yang kompleks.</p>
+                <p>{{ $contentcopywritings[0]->body }}</p>
                 <a href="#about" class="btn btn-primary btn-xl page-scroll">Tentang Kami</a>
             </div>
         </div>
@@ -67,11 +64,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">JerbeeHRM siap mengelola SDM anda!</h2>
+                    <h2 class="section-heading">{{ $contentcopywritings[1]->name }}</h2>
                     <hr class="light" style="border:1px solid;">
-                    <p class="text-faded">Sistem HR konvensional yang kompleks umumnya membutuhkan resource dan waktu implementasi panjang.
-                    JerbeeHRM mencoba mengatasi hal tersebut dengan menjadi sistem HR yang sederhana dan mudah digunakan, siap digunakan
-                     di era menjamurnya kewirausahaan yang membutuhkan <em>setup</em> organisasi yang cepat.</p>
+                    <p class="text-faded">{{ $contentcopywritings[1]->body }}</p>
                     <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Fitur Kami</a>
                 </div>
             </div>
@@ -92,29 +87,29 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-institution text-primary sr-icons"></i>
-                        <h3>Easy to Deploy</h3>
-                        <p class="text-muted">Cloud, webhosting, local server, you name it.</p>
+                        <h3>{{ $contenttechs[0]->name }}</h3>
+                        <p class="text-muted">{{ $contenttechs[0]->body }}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-cube text-primary sr-icons"></i>
-                        <h3>Solid Stack</h3>
-                        <p class="text-muted">Using latest web's frameworks &amp; technologies.</p>
+                        <h3>{{ $contenttechs[1]->name }}</h3>
+                        <p class="text-muted">{{ $contenttechs[1]->body }}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-                        <h3>Easy to Use</h3>
-                        <p class="text-muted">Simple, slim with casual UI/UX.</p>
+                        <h3>{{ $contenttechs[2]->name }}</h3>
+                        <p class="text-muted">{{ $contenttechs[2]->body }}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-mobile-phone text-primary sr-icons"></i>
-                        <h3>Mobile</h3>
-                        <p class="text-muted">Responsive. Mobile app version is coming soon!</p>
+                        <h3>{{ $contenttechs[3]->name }}</h3>
+                        <p class="text-muted">{{ $contenttechs[3]->body }}</p>
                     </div>
                 </div>
             </div>
@@ -130,10 +125,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Bio, Dokumen Legal, Foto, Struktur Organisasi
+                                    {{ $contentfeatures[0]->body }}
                                 </div>
                                 <div class="project-name">
-                                    Database Kepegawaian
+                                    {{ $contentfeatures[0]->name }}
                                 </div>
                             </div>
                         </div>
@@ -145,10 +140,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Karir &amp; Curriculum Vitae
+                                    {{ $contentfeatures[1]->body }}
                                 </div>
                                 <div class="project-name">
-                                    CV Generator
+                                    {{ $contentfeatures[1]->name }}
                                 </div>
                             </div>
                         </div>
@@ -160,10 +155,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Absen, Liburan dan Cuti
+                                    {{ $contentfeatures[2]->body }}
                                 </div>
                                 <div class="project-name">
-                                    Kehadiran
+                                    {{ $contentfeatures[2]->name }}
                                 </div>
                             </div>
                         </div>
@@ -175,10 +170,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Payroll
+                                    {{ $contentfeatures[3]->body }}
                                 </div>
                                 <div class="project-name">
-                                    Payroll
+                                    {{ $contentfeatures[3]->name }}
                                 </div>
                             </div>
                         </div>
@@ -190,10 +185,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Job Desc, To Do List, KPI, Surat Tugas
+                                    {{ $contentfeatures[4]->body }}
                                 </div>
                                 <div class="project-name">
-                                    Organisation Tasks
+                                    {{ $contentfeatures[4]->name }}
                                 </div>
                             </div>
                         </div>
@@ -205,10 +200,10 @@
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Inventaris Asset &amp; Pengadaan
+                                    {{ $contentfeatures[5]->body }}
                                 </div>
                                 <div class="project-name">
-                                    Sistem Asset (Coming Soon)
+                                    {{ $contentfeatures[5]->name }}
                                 </div>
                             </div>
                         </div>
@@ -221,7 +216,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Gunakan JerbeeHRM sekarang!</h2>
+                <h2>Login dan Registrasi untuk segera memulai.</h2>
                 <a href="/dashboard" class="btn btn-default btn-xl sr-button">Login / Register</a>
             </div>
         </div>
@@ -233,7 +228,7 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Kontak Kami</h2>
                     <hr class="primary">
-                    <p>Tertarik menggunakan JerbeeHRM di organisasi atau perusahaan anda?<br />Hubungi marketing kami.<br />
+                    <p>Tertarik menggunakan sistem atau aplikasi di atas untuk organisasi atau perusahaan anda?<br />Hubungi marketing kami.<br />
                       PT Jerbee Indonesia, Bandung, Indonesia</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">

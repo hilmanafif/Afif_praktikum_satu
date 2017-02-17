@@ -9,15 +9,6 @@ use App\Services\UserService;
 
 class PagesController extends Controller
 {
-    /**
-     * Homepage
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function home()
-    {
-        return view('welcome');
-    }
 
     /**
      * Dashboard
@@ -27,6 +18,6 @@ class PagesController extends Controller
     public function dashboard(Request $request)
     {
         $user = $request->user();
-        return view('dashboard.main')->with('user', $user);;
+        return view('dashboard.main')->with('user', $user);
     }
 }

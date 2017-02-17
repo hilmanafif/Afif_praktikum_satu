@@ -237,6 +237,66 @@ Route::group(['middleware' => ['auth', 'active']], function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Topic Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('topics', 'TopicsController');
+    Route::post('topics/search', [
+        'as' => 'topics.search',
+        'uses' => 'TopicsController@search'
+    ]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Category Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('categories', 'CategoriesController');
+    Route::post('categories/search', [
+        'as' => 'categories.search',
+        'uses' => 'CategoriesController@search'
+    ]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | OfflineWriter Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('offlinewriters', 'OfflineWritersController');
+    Route::post('offlinewriters/search', [
+        'as' => 'offlinewriters.search',
+        'uses' => 'OfflineWritersController@search'
+    ]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Comment Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('comments', 'CommentsController');
+    Route::post('comments/search', [
+        'as' => 'comments.search',
+        'uses' => 'CommentsController@search'
+    ]);
+
+    /*
+    |--------------------------------------------------------------------------
+    | Content Routes
+    |--------------------------------------------------------------------------
+    */
+
+    Route::resource('contents', 'ContentsController');
+    Route::post('contents/search', [
+        'as' => 'contents.search',
+        'uses' => 'ContentsController@search'
+    ]);
+    
+    /*
+    |--------------------------------------------------------------------------
     | Admin
     |--------------------------------------------------------------------------
     */

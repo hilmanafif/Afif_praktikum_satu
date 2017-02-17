@@ -315,3 +315,166 @@ $factory->define(App\Models\Documenttype::class, function (Faker\Generator $fake
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Topic Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Topic::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'body' => 'I am Batman',
+		'user_id' => '1',
+		'status' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Topic Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Topic::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'body' => 'I am Batman',
+		'user_id' => '1',
+		'status' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Topic Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Topic::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'body' => 'I am Batman',
+		'user_id' => '1',
+		'status' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Topic Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Topic::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'body' => 'I am Batman',
+		'user_id' => '1',
+		'status' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Category Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Category::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'body' => 'I am Batman',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| OfflineWriter Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\OfflineWriter::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'twitter' => 'laravel',
+		'email' => 'laravel',
+		'phone' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Comment Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Comment::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'content_id' => 'laravel',
+		'name' => 'laravel',
+		'email' => 'laravel',
+		'body' => 'I am Batman',
+		'status' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Content Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Content::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'description' => 'laravel',
+		'quote' => 'laravel',
+		'body' => 'I am Batman',
+		'user_id' => '1',
+		'offline_writer_id' => '1',
+		'offline_writer' => 'laravel',
+		'category_id' => '1',
+		'topic_id' => '1',
+		'status' => 'laravel',
+
+
+    ];
+});

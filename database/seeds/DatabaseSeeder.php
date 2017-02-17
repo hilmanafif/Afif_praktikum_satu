@@ -29,6 +29,9 @@ class DatabaseSeeder extends Seeder
         $this->call(LeavetypeTableSeeder::class);
         $this->call(DocumenttypeTableSeeder::class);
 
+        $this->call(CategoryTableSeeder::class);
+        $this->call(ContentTableSeeder::class);
+
         Model::reguard();
     }
 }
