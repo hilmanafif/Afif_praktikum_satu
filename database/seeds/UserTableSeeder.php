@@ -25,6 +25,8 @@ class UserTableSeeder extends Seeder
 
         $service->create($user, 'admin', 'admin', false);
 
+        /* create($user, $password, $role = 'member', $sendEmail = true) */
+        
         if (!User::where('name', 'member')->first()) {
             $user = User::create([
                 'name' => 'Member',
