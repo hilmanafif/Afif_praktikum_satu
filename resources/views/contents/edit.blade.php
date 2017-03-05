@@ -1,5 +1,15 @@
 @extends('dashboard')
 
+@section('pre-javascript')
+<script src="https://cdn.ckeditor.com/4.6.1/basic/ckeditor.js"></script>
+@stop
+
+@section('javascript')
+<script>
+CKEDITOR.replace('body');
+</script>
+@stop
+
 @section('content')
 
   <div class="row">
