@@ -5,8 +5,7 @@ namespace _namespace_controller_;
 use Illuminate\Http\Request;
 use _app_namespace_Http\Controllers\Controller;
 use _namespace_services_\_camel_case_Service;
-use _namespace_request_\_camel_case_CreateRequest;
-use _namespace_request_\_camel_case_UpdateRequest;
+use _namespace_request_\_camel_case_Request;
 
 class _ucCamel_casePlural_Controller extends Controller
 {
@@ -50,23 +49,22 @@ class _ucCamel_casePlural_Controller extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\_camel_case_CreateRequest  $request
+     * @param  \Illuminate\Http\_camel_case_Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(_camel_case_CreateRequest $request)
+    public function store(_camel_case_Request $request)
     {
         $result = $this->service->create($request->except('_token'));
 
         if ($result) {
             return redirect(route('_sectionRoutePrefix__lower_casePlural_.index'))->with('message', 'Successfully created');
-            //return redirect(route('_sectionRoutePrefix__lower_casePlural_.edit', ['id' => $result->id]))->with('message', 'Successfully created');
         }
 
         return redirect(route('_sectionRoutePrefix__lower_casePlural_.index'))->with('message', 'Failed to create');
     }
 
     /**
-     * Display the _lower_case_.
+     * Display the _lower_casePlural_.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -78,7 +76,7 @@ class _ucCamel_casePlural_Controller extends Controller
     }
 
     /**
-     * Show the form for editing the _lower_case_.
+     * Show the form for editing the _lower_casePlural_.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -92,16 +90,15 @@ class _ucCamel_casePlural_Controller extends Controller
     /**
      * Update the _lower_casePlural_ in storage.
      *
-     * @param  \Illuminate\Http\_camel_case_UpdateRequest  $request
+     * @param  \Illuminate\Http\_camel_case_Request  $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(_camel_case_UpdateRequest $request, $id)
+    public function update(_camel_case_Request $request, $id)
     {
         $result = $this->service->update($id, $request->except('_token'));
 
         if ($result) {
-            //return back()->with('message', 'Successfully updated');
             return redirect(route('_sectionRoutePrefix__lower_casePlural_.index'))->with('message', 'Successfully updated');
         }
 

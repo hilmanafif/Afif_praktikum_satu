@@ -29,7 +29,7 @@ class _camel_case_Service
     public function __construct(_camel_case_ $_lower_case_)
     {
         $this->model        = $_lower_case_;
-        $this->pagination   = env('PAGINATION', 25);
+        $this->pagination   = env('PAGINATION', 15);
     }
 
     /**
@@ -69,9 +69,7 @@ class _camel_case_Service
             $query->orWhere($attribute, 'LIKE', '%'.$payload.'%');
         };
 
-        return $query->paginate($this->pagination)->appends([
-            'search' => $payload
-        ]);
+        return $query->paginate($this->pagination);
     }
 
     /**
