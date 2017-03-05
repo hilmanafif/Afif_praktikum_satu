@@ -478,3 +478,23 @@ $factory->define(App\Models\Content::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Message Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Message::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'message' => 'I am Batman',
+		'sender_id' => '1',
+		'receiver_id' => '1',
+		'status' => 'laravel',
+
+
+    ];
+});

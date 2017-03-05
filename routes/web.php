@@ -33,6 +33,12 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     });
     // Dashboard
     Route::get('/dashboard', 'PagesController@dashboard');
+    // Messaging
+    Route::resource('messages', 'MessagesController');
+    Route::post('messages/search', [
+        'as' => 'messages.search',
+        'uses' => 'MessagesController@search'
+    ]);
     // Team
     Route::get('team/{name}', 'TeamController@showByName');
     Route::resource('teams', 'TeamController', ['except' => ['show']]);
@@ -40,88 +46,6 @@ Route::group(['middleware' => ['auth', 'active']], function () {
     Route::post('teams/{id}/invite', 'TeamController@inviteMember');
     Route::get('teams/{id}/remove/{userId}', 'TeamController@removeMember');
 
-    // Organization & References
-    Route::resource('departments', 'DepartmentsController');
-    Route::post('departments/search', [
-        'as' => 'departments.search',
-        'uses' => 'DepartmentsController@search'
-    ]);
-    Route::resource('companies', 'CompaniesController');
-    Route::post('companies/search', [
-        'as' => 'companies.search',
-        'uses' => 'CompaniesController@search'
-    ]);
-    Route::resource('locations', 'LocationsController');
-    Route::post('locations/search', [
-        'as' => 'locations.search',
-        'uses' => 'LocationsController@search'
-    ]);
-    Route::resource('timezones', 'TimezonesController');
-    Route::post('timezones/search', [
-        'as' => 'timezones.search',
-        'uses' => 'TimezonesController@search'
-    ]);
-    Route::resource('educations', 'EducationsController');
-    Route::post('educations/search', [
-        'as' => 'educations.search',
-        'uses' => 'EducationsController@search'
-    ]);
-    Route::resource('languages', 'LanguagesController');
-    Route::post('languages/search', [
-        'as' => 'languages.search',
-        'uses' => 'LanguagesController@search'
-    ]);
-    Route::resource('skills', 'SkillsController');
-    Route::post('skills/search', [
-        'as' => 'skills.search',
-        'uses' => 'SkillsController@search'
-    ]);
-    Route::resource('employmentstatuses', 'EmploymentstatusesController');
-    Route::post('employmentstatuses/search', [
-        'as' => 'employmentstatuses.search',
-        'uses' => 'EmploymentstatusesController@search'
-    ]);
-    Route::resource('jobtitles', 'JobtitlesController');
-    Route::post('jobtitles/search', [
-        'as' => 'jobtitles.search',
-        'uses' => 'JobtitlesController@search'
-    ]);
-    Route::resource('salarycomponents', 'SalarycomponentsController');
-    Route::post('salarycomponents/search', [
-        'as' => 'salarycomponents.search',
-        'uses' => 'SalarycomponentsController@search'
-    ]);
-    Route::resource('leavetypes', 'LeavetypesController');
-    Route::post('leavetypes/search', [
-        'as' => 'leavetypes.search',
-        'uses' => 'LeavetypesController@search'
-    ]);
-    Route::resource('documenttypes', 'DocumenttypesController');
-    Route::post('documenttypes/search', [
-        'as' => 'documenttypes.search',
-        'uses' => 'DocumenttypesController@search'
-    ]);
-    // CMS
-    Route::resource('topics', 'TopicsController');
-    Route::post('topics/search', [
-        'as' => 'topics.search',
-        'uses' => 'TopicsController@search'
-    ]);
-    Route::resource('categories', 'CategoriesController');
-    Route::post('categories/search', [
-        'as' => 'categories.search',
-        'uses' => 'CategoriesController@search'
-    ]);
-    Route::resource('offlinewriters', 'OfflineWritersController');
-    Route::post('offlinewriters/search', [
-        'as' => 'offlinewriters.search',
-        'uses' => 'OfflineWritersController@search'
-    ]);
-    Route::resource('comments', 'CommentsController');
-    Route::post('comments/search', [
-        'as' => 'comments.search',
-        'uses' => 'CommentsController@search'
-    ]);
 
     // HARUS login, HARUS admin atau member
     Route::group(['middleware' => 'roles:admin|member'], function () {
@@ -132,7 +56,99 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         ]);
     });
 
-    // HARUS login, HARUS admin atau member
+    // HARUS login, HARUS admin
+    Route::group(['middleware' => 'roles:admin'], function () {
+      // Organization & References
+      Route::resource('departments', 'DepartmentsController');
+      Route::post('departments/search', [
+          'as' => 'departments.search',
+          'uses' => 'DepartmentsController@search'
+      ]);
+      Route::resource('companies', 'CompaniesController');
+      Route::post('companies/search', [
+          'as' => 'companies.search',
+          'uses' => 'CompaniesController@search'
+      ]);
+      Route::resource('locations', 'LocationsController');
+      Route::post('locations/search', [
+          'as' => 'locations.search',
+          'uses' => 'LocationsController@search'
+      ]);
+      Route::resource('timezones', 'TimezonesController');
+      Route::post('timezones/search', [
+          'as' => 'timezones.search',
+          'uses' => 'TimezonesController@search'
+      ]);
+      Route::resource('educations', 'EducationsController');
+      Route::post('educations/search', [
+          'as' => 'educations.search',
+          'uses' => 'EducationsController@search'
+      ]);
+      Route::resource('languages', 'LanguagesController');
+      Route::post('languages/search', [
+          'as' => 'languages.search',
+          'uses' => 'LanguagesController@search'
+      ]);
+      Route::resource('skills', 'SkillsController');
+      Route::post('skills/search', [
+          'as' => 'skills.search',
+          'uses' => 'SkillsController@search'
+      ]);
+      Route::resource('employmentstatuses', 'EmploymentstatusesController');
+      Route::post('employmentstatuses/search', [
+          'as' => 'employmentstatuses.search',
+          'uses' => 'EmploymentstatusesController@search'
+      ]);
+      Route::resource('jobtitles', 'JobtitlesController');
+      Route::post('jobtitles/search', [
+          'as' => 'jobtitles.search',
+          'uses' => 'JobtitlesController@search'
+      ]);
+      Route::resource('salarycomponents', 'SalarycomponentsController');
+      Route::post('salarycomponents/search', [
+          'as' => 'salarycomponents.search',
+          'uses' => 'SalarycomponentsController@search'
+      ]);
+      Route::resource('leavetypes', 'LeavetypesController');
+      Route::post('leavetypes/search', [
+          'as' => 'leavetypes.search',
+          'uses' => 'LeavetypesController@search'
+      ]);
+      Route::resource('documenttypes', 'DocumenttypesController');
+      Route::post('documenttypes/search', [
+          'as' => 'documenttypes.search',
+          'uses' => 'DocumenttypesController@search'
+      ]);
+      // CMS
+      Route::resource('topics', 'TopicsController');
+      Route::post('topics/search', [
+          'as' => 'topics.search',
+          'uses' => 'TopicsController@search'
+      ]);
+      Route::resource('categories', 'CategoriesController');
+      Route::post('categories/search', [
+          'as' => 'categories.search',
+          'uses' => 'CategoriesController@search'
+      ]);
+      Route::resource('offlinewriters', 'OfflineWritersController');
+      Route::post('offlinewriters/search', [
+          'as' => 'offlinewriters.search',
+          'uses' => 'OfflineWritersController@search'
+      ]);
+      Route::resource('comments', 'CommentsController');
+      Route::post('comments/search', [
+          'as' => 'comments.search',
+          'uses' => 'CommentsController@search'
+      ]);
+      // Log System
+      Route::resource('logsystems', 'LogsystemsController');
+      Route::post('logsystems/search', [
+          'as' => 'logsystems.search',
+          'uses' => 'LogsystemsController@search'
+      ]);
+    });
+
+    // HARUS login, HARUS admin dan controllernya HARUS di /admin
     Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'admin'], function () {
         // User
         Route::resource('users', 'UserController', ['except' => ['create', 'show']]);
@@ -145,11 +161,5 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::resource('roles', 'RoleController', ['except' => ['show']]);
         Route::post('roles/search', 'RoleController@search');
         Route::get('roles/search', 'RoleController@index');
-        // Log System
-        Route::resource('logsystems', 'LogsystemsController');
-        Route::post('logsystems/search', [
-            'as' => 'logsystems.search',
-            'uses' => 'LogsystemsController@search'
-        ]);
     });
 });

@@ -111,7 +111,7 @@
                   <li>
                       <a href="{!! url('salarycomponents') !!}"><span class="fa fa-money"></span> Salary Component</a>
                   </li>
-                  <liyou>
+                  <li>
                       <a href="{!! url('leavetypes') !!}"><span class="fa fa-hotel"></span> Leave Type</a>
                   </li>
                 </ul>
