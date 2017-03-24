@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Content;
 
 class OfflineWriter extends Model
 {
@@ -26,6 +27,10 @@ class OfflineWriter extends Model
         // create rules
     ];
 
-    // OfflineWriter 
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+    // OfflineWriter
 
 }
