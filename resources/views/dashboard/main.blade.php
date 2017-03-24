@@ -74,7 +74,7 @@ color: #aaa;
                         <h3>Welcome back, {{ Auth::user()->name }}</h3>
                         <h4 class="white"><i class="fa fa-envelope"></i> {{ $user['email'] }}</h4>
                         <h4 class="white"><i class="fa fa-phone"></i> {{ $user['meta']['phone'] }}</h4>
-                        <a class="btn btn-warning" href="{!! url('user/settings') !!}">Edit Profile</a>
+                        <a class="btn btn-default" href="{!! url('user/settings') !!}">Edit Profile</a>
                     </div>
                 </div>
                 <div class="col-md-6 no-pad">
