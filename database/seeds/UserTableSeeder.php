@@ -18,6 +18,10 @@ class UserTableSeeder extends Seeder
         if (!User::where('name', 'admin')->first()) {
             $user = User::create([
                 'name' => 'Admin',
+                'bagian_id' => '0',
+                'wilayah_id' => '0',
+                'pangkat_id' => '0',
+                'jabatan_id' => '0',
                 'email' => 'admin@admin.com',
                 'password' => bcrypt('admin'),
             ]);
@@ -26,10 +30,14 @@ class UserTableSeeder extends Seeder
         $service->create($user, 'admin', 'admin', false);
 
         /* create($user, $password, $role = 'member', $sendEmail = true) */
-        
+
         if (!User::where('name', 'member')->first()) {
             $user = User::create([
                 'name' => 'Member',
+                'bagian_id' => '0',
+                'wilayah_id' => '0',
+                'pangkat_id' => '0',
+                'jabatan_id' => '0',
                 'email' => 'member@member.com',
                 'password' => bcrypt('member'),
             ]);
