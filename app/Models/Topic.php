@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\Content;
 
 class Topic extends Model
 {
@@ -26,6 +28,15 @@ class Topic extends Model
         // create rules
     ];
 
-    // Topic 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+    // Topic
 
 }

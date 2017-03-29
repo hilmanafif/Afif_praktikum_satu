@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Content;
+use App\Models\Topic;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\UserMeta;
@@ -52,6 +54,16 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+    public function contents()
+    {
+        return $this->hasMany(Content::class);
+    }
+
+    public function topics()
+    {
+        return $this->hasMany(Topic::class);
     }
 
     /**
