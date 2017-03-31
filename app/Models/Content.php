@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
+use App\Models\OfflineWriter;
+use App\Models\Topic;
 
 class Content extends Model
 {
@@ -31,6 +35,21 @@ class Content extends Model
         // create rules
     ];
 
-    // Content 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function offlinewriter()
+    {
+        return $this->belongsTo(OfflineWriter::class);
+    }
+
+    public function topic()
+    {
+        return $this->belongsTo(Topic::class);
+    }
+
+    // Content
 
 }

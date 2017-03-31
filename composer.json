@@ -11,14 +11,10 @@
         "tymon/jwt-auth": "^0.5.9",
         "codesleeve/laravel-stapler": "^1.0",
         "yab/laracogs": "2.2.0",
-        "yab/crudmaker": "1.2.0"
+        "yab/crudmaker": "1.2.0",
+        "laravel/tinker": "^1.0"
     },
     "require-dev": {
-        "fzaninotto/faker": "~1.4",
-        "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
-        "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
     },
     "autoload": {
         "classmap": [

@@ -9,10 +9,6 @@
 border-radius: 0px!important;
 }
 
-.coralbg {
-background-color: #F05F40; /* COLOR TONE 1 */
-}
-
 .white {
 color: #fff!important;
 }
@@ -72,13 +68,13 @@ color: #aaa;
 <div class="container">
     <div class="row user-menu-container">
         <div class="col-md-7 user-details">
-            <div class="row coralbg white">
+            <div class="row bg-primary white">
                 <div class="col-md-6 no-pad">
                     <div class="user-pad">
                         <h3>Welcome back, {{ Auth::user()->name }}</h3>
                         <h4 class="white"><i class="fa fa-envelope"></i> {{ $user['email'] }}</h4>
                         <h4 class="white"><i class="fa fa-phone"></i> {{ $user['meta']['phone'] }}</h4>
-                        <button type="button" class="btn btn-default"><a href="{!! url('user/settings') !!}">Edit Profile</a></button>
+                        <a class="btn btn-default" href="{!! url('user/settings') !!}">Edit Profile</a>
                     </div>
                 </div>
                 <div class="col-md-6 no-pad">
