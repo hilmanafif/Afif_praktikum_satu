@@ -19,6 +19,15 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentTableSeeder::class);
         $this->call(LocationTableSeeder::class);
 
+        $this->call(AgamaTableSeeder::class);
+        $this->call(StatKawinTableSeeder::class);
+        $this->call(GolDarahTableSeeder::class);
+        $this->call(BankAccountTableSeeder::class);
+        $this->call(StatPegawaiTableSeeder::class);
+        $this->call(StatKerjaTableSeeder::class);
+        $this->call(WilayahTableSeeder::class);
+        $this->call(JabatanTableSeeder::class);
+
         $this->call(TimezoneTableSeeder::class);
         $this->call(EducationTableSeeder::class);
         $this->call(LanguageTableSeeder::class);

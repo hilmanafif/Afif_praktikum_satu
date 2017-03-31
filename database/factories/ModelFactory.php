@@ -498,3 +498,140 @@ $factory->define(App\Models\Message::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Agama Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Agama::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| StatusPerkawinan Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\StatusPerkawinan::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| GolonganDarah Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\GolonganDarah::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| BankAccount Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\BankAccount::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'address' => 'laravel',
+		'logo' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| StatusPegawai Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\StatusPegawai::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| StatusKerja Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\StatusKerja::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Wilayah Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Wilayah::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+		'address' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Jabatan Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Jabatan::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});
