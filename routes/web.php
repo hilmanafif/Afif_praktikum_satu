@@ -146,6 +146,55 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'logsystems.search',
           'uses' => 'LogsystemsController@search'
       ]);
+      // Agama
+      Route::resource('agamas', 'AgamasController');
+      Route::post('agamas/search', [
+          'as' => 'agamas.search',
+          'uses' => 'AgamasController@search'
+      ]);
+      // StatusPerkawinan
+      Route::resource('statusperkawinans', 'StatusPerkawinansController');
+      Route::post('statusperkawinans/search', [
+          'as' => 'statusperkawinans.search',
+          'uses' => 'StatusPerkawinansController@search'
+      ]);
+      // GolonganDarah
+      Route::resource('golongandarahs', 'GolonganDarahsController');
+      Route::post('golongandarahs/search', [
+          'as' => 'golongandarahs.search',
+          'uses' => 'GolonganDarahsController@search'
+      ]);
+      // BankAccount
+      Route::resource('bankaccounts', 'BankAccountsController');
+      Route::post('bankaccounts/search', [
+          'as' => 'bankaccounts.search',
+          'uses' => 'BankAccountsController@search'
+      ]);
+      // StatusPegawai
+      Route::resource('statuspegawais', 'StatusPegawaisController');
+      Route::post('statuspegawais/search', [
+          'as' => 'statuspegawais.search',
+          'uses' => 'StatusPegawaisController@search'
+      ]);
+      // StatusKerja
+      Route::resource('statuskerjas', 'StatusKerjasController');
+      Route::post('statuskerjas/search', [
+          'as' => 'statuskerjas.search',
+          'uses' => 'StatusKerjasController@search'
+      ]);
+      // Wilayah
+      Route::resource('wilayahs', 'WilayahsController');
+      Route::post('wilayahs/search', [
+          'as' => 'wilayahs.search',
+          'uses' => 'WilayahsController@search'
+      ]);
+      // Jabatan
+      Route::resource('jabatans', 'JabatansController');
+      Route::post('jabatans/search', [
+          'as' => 'jabatans.search',
+          'uses' => 'JabatansController@search'
+      ]);
+
     });
 
     // HARUS login, HARUS admin dan controllernya HARUS di /admin
@@ -163,3 +212,18 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::get('roles/search', 'RoleController@index');
     });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
