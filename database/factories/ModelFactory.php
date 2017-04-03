@@ -635,3 +635,146 @@ $factory->define(App\Models\Jabatan::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| GajiPokok Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\GajiPokok::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'id_pangkat' => 'laravel',
+		'masa_kerja' => 'laravel',
+		'gaji_pokok' => 'laravel',
+		'gaji_tunjangan_pokok' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Pangkat Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Pangkat::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kodepangkat' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Unit Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Unit::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+		'id_parent' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Unit Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Unit::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+		'id_parent' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Unit Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Unit::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+		'id_parent' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Unit Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Unit::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+		'id_parent' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Unit Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Unit::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+		'id_parent' => 'laravel',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Bagian Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Bagian::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+		'id_parent' => 'laravel',
+
+
+    ];
+});
