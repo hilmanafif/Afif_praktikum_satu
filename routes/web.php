@@ -194,6 +194,24 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'jabatans.search',
           'uses' => 'JabatansController@search'
       ]);
+      // GajiPokok
+      Route::resource('gajipokoks', 'GajiPokoksController');
+      Route::post('gajipokoks/search', [
+          'as' => 'gajipokoks.search',
+          'uses' => 'GajiPokoksController@search'
+      ]);
+      // Pangkat
+      Route::resource('pangkats', 'PangkatsController');
+      Route::post('pangkats/search', [
+          'as' => 'pangkats.search',
+          'uses' => 'PangkatsController@search'
+      ]);
+      // Bagian
+      Route::resource('bagians', 'BagiansController');
+      Route::post('bagians/search', [
+          'as' => 'bagians.search',
+          'uses' => 'BagiansController@search'
+      ]);
 
     });
 
@@ -212,6 +230,16 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::get('roles/search', 'RoleController@index');
     });
 });
+
+
+
+
+
+
+
+
+
+
 
 
 
