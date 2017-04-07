@@ -23,6 +23,9 @@ class Pangkat extends Model
         // create rules
     ];
 
-    // Pangkat 
-
+    // Pangkat
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }
