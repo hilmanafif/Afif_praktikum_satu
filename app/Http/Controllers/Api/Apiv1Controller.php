@@ -17,4 +17,5 @@ class Apiv1Controller extends Controller
     $departments = Department::all();
     return $departments;
   }
+
 }
