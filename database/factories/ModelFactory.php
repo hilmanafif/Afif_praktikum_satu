@@ -778,3 +778,23 @@ $factory->define(App\Models\Bagian::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Payroll Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Payroll::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'title' => 'laravel',
+		'user_id' => '1',
+		'periode' => '2017-04-04',
+		'gapok' => '1.1',
+
+
+    ];
+});

@@ -212,6 +212,12 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'bagians.search',
           'uses' => 'BagiansController@search'
       ]);
+      // Payroll
+      Route::resource('payrolls', 'PayrollsController');
+      Route::post('payrolls/search', [
+          'as' => 'payrolls.search',
+          'uses' => 'PayrollsController@search'
+      ]);
 
     });
 
@@ -230,28 +236,3 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::get('roles/search', 'RoleController@index');
     });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
