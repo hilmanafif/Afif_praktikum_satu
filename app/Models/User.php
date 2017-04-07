@@ -7,6 +7,8 @@ use App\Models\Topic;
 use App\Models\Role;
 use App\Models\Team;
 use App\Models\UserMeta;
+use App\Models\Wilayah;
+use App\Models\Jabatan;
 use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -66,6 +68,22 @@ class User extends Authenticatable
         return $this->hasMany(Topic::class);
     }
 
+    public function wilayahs()
+    {
+        return $this->belongsTo(Wilayah::class);
+    }
+    public function jabatans()
+    {
+        return $this->belongsTo(Jabatan::class);
+    }
+    public function pangkats()
+    {
+        return $this->belongsTo(Pangkat::class);
+    }
+    public function bagians()
+    {
+        return $this->belongsTo(Bagian::class);
+    }
     /**
      * Check if user has role
      *

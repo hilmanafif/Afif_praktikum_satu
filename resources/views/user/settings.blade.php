@@ -9,7 +9,7 @@
 			<li class="active">
         <a  href="#1" data-toggle="tab">Account</a>
 			</li>
-			<li><a href="#2" data-toggle="tab">Bio</a>
+			<li><a href="#2" data-toggle="tab">Profil</a>
 			</li>
 			<li><a href="#3" data-toggle="tab">Photo</a>
 			</li>
@@ -80,6 +80,22 @@
 											<div class="raw-margin-top-24">
 													@input_maker_label('Phone')
 													<input id="meta[phone]" class="form-control" type="text" name="meta[phone]" value="{{ $user['meta']['phone'] }}" placeholder="Phone">
+											</div>
+											<div class="raw-margin-top-24">
+													@input_maker_label('Bagian')
+													@input_maker_create('bagians', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'], $user)
+											</div>
+											<div class="raw-margin-top-24">
+													@input_maker_label('Wilayah')
+													@input_maker_create('wilayahs', ['type' => 'relationship', 'model' => 'App\Models\Wilayah', 'label' => 'name', 'value' => 'id'], $user)
+											</div>
+											<div class="raw-margin-top-24">
+													@input_maker_label('Pangkat')
+													@input_maker_create('pangkats', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'], $user)
+											</div>
+											<div class="raw-margin-top-24">
+													@input_maker_label('Jabatan')
+													@input_maker_create('jabatans', ['type' => 'relationship', 'model' => 'App\Models\Jabatan', 'label' => 'name', 'value' => 'id'], $user)
 											</div>
 
 											<div class="raw-margin-top-24">

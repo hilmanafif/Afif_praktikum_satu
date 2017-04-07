@@ -24,6 +24,9 @@ class Bagian extends Model
         // create rules
     ];
 
-    // Bagian 
-
+    // Bagian
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

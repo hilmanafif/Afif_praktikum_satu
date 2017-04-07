@@ -26,6 +26,22 @@
                     @input_maker_label('Role')
                     @input_maker_create('roles', ['type' => 'relationship', 'model' => 'App\Models\Role', 'label' => 'label', 'value' => 'name'])
                 </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Bagian')
+                    @input_maker_create('bagians', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'])
+                </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Wilayah')
+                    @input_maker_create('wilayahs', ['type' => 'relationship', 'model' => 'App\Models\Wilayah', 'label' => 'name', 'value' => 'id'])
+                </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Pangkat')
+                    @input_maker_create('pangkats', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'])
+                </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Jabatan')
+                    @input_maker_create('jabatans', ['type' => 'relationship', 'model' => 'App\Models\Jabatan', 'label' => 'name', 'value' => 'id'])
+                </div>
 
                 <div class="raw-margin-top-24">
                     <a class="btn btn-default pull-left" href="{{ URL::previous() }}">Cancel</a>

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Jabatan extends Model
 {
@@ -23,6 +24,10 @@ class Jabatan extends Model
         // create rules
     ];
 
-    // Jabatan 
+    // Jabatan
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 
 }
