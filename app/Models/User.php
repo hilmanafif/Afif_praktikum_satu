@@ -12,6 +12,7 @@ use App\Models\Jabatan;
 use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use DateTime;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,9 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = ['name', 'bagian_id', 'wilayah_id,', 'pangkat_id', 'jabatan_id', 'email', 'password'];
+     protected $fillable = [
+         'name','employee_number', 'bagian_id', 'wilayah_id,', 'pangkat_id', 'jabatan_id', 'email', 'password','startworking_date'
+     ];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -148,5 +151,13 @@ class User extends Authenticatable
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ResetPassword($token));
+    }
+    public function masakerja($id){
+      $user=User::find($id);
+      $now= new DateTime(date('Y-m-d'));
+      $started= new DateTime($user->startworking_date);
+      $diff= $started->diff($now);
+      //mengembalikan nilai tahun saja
+      return $diff->y;
     }
 }
