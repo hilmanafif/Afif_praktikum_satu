@@ -778,3 +778,22 @@ $factory->define(App\Models\Bagian::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Subjabatan Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Subjabatan::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'jabatan_id' => 'laravel',
+		'kode_subjabatan' => 'laravel',
+		'kode' => 'laravel',
+		'name' => 'laravel',
+
+
+    ];
+});

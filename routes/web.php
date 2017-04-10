@@ -212,6 +212,12 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'bagians.search',
           'uses' => 'BagiansController@search'
       ]);
+      // Subjabatan
+      Route::resource('subjabatans', 'SubjabatansController');
+      Route::post('subjabatans/search', [
+          'as' => 'subjabatans.search',
+          'uses' => 'SubjabatansController@search'
+      ]);
 
     });
 
@@ -230,6 +236,8 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::get('roles/search', 'RoleController@index');
     });
 });
+
+
 
 
 

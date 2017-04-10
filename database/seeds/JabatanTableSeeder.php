@@ -20,17 +20,17 @@ class JabatanTableSeeder extends Seeder
 
       	Jabatan::create([
           'kode' => 'B',
-          'name' => 'Direktur Teknik',
+          'name' => 'Direktur',
       	]);
 
       	Jabatan::create([
           'kode' => 'C',
-          'name' => 'Direktur Umum',
+          'name' => 'Kepala',
       	]);
 
       	Jabatan::create([
           'kode' => 'D',
-          'name' => 'Kepala',
+          'name' => 'Kepala Cabang',
       	]);
       	 Jabatan::create([
           'kode' => 'E',
@@ -39,101 +39,73 @@ class JabatanTableSeeder extends Seeder
 
       	Jabatan::create([
           'kode' => 'F',
-          'name' => 'Wakil Kepala Cabang',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'G',
           'name' => 'Kepala Bagian',
       	]);
 
       	Jabatan::create([
-          'kode' => 'H',
-          'name' => 'Kepala Unit',
-      	]);
-      	Jabatan::create([
-          'kode' => 'I',
-          'name' => 'Kepala Seksi',
+          'kode' => 'G',
+          'name' => 'Kepala Sub Bagian',
       	]);
 
       	Jabatan::create([
+          'kode' => 'H',
+          'name' => 'Kepala Seksi',
+      	]);
+      	
+        Jabatan::create([
           'kode' => 'J',
-          'name' => 'Kepala Sub Bagian',
+          'name' => 'Kepala Sub Seksi',
       	]);
       	Jabatan::create([
           'kode' => 'K',
-          'name' => 'Kepala Urusan',
+          'name' => 'Pelaksana Pusat',
       	]);
 
       	Jabatan::create([
           'kode' => 'L',
-          'name' => 'Kepala Sub Seksi',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'M',
-          'name' => 'Pelaksana SDM',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'N',
-          'name' => 'Pelaksana Keuangan',
-      	]);
-      	 Jabatan::create([
-          'kode' => 'O',
-          'name' => 'Pelaksana Penelitian & Pengmbangan',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'P',
-          'name' => 'Pelaksana SPI',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'Q',
-          'name' => 'Pelaksana Teknologi Informasi',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'R',
-          'name' => 'Pelaksana Humas & Hukum',
-      	]);
-      	Jabatan::create([
-          'kode' => 'S',
-          'name' => 'Pelaksana Perencanaan Teknik',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'T',
-          'name' => 'Pelaksana Produksi  Distribusi',
-      	]);
-      	Jabatan::create([
-          'kode' => 'U',
-          'name' => 'Pelaksana Umum',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'V',
-          'name' => 'Pelaksana Kas',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'W',
-          'name' => 'Pelaksana Pelayanan Langganan',
-      	]);
-
-      	Jabatan::create([
-          'kode' => 'X',
-          'name' => 'Pelaksana Umum',
-      	]);
-      	 Jabatan::create([
-          'kode' => 'Y',
           'name' => 'Pelaksana Produksi',
       	]);
 
       	Jabatan::create([
-          'kode' => 'Z',
+          'kode' => 'M',
           'name' => 'Pelaksana Distribusi',
+      	]);
+
+      	Jabatan::create([
+          'kode' => 'N',
+          'name' => 'Pel. Produksi & Distribusi',
+      	]);
+      	 Jabatan::create([
+          'kode' => 'O',
+          'name' => 'Pelaksana Umum',
+      	]);
+
+      	Jabatan::create([
+          'kode' => 'P',
+          'name' => 'Pelaksana Kas',
+      	]);
+
+      	Jabatan::create([
+          'kode' => 'Q',
+          'name' => 'Pel. Pelayanan Langganan',
+      	]);
+
+      	Jabatan::create([
+          'kode' => 'R',
+          'name' => 'Pel. Pembaca Meter',
+      	]);
+      	Jabatan::create([
+          'kode' => 'S',
+          'name' => 'Satpam',
+      	]);
+
+      	Jabatan::create([
+          'kode' => 'T',
+          'name' => 'Pel. Pembantu Umum',
+      	]);
+      	Jabatan::create([
+          'kode' => 'U',
+          'name' => 'Pelaksana IPAL Cisirung',
       	]);
 
       	

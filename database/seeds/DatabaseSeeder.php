@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
         $this->call(GajiPokokTableSeeder::class);
         $this->call(PangkatTableSeeder::class);
         $this->call(BagianTableSeeder::class);
+        $this->call(SubjabatanTableSeeder::class);
 
 
         $this->call(TimezoneTableSeeder::class);
