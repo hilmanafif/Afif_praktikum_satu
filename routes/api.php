@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => 'v1', 'namespace' => 'Api'], function () {
     Route::get('listdepartment','Apiv1Controller@listdepartment');
+    Route::get('listuser','Apiv1Controller@listuser');
     Route::post('login', 'AuthController@login');
     Route::post('register', 'AuthController@register');
     Route::group(['middleware' => 'jwt.auth'], function () {

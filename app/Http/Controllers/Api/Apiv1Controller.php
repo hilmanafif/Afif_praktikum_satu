@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Models\Department;
+use App\Models\User;
 
 class Apiv1Controller extends Controller
 {
@@ -16,6 +17,12 @@ class Apiv1Controller extends Controller
   {
     $departments = Department::all();
     return $departments;
+  }
+
+  public function listuser()
+  {
+    $users = User::all();
+    return $users;
   }
 
 }
