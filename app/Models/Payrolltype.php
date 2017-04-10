@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Payroll extends Model
+class Payrolltype extends Model
 {
-    public $table = "payrolls";
+    public $table = "payrolltypes";
 
     public $primaryKey = "id";
 
@@ -14,14 +14,7 @@ class Payroll extends Model
 
     public $fillable = [
         		'id',
-		'title',
-    'user_id',
 		'name',
-    'pangkat_id',
-    'start_date',
-		'end_date',
-		'gapok',
-    'payrolltype_id',
 
     ];
 
@@ -29,6 +22,6 @@ class Payroll extends Model
         // create rules
     ];
 
-    // Payroll
+    // Payrolltype 
 
 }

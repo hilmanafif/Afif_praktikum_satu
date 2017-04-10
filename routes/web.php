@@ -218,6 +218,12 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'payrolls.search',
           'uses' => 'PayrollsController@search'
       ]);
+      // Payrolltype
+      Route::resource('payrolltypes', 'PayrolltypesController');
+      Route::post('payrolltypes/search', [
+          'as' => 'payrolltypes.search',
+          'uses' => 'PayrolltypesController@search'
+      ]);
 
     });
 
