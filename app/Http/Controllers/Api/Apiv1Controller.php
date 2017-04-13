@@ -10,7 +10,7 @@ use App\Models\User;
 class Apiv1Controller extends Controller
 {
   public function __construct() {
-    $this->middleware('jwt.auth',['except'=>[]]);
+    $this->middleware('jwt.auth',['except'=>['listuser']]);
   }
 
   public function listdepartment()
