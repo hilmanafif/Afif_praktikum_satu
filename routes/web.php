@@ -224,6 +224,7 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'payrolltypes.search',
           'uses' => 'PayrolltypesController@search'
       ]);
+      Route::post('generatePayroll', 'PayrollsController@generatePayroll');
 
     });
 
