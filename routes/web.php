@@ -212,6 +212,12 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'bagians.search',
           'uses' => 'BagiansController@search'
       ]);
+      // Subjabatan
+      Route::resource('subjabatans', 'SubjabatansController');
+      Route::post('subjabatans/search', [
+          'as' => 'subjabatans.search',
+          'uses' => 'SubjabatansController@search'
+      ]);
       // Payroll
       Route::resource('payrolls', 'PayrollsController');
       Route::post('payrolls/search', [

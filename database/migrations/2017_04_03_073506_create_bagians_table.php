@@ -15,9 +15,10 @@ class CreateBagiansTable extends Migration
     {
         Schema::create('bagians', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('kode');
-			$table->string('name');
-			$table->string('id_parent');
+			$table->string('parent_id');
+            $table->string('name');
+            $table->string('name_umum');
+			
 
             $table->timestamps();
         });
