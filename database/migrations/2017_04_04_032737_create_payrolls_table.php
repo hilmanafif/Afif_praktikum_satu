@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePangkatsTable extends Migration
+class CreatePayrollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreatePangkatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('pangkats', function (Blueprint $table) {
+        Schema::create('payrolls', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('kode_pangkat');
-			$table->string('name');
+			$table->string('title');
+			$table->integer('user_id');
+			$table->date('periode');
+			$table->double('gapok');
 
             $table->timestamps();
         });
@@ -29,6 +31,6 @@ class CreatePangkatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pangkats');
+        Schema::dropIfExists('payrolls');
     }
 }

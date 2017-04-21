@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 
-class Jabatan extends Model
+class Payroll extends Model
 {
-    public $table = "jabatans";
+    public $table = "payrolls";
 
     public $primaryKey = "id";
 
@@ -15,8 +14,10 @@ class Jabatan extends Model
 
     public $fillable = [
         		'id',
-		'kode',
-		'name',
+		'title',
+		'user_id',
+		'periode',
+		'gapok',
 
     ];
 
@@ -24,10 +25,6 @@ class Jabatan extends Model
         // create rules
     ];
 
-    // Jabatan
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
+    // Payroll 
 
 }

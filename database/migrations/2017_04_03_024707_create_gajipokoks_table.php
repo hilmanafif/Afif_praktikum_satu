@@ -15,10 +15,12 @@ class CreateGajipokoksTable extends Migration
     {
         Schema::create('gajipokoks', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('id_pangkat');
+			$table->string('pangkat_id');
 			$table->string('masa_kerja');
+            $table->string('kodgol');
 			$table->string('gaji_pokok');
 			$table->string('gaji_tunjangan_pokok');
+            $table->string('kode_pangkat');
 
             $table->timestamps();
         });

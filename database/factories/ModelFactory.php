@@ -779,6 +779,7 @@ $factory->define(App\Models\Bagian::class, function (Faker\Generator $faker) {
     ];
 });
 
+<<<<<<< HEAD
 /*
 |--------------------------------------------------------------------------
 | Subjabatan Factory
@@ -793,6 +794,23 @@ $factory->define(App\Models\Subjabatan::class, function (Faker\Generator $faker)
 		'kode_subjabatan' => 'laravel',
 		'kode' => 'laravel',
 		'name' => 'laravel',
+=======
+
+/*
+|--------------------------------------------------------------------------
+| Payroll Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Payroll::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'title' => 'laravel',
+		'user_id' => '1',
+		'periode' => '2017-04-04',
+		'gapok' => '1.1',
+>>>>>>> e1b8fc80364f10fb953ea986a5a9703cd1f8dcb6
 
 
     ];

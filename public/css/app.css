@@ -5864,14 +5864,22 @@ html, body {
   text-align: center;
   background-color: #EEE; }
 
-.panel-heading a {
+.panel-heading a, .megamenu a {
   display: block; }
 
 .panel-heading a:hover, .panel-heading a:focus {
   text-decoration: none;  }
 
-.panel .fa {
+.panel .fa, .megamenu .fa  {
   text-align: center;
   width:20px; }
-  
+
+.megamenu a {
+  padding: 8px; }
+
+.disable {
+  pointer-events: none;
+  color: #aaa;
+}
+
 /*# sourceMappingURL=app.css.map */
