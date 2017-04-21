@@ -15,10 +15,14 @@ class CreatePayrollsTable extends Migration
     {
         Schema::create('payrolls', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('title');
-			$table->integer('user_id');
-			$table->date('periode');
-			$table->double('gapok');
+      			$table->string('title');
+      			$table->integer('user_id');
+            $table->string('name');
+            $table->integer('pangkat_id');
+            $table->date('start_date');
+      			$table->date('end_date');
+      			$table->double('gapok');
+            $table->integer('payrolltype_id');
 
             $table->timestamps();
         });

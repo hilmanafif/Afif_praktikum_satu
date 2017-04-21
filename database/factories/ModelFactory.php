@@ -815,3 +815,19 @@ $factory->define(App\Models\Payroll::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Payrolltype Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Payrolltype::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'name' => 'laravel',
+
+
+    ];
+});
