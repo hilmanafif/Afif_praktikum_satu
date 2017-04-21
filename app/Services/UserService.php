@@ -189,6 +189,10 @@ class UserService
         try {
             return DB::transaction(function () use ($userId, $payload) {
                 $user = $this->model->find($userId);
+                $payload['pangkat_id'] = $payload['pangkats'];
+                $payload['jabatan_id'] = $payload['jabatans'];
+                $payload['bagian_id'] = $payload['bagians'];
+                $payload['wilayah_id'] = $payload['wilayahs'];
 
                 if (isset($payload['meta']['marketing']) && ($payload['meta']['marketing'] == 1 || $payload['meta']['marketing'] == 'on')) {
                     $payload['meta']['marketing'] = 1;
