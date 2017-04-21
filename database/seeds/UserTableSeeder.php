@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
                 'bagian_id' => '1',
                 'wilayah_id' => '1',
                 'pangkat_id' => '1',
+                'ruang' => '11',
                 'jabatan_id' => '1',
                 'email' => 'admin@admin.com',
                 'password' => bcrypt('admin'),
@@ -40,10 +41,11 @@ class UserTableSeeder extends Seeder
                 'bagian_id' => '3',
                 'wilayah_id' => '3',
                 'pangkat_id' => '3',
+                'ruang' => '10',
                 'jabatan_id' => '3',
                 'email' => 'member@member.com',
                 'password' => bcrypt('member'),
-                'startworking_date' => '2015-01-01',
+                'startworking_date' => '2011-01-01',
             ]);
         }
 

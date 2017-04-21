@@ -91,7 +91,7 @@
 											</div>
 											<div class="raw-margin-top-24">
 													@input_maker_label('Pangkat')
-													@input_maker_create('pangkats', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'], $user)
+													@input_maker_create('pangkats', ['type' => 'relationship', 'model' => 'App\Models\Pangkat', 'label' => 'name', 'value' => 'id'], $user)
 											</div>
 											<div class="raw-margin-top-24">
 													@input_maker_label('Jabatan')

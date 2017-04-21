@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 use App\Services\PayrollService;
 use App\Http\Requests\PayrollCreateRequest;
 use App\Http\Requests\PayrollUpdateRequest;
+use App\Models\Payroll;
+use App\Models\User;
+use App\Models\GajiPokok;
 
 class PayrollsController extends Controller
 {
@@ -63,6 +66,42 @@ class PayrollsController extends Controller
         }
 
         return redirect(route('payrolls.index'))->with('message', 'Failed to create');
+    }
+
+    public function generatePayroll(Request $request){
+      $employees=User::all();
+      $start_date=$request->fromDate;
+      $end_date=$request->toDate;
+      $phase=$request->phase;
+      //HARDCODED PAYROLL TYPE
+        //FIRST PHASE PAYROLL
+        foreach ($employees as $employee) {
+        if ($phase==1){
+          //FIND GAPOK
+          $pangkat=$employee->pangkats;
+          $masakerja=User::masakerja($employee->id);
+          $gapok=GajiPokok::where('id_pangkat',$pangkat->kodepangkat)
+                          ->where('masa_kerja',$masakerja)
+                          ->first();
+          $datas = ["title"=>"Gaji ".$employee->name." tahap 1",
+                    "user_id"=>$employee->id,
+                    "name"=>$employee->name,
+                    "pangkat_id"=>$employee->pangkat_id,
+                    "start_date"=>$start_date,
+                    "end_date"=>$end_date,
+                    "gapok"=>$gapok->gaji_pokok,
+                    "payrolltype_id"=>1];
+          $result = $this->service->create($datas);
+          }
+        //SECOND PHASE PAYROLL
+        elseif ($phase==2) {
+          return "under developement";
+        }
+        else {
+          return 404;
+        }
+      }
+      return redirect(route('payrolls.index'))->with('message', 'Payroll Generated');
     }
 
     /**

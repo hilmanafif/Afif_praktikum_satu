@@ -8,11 +8,30 @@
               {!! csrf_field() !!}
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!} --}}
-            <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('payrolls.create') !!}">Generate Payroll 2</a>
-            <a class="btn btn-primary pull-right" style="margin-top: 25px;margin-right: 10px" href="{!! route('payrolls.create') !!}">Generate Payroll 1</a>
+            {!! Form::open(['url' => 'generatePayroll']) !!}
+            <div class="row">
+            <div class="pull-right">
+              <div class="form-group" style="float:left;margin-top: 25px;">
+                  <div class="col-md-6" style="padding:0 0 0 0">
+                    <label for="fromDate">From</label>
+                      <input type="date" name="fromDate" class="form-control" required>
+                  </div>
+                  <div class="col-md-6" style="padding:0 0 0 10">
+                    <label for="fromDate">To</label>
+                      <input type="date" name="toDate" class="form-control" required>
+                </div>
+              </div>
+            </div>
+          </div>
+            <div class="pull-right">
+              <button class="btn btn-primary" style="margin-top: 25px;margin-right: 10px" name="phase" value="1" onclick='return confirm("Generate payroll?")'>Generate Payroll 1</button>
+              <button class="btn btn-primary" style="margin-top: 25px" value="2" name="phase" onclick'=return confirm("Generate payroll?")'>Generate Payroll 2</button>
+              </div>
+        {!! Form::close() !!}
             <h1 class="pull-left">Payrolls</h1>
         </div>
     </div>
+
     <div class="row raw-margin-top-24">
         <div class="col-md-12">
             @if($payrolls->isEmpty())
@@ -20,28 +39,25 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>ID</th>
-                        <th>User_ID</th>
+                        <th><input type="checkbox"></th>
+                        <th>Nama</th>
+                        <th>NIK</th>
                         <th>Periode</th>
-                        <th>Gapok</th>
-                        {{-- <th width="200px" class="text-right">Action</th> --}}
+                        {{-- <th>Gapok</th> --}}
+                        <th>Action</th>
                     </thead>
                     <tbody>
                     @foreach($payrolls as $payroll)
                         <tr>
-                          <td>{{ $payroll->id }}</td>
-                          <td>{{ $payroll->user_id }}</td>
-                          <td>{{ date("F Y", strtotime($payroll->periode)) }}</td>
-                          <td>Rp. {{ number_format($payroll->gapok,0,'','.') }}</td>
-                            {{-- <td>
-                                <form method="post" action="{!! route('payrolls.destroy', [$payroll->id]) !!}">
-                                    {!! csrf_field() !!}
-                                    {!! method_field('DELETE') !!}
-                                    <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this payroll?')"><i class="fa fa-trash"></i> Delete</button>
-                                </form>
-                                <a class="btn btn-warning btn-xs" href="{!! route('payrolls.show', [$payroll->id]) !!}"><i class="fa fa-search"></i> Show</a>
-                                <a class="btn btn-warning btn-xs" href="{!! route('payrolls.edit', [$payroll->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
-                            </td> --}}
+                          <td><input type="checkbox"></td>
+                          <td>{{ $payroll->name }}</td>
+                          <td>{{ $payroll->users->employee_number }}</td>
+                          <td>{{ date("d F Y", strtotime($payroll->start_date)) }} - {{ date("d F Y", strtotime($payroll->end_date)) }}</td>
+                          {{-- <td>Rp. {{ number_format($payroll->gapok,0,'','.') }}</td> --}}
+                            <td>
+                                <a class="btn btn-primary btn-xs" href="#"><i class="fa fa-search"></i> View</a>
+                                <a class="btn btn-success btn-xs" href="#"><i class="fa fa-print"></i> Print</a>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>

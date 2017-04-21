@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
      protected $fillable = [
-         'name','employee_number', 'bagian_id', 'wilayah_id,', 'pangkat_id', 'jabatan_id', 'email', 'password','startworking_date'
+         'name','employee_number', 'bagian_id', 'wilayah_id,', 'pangkat_id', 'ruang', 'jabatan_id', 'email', 'password','startworking_date'
      ];
 
     /**
@@ -73,19 +73,19 @@ class User extends Authenticatable
 
     public function wilayahs()
     {
-        return $this->belongsTo(Wilayah::class);
+        return $this->belongsTo(Wilayah::class,'id');
     }
     public function jabatans()
     {
-        return $this->belongsTo(Jabatan::class);
+        return $this->belongsTo(Jabatan::class,'id');
     }
     public function pangkats()
     {
-        return $this->belongsTo(Pangkat::class);
+        return $this->belongsTo(Pangkat::class,'id');
     }
     public function bagians()
     {
-        return $this->belongsTo(Bagian::class);
+        return $this->belongsTo(Bagian::class,'id');
     }
     /**
      * Check if user has role
@@ -152,7 +152,7 @@ class User extends Authenticatable
     {
         $this->notify(new ResetPassword($token));
     }
-    public function masakerja($id){
+    public static function masakerja($id){
       $user=User::find($id);
       $now= new DateTime(date('Y-m-d'));
       $started= new DateTime($user->startworking_date);
