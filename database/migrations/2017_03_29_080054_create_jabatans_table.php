@@ -17,8 +17,8 @@ class CreateJabatansTable extends Migration
             $table->increments('id');
 			$table->string('kode_umum');
             $table->string('kode');
-			$table->string('name_umum');
-            $table->string('name');
+			$table->string('name');
+            $table->string('name_umum');
             $table->integer('Tunjab');
             $table->integer('Tunpres');
             $table->integer('Tupel');
