@@ -78,11 +78,14 @@ class PayrollsController extends Controller
         foreach ($employees as $employee) {
         if ($phase==1){
           //FIND GAPOK
-          $pangkat=$employee->pangkats;
-          $masakerja=User::masakerja($employee->id);
-          $gapok=GajiPokok::where('id_pangkat',$pangkat->kodepangkat)
-                          ->where('masa_kerja',$masakerja)
+          // $pangkat=$employee->pangkats;
+          // $masakerja=User::masakerja($employee->id);
+          $gapok=GajiPokok::where('pangkat_id',$employee->pangkat_id)
+                          ->where('ruang',$employee->ruang)
                           ->first();
+          if (!$gapok) {
+            return "gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
+          }
           $datas = ["title"=>"Gaji ".$employee->name." tahap 1",
                     "user_id"=>$employee->id,
                     "name"=>$employee->name,

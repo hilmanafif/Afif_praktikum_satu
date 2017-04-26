@@ -19,7 +19,7 @@ class JabatanTableSeeder extends Seeder
           'name' => 'Direktur Utama',
           'name_umum' => 'Direktur',
           'Tunjab' => '0',
-          'Tunpres' => '',
+          'Tunpres' => '0',
           'Tupel' => '570313',
           'Turam' => '1200000',
       	]);
@@ -53,7 +53,7 @@ class JabatanTableSeeder extends Seeder
           'name_umum' => 'Kepala',
           'Tunjab' => '1500000',
           'Tunpres' => '3062500',
-          'Tupel' => '228,125',
+          'Tupel' => '228125',
           'Turam' => '200000',
         ]);
 
@@ -64,7 +64,7 @@ class JabatanTableSeeder extends Seeder
           'name_umum' => 'Kepala',
           'Tunjab' => '1500000',
           'Tunpres' => '3062500',
-          'Tupel' => '228,125',
+          'Tupel' => '228125',
           'Turam' => '200000',
         ]);
 
@@ -100,16 +100,16 @@ class JabatanTableSeeder extends Seeder
           'Tupel' => '139700',
           'Turam' => '150000',
         ]);
-      	
+
         Jabatan::create([
           'kode_umum' => 'H',
           'kode' => 'H-C01',
           'name' => 'Kepala Unit',
           'name_umum' => 'Kepala',
-          'Tunjab' => '900,000',
-          'Tunpres' => '1,788,750',
-          'Tupel' => '164,375',
-          'Turam' => '150,000',
+          'Tunjab' => '900000',
+          'Tunpres' => '1788750',
+          'Tupel' => '164375',
+          'Turam' => '150000',
         ]);
 
       	Jabatan::create([
@@ -117,10 +117,10 @@ class JabatanTableSeeder extends Seeder
           'kode' => 'H-C02',
           'name' => 'Kepala Seksi',
           'name_umum' => 'Kepala',
-          'Tunjab' => '800,000',
-          'Tunpres' => '1,451,250',
-          'Tupel' => '139,700',
-          'Turam' => '150,000',
+          'Tunjab' => '800000',
+          'Tunpres' => '1451250',
+          'Tupel' => '139700',
+          'Turam' => '150000',
         ]);
 
       	Jabatan::create([
@@ -420,6 +420,6 @@ class JabatanTableSeeder extends Seeder
           'Turam' => '100000',
         ]);
 
-      	
+
     }
 }
