@@ -31,7 +31,7 @@ class User extends Authenticatable
      * @var array
      */
      protected $fillable = [
-         'name','employee_number', 'bagian_id', 'wilayah_id,', 'pangkat_id', 'ruang', 'jabatan_id', 'email', 'password','startworking_date'
+         'name','employee_number', 'bagian_id', 'wilayah_id', 'pangkat_id', 'ruang', 'jabatan_id', 'email', 'password','startworking_date'
      ];
 
     /**
@@ -73,19 +73,19 @@ class User extends Authenticatable
 
     public function wilayahs()
     {
-        return $this->belongsTo(Wilayah::class,'id');
+        return $this->belongsTo(Wilayah::class,'wilayah_id');
     }
     public function jabatans()
     {
-        return $this->belongsTo(Jabatan::class,'id');
+        return $this->belongsTo(Jabatan::class,'wilayah_id');
     }
     public function pangkats()
     {
-        return $this->belongsTo(Pangkat::class,'id');
+        return $this->belongsTo(Pangkat::class,'wilayah_id');
     }
     public function bagians()
     {
-        return $this->belongsTo(Bagian::class,'id');
+        return $this->belongsTo(Bagian::class,'wilayah_id');
     }
     /**
      * Check if user has role
