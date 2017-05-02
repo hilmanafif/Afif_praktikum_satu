@@ -15,8 +15,14 @@ class Jabatan extends Model
 
     public $fillable = [
         		'id',
-		'kode',
-		'name',
+            'kode_umum',
+        		'kode',
+            'name',
+            'name_umum',
+            'Tunjab',
+            'Tunpres',
+            'Tupel',
+        		'Turam',
 
     ];
 
