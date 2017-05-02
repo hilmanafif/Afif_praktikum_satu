@@ -98,7 +98,21 @@ class PayrollsController extends Controller
           }
         //SECOND PHASE PAYROLL
         elseif ($phase==2) {
-          return "under developement";
+          $gapok=GajiPokok::where('pangkat_id',$employee->pangkat_id)
+                          ->where('ruang',$employee->ruang)
+                          ->first();
+          if (!$gapok) {
+            return "gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
+          }
+          $datas = ["title"=>"Gaji ".$employee->name." tahap 2",
+                    "user_id"=>$employee->id,
+                    "name"=>$employee->name,
+                    "pangkat_id"=>$employee->pangkat_id,
+                    "start_date"=>$start_date,
+                    "end_date"=>$end_date,
+                    "gapok"=>$gapok->gaji_pokok,
+                    "payrolltype_id"=>2];
+          $result = $this->service->create($datas);
         }
         else {
           return 404;
@@ -116,7 +130,12 @@ class PayrollsController extends Controller
     public function show($id)
     {
         $payroll = $this->service->find($id);
-        return view('payrolls.show')->with('payroll', $payroll);
+        if ($payroll->payrolltype_id==1) {
+          return view('payrolls.payrollAkhirBulan')->with('payroll', $payroll);
+        }
+        elseif ($payroll->payrolltype_id==2) {
+          return view('payrolls.payrollTengahBulan')->with('payroll', $payroll);
+        }
     }
 
     /**
