@@ -16,7 +16,7 @@ class CreateStatuskerjasTable extends Migration
         Schema::create('statuskerjas', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('kode');
-			$table->string('name');
+			$table->string('name')->nullable();
 
             $table->timestamps();
         });

@@ -15,9 +15,9 @@ class CreateBankaccountsTable extends Migration
     {
         Schema::create('bankaccounts', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('name');
-			$table->string('address');
-			$table->string('logo');
+			$table->string('name')->nullable();
+			$table->string('address')->nullable();
+			$table->string('logo')->nullable();
 
             $table->timestamps();
         });

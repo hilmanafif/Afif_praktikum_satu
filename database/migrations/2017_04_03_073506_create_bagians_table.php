@@ -16,8 +16,8 @@ class CreateBagiansTable extends Migration
         Schema::create('bagians', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('parent_id');
-            $table->string('name');
-            $table->string('name_umum');
+            $table->string('name')->nullable();
+            $table->string('name_umum')->nullable();
 			
 
             $table->timestamps();

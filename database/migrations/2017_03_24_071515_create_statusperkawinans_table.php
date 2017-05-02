@@ -16,7 +16,7 @@ class CreateStatusperkawinansTable extends Migration
         Schema::create('statusperkawinans', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('kode');
-			$table->string('name');
+			$table->string('name')->nullable();
 
             $table->timestamps();
         });

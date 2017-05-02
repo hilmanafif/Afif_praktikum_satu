@@ -16,7 +16,7 @@ class CreateStatuspegawaisTable extends Migration
         Schema::create('statuspegawais', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('kode');
-			$table->string('name');
+			$table->string('name')->nullable();
 
             $table->timestamps();
         });

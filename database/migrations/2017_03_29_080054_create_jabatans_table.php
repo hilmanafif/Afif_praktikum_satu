@@ -17,12 +17,12 @@ class CreateJabatansTable extends Migration
             $table->increments('id');
 			$table->string('kode_umum');
             $table->string('kode');
-			$table->string('name');
-            $table->string('name_umum');
-            $table->integer('Tunjab');
-            $table->integer('Tunpres');
-            $table->integer('Tupel');
-            $table->integer('Turam');
+			$table->string('name')->nullable();
+            $table->string('name_umum')->nullable();
+            $table->integer('Tunjab')->nullable();
+            $table->integer('Tunpres')->nullable();
+            $table->integer('Tupel')->nullable();
+            $table->integer('Turam')->nullable();
 
             $table->timestamps();
         });

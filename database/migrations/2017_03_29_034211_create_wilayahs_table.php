@@ -16,8 +16,8 @@ class CreateWilayahsTable extends Migration
         Schema::create('wilayahs', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('kode');
-			$table->string('name');
-			$table->string('address');
+			$table->string('name')->nullable();
+			$table->string('address')->nullable();
 
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ class CreateSubjabatansTable extends Migration
 			$table->string('jabatan_id');
 			$table->string('kode_subjabatan');
 			$table->string('kode');
-			$table->string('name');
+			$table->string('name')->nullable();
 
             $table->timestamps();
         });

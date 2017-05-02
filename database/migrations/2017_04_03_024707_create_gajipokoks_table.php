@@ -16,9 +16,9 @@ class CreateGajipokoksTable extends Migration
         Schema::create('gajipokoks', function (Blueprint $table) {
             $table->increments('id');
 			$table->string('pangkat_id');
-			$table->string('ruang');
-            $table->string('kodgol_lama');
-            $table->string('gaji_pokok');
+			$table->string('ruang')->nullable();
+            $table->string('kodgol_lama')->nullable();
+            $table->string('gaji_pokok')->nullable();
 
             $table->timestamps();
         });
