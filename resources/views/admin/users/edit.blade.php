@@ -178,27 +178,28 @@
 					<div class="row">
 							<div class="col-md-6">
 									<h3>Anggota Keluarga</h3>
+                  <hr>
+                  @if($user->anggotaKeluargas)
                   <table class="table">
+                    @foreach ($user->anggotaKeluargas as $anggotaKeluarga)
                     <tr>
-                      <td>Nama</td>
-                      <td><button type="button" class="btn btn-xs btn-primary pull-right" name="button">View</button></td>
+                      <td>{{$anggotaKeluarga->nama}}</td>
+                      <td>{{$anggotaKeluarga->hub_keluarga}}</td>
+                      <td><a href="{{url('anggotakeluargas/'.$anggotaKeluarga->id)}}" class="btn btn-xs btn-primary pull-right">View</a></td>
                     </tr>
-                    <tr>
-                      <td>Nama</td>
-                      <td><button type="button" class="btn btn-xs btn-primary pull-right" name="button">View</button></td>
-                    </tr>
+                  @endforeach
                   </table>
                   <br>
                   <table style="width:50%">
                     <tr>
                       <td>Suami/Istri</td>
                       <td>:</td>
-                      <td>x</td>
+                      <td>{{$jumlahPasangan}}</td>
                     </tr>
                     <tr>
                       <td>Anak</td>
                       <td>:</td>
-                      <td>y</td>
+                      <td>{{$jumlahAnak}}</td>
                     </tr>
                   </table>
                   <br>
@@ -206,46 +207,61 @@
                     <tr>
                       <td>Jumlah Anggota Keluarga</td>
                       <td>:</td>
-                      <td>x+y</td>
+                      <td>{{$jumlahAnggotaKeluarga}}</td>
                     </tr>
                   </table>
+                @else
+                  <p>Data anggota keluarga tidak ditemukan</p>
+                @endif
 							</div>
               <div class="col-md-6">
+                <form method="POST" action="/anggotakeluargas">
+                   {{ csrf_field() }}
+                  <input type="hidden" name="user_id" value="{{$user->id}}">
 									<h3>Penambahan Anggota Keluarga</h3>
-                  <div class="raw-margin-top-24">
-                      @input_maker_label('Hubungan Keluarga')
-                      <input type="text" placeholder="Hubungan Keluarga" class="form-control" >
-                  </div>
 
                   <div class="raw-margin-top-24">
                       @input_maker_label('Nama Lengkap')
-                      <input type="text" placeholder="Nama Lengkap" class="form-control" >
+                      <input type="text" name="nama" placeholder="Nama Lengkap" class="form-control" required>
                   </div>
 
                   <div class="raw-margin-top-24">
                       @input_maker_label('Hubungan Keluarga')
-                      <input type="text" placeholder="Hubungan Keluarga" class="form-control" >
+                      <select class="form-control" name="hub_keluarga" required>
+                        <option style="display:none">Hubungan Keluarga</option>
+                        <option value="anak">Anak</option>
+                        <option value="pasangan">Pasangan</option>
+                      </select>
                   </div>
 
                   <div class="row">
                     <div class="col-md-6">
                       <div class="raw-margin-top-24">
                           @input_maker_label('Tempat Lahir')
-                          <input type="text" placeholder="Tempat Lahir" class="form-control" >
+                          <input type="text" name="tempat_lahir" placeholder="Tempat Lahir" class="form-control" required>
                       </div>
                       <div class="raw-margin-top-24">
                           @input_maker_label('Jenis Kelamin')
-                          <input type="text" placeholder="Jenis Kelamin" class="form-control" >
+                          <select class="form-control" name="jenis_kelamin" required>
+                            <option style="display:none">Jenis Kelamin</option>
+                            <option value="L">Laki-laki</option>
+                            <option value="P">Perempuan</option>
+                          </select>
                       </div>
                       <div class="raw-margin-top-24">
                           @input_maker_label('Agama')
-                          <input type="text" placeholder="Agama" class="form-control" >
+                          <select class="form-control" name="agama_id" required>
+                            <option style="display:none">Agama</option>
+                            @foreach ($agamas as $agama)
+                              <option value="{{$agama->id}}">{{$agama->name}}</option>
+                            @endforeach
+                          </select>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="raw-margin-top-24">
                           @input_maker_label('Tanggal Laghir')
-                          <input type="date" placeholder="Tanggal Laghir" class="form-control" >
+                          <input type="date" name="tanggal_lahir" placeholder="Tanggal Laghir" class="form-control" required>
                       </div>
                     </div>
                 </div>
@@ -253,6 +269,7 @@
                   <button class="btn btn-primary pull-right" type="submit">Save</button>
                 </div>
 
+                </form>
 							</div>
 					</div>
 

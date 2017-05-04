@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\AnggotaKeluarga;
 use App\Models\Content;
 use App\Models\Topic;
 use App\Models\Role;
@@ -77,15 +78,27 @@ class User extends Authenticatable
     }
     public function jabatans()
     {
-        return $this->belongsTo(Jabatan::class,'wilayah_id');
+        return $this->belongsTo(Jabatan::class,'jabatan_id');
     }
     public function pangkats()
     {
-        return $this->belongsTo(Pangkat::class,'wilayah_id');
+        return $this->belongsTo(Pangkat::class,'pangkat_id');
     }
     public function bagians()
     {
-        return $this->belongsTo(Bagian::class,'wilayah_id');
+        return $this->belongsTo(Bagian::class,'bagian_id');
+    }
+    public function anggotaKeluargas()
+    {
+        return $this->hasMany(AnggotaKeluarga::class,'user_id');
+    }
+    public function jumlahAnak($id)
+    {
+        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->count();
+    }
+    public function jumlahPasangan($id)
+    {
+        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'pasangan')->count();
     }
     /**
      * Check if user has role

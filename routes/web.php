@@ -232,6 +232,13 @@ Route::group(['middleware' => ['auth', 'active']], function () {
       ]);
       Route::post('generatePayroll', 'PayrollsController@generatePayroll');
 
+      // AnggotaKeluarga
+      Route::resource('anggotakeluargas', 'AnggotaKeluargasController');
+      Route::post('anggotakeluargas/search', [
+          'as' => 'anggotakeluargas.search',
+          'uses' => 'AnggotaKeluargasController@search'
+      ]);
+
     });
 
     // HARUS login, HARUS admin dan controllernya HARUS di /admin

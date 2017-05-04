@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 use Auth;
 use App\Models\Logsystem;
+use App\Models\Agama;
+use App\Models\User;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Services\UserService;
@@ -104,8 +106,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $agamas = Agama::select('name','id')->get();
         $user = $this->service->find($id);
-        return view('admin.users.edit')->with('user', $user);
+        $getUser=new User();
+        $jumlahAnak=$getUser->jumlahAnak($user->id);
+        $jumlahPasangan=$getUser->jumlahPasangan($user->id);
+        $jumlahAnggotaKeluarga=$jumlahPasangan+$jumlahAnak;
+        return view('admin.users.edit',compact('user', 'agamas','jumlahAnak','jumlahPasangan','jumlahAnggotaKeluarga'));
     }
 
     /**

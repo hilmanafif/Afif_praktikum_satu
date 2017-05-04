@@ -831,3 +831,25 @@ $factory->define(App\Models\Payrolltype::class, function (Faker\Generator $faker
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| AnggotaKeluarga Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\AnggotaKeluarga::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'user_id' => '1',
+		'nama' => 'laravel',
+		'hub_keluarga' => 'laravel',
+		'tempat_lahir' => 'laravel',
+		'tanggal_lahir' => '2017-05-04',
+		'jenis_kelamin' => 'laravel',
+		'agama_id' => '1',
+
+
+    ];
+});
