@@ -224,6 +224,7 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'as' => 'payrolls.search',
           'uses' => 'PayrollsController@search'
       ]);
+      Route::get('payrolls/cetak/{id}', 'PayrollsController@cetakSlipGaji');
       // Payrolltype
       Route::resource('payrolltypes', 'PayrolltypesController');
       Route::post('payrolltypes/search', [

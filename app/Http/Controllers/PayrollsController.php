@@ -10,6 +10,7 @@ use App\Http\Requests\PayrollUpdateRequest;
 use App\Models\Payroll;
 use App\Models\User;
 use App\Models\GajiPokok;
+use PDF;
 
 class PayrollsController extends Controller
 {
@@ -184,5 +185,20 @@ class PayrollsController extends Controller
         }
 
         return redirect(route('payrolls.index'))->with('message', 'Failed to delete');
+    }
+    public function cetakSlipGaji($id)
+    {
+        $payroll = $this->service->find($id);
+        $data['payroll'] = $payroll;
+        if ($payroll->payrolltype_id==1) {
+          $pdf = PDF::loadView('payrolls.cetakAkhirBulan', $data);
+          $namefile = "Slip gaji ".$payroll->users->name." akhir bulan";
+          return $pdf->download($namefile);
+        }
+        elseif ($payroll->payrolltype_id==2) {
+          $pdf = PDF::loadView('payrolls.cetakTengahBulan', $data);
+          $namefile = "Slip gaji ".$payroll->users->name." tengah bulan";
+          return $pdf->download($namefile);
+        }
     }
 }

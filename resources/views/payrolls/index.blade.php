@@ -56,7 +56,7 @@
                           {{-- <td>Rp. {{ number_format($payroll->gapok,0,'','.') }}</td> --}}
                             <td>
                                 <a class="btn btn-primary btn-xs" href="{{url('payrolls/'.$payroll->id)}}"><i class="fa fa-search"></i> View</a>
-                                <a class="btn btn-success btn-xs" href="#"><i class="fa fa-print"></i> Print</a>
+                                <a class="btn btn-success btn-xs" href="{{url('payrolls/cetak/'.$payroll->id)}}"><i class="fa fa-print"></i> Print</a>
                             </td>
                         </tr>
                     @endforeach
