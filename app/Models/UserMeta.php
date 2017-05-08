@@ -15,6 +15,13 @@ class UserMeta extends Model implements StaplerableInterface {
     protected $fillable = [
         'user_id',
         'phone',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'agama_id',
+        'alamat',
+        'no_ktp',
+        'img_ktp',
         'marketing',
         'terms_and_cond',
         'is_active',

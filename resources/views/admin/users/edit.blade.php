@@ -102,7 +102,9 @@
 				<div class="tab-pane" id="2">
 
 					<div class="row">
-            <form method="POST" action="/user/settings">
+            <form method="POST" action="/admin/users/update">
+              {{ method_field('PUT') }}
+              <input type="hidden" name="user_id" value="{{$user->id}}">
 							<div class="col-md-6">
                 <div class="row">
       							<div class="col-md-6">
@@ -110,17 +112,26 @@
 
                             <div class="raw-margin-top-24">
                                 @input_maker_label('Tempat Lahir')
-                                <input id="meta[tempat_lahir]" class="form-control" type="text" name="meta[tempat_lahir]" value="{{ $user['meta']['tempat_lahir'] }}" placeholder="Tempat Lahir">
+                                <input id="meta[tempat_lahir]" class="form-control" type="text" name="meta[tempat_lahir]" value="{{ $user['meta']['tempat_lahir'] }}" placeholder="Tempat Lahir" required>
                             </div>
 
                             <div class="raw-margin-top-24">
                                 @input_maker_label('Jenis Kelamin')
-                                <input id="meta[tempat_lahir]" class="form-control" type="text" name="meta[tempat_lahir]" value="{{ $user['meta']['tempat_lahir'] }}" placeholder="Tempat Lahir">
+                                <select class="form-control" name="meta[jenis_kelamin]" required>
+                                  <option style="display:none">Jenis Kelamin</option>
+                                  <option value="L" {{$user->meta->jenis_kelamin=="L"?"selected":""}}>Laki-laki</option>
+                                  <option value="P" {{$user->meta->jenis_kelamin=="P"?"selected":""}}>Perempuan</option>
+                                </select>
                             </div>
 
                             <div class="raw-margin-top-24">
                                 @input_maker_label('Agama')
-                                <input id="meta[tempat_lahir]" class="form-control" type="text" name="meta[tempat_lahir]" value="{{ $user['meta']['tempat_lahir'] }}" placeholder="Tempat Lahir">
+                                <select class="form-control" name="meta[agama_id]" required>
+                                  <option style="display:none">Agama</option>
+                                  @foreach ($agamas as $agama)
+                                    <option value="{{$agama->id}}" {{$user->meta->agama_id==$agama->id?"selected":""}}>{{$agama->name}}</option>
+                                  @endforeach
+                                </select>
                             </div>
 
                 </div>
@@ -129,20 +140,20 @@
 
                         <div class="raw-margin-top-24">
                             @input_maker_label('Tanggal Lahir')
-                            <input id="meta[tgl_lahir]" class="form-control" type="date" name="meta[tgl_lahir]" value="{{ $user['meta']['tgl_lahir'] }}" >
+                            <input id="meta[tanggal_lahir]" class="form-control" type="date" name="meta[tanggal_lahir]" value="{{ $user['meta']['tanggal_lahir'] }}" required>
                         </div>
 
                   </div>
                   <div class="col-md-12">
                     <div class="raw-margin-top-24">
                         @input_maker_label('Alamat')
-                        <input id="meta[alamat]" class="form-control" type="text" name="meta[alamat]" value="{{ $user['meta']['alamat'] }}" placeholder="Alamat">
+                        <input id="meta[alamat]" class="form-control" type="text" name="meta[alamat]" value="{{ $user['meta']['alamat'] }}" placeholder="Alamat" required>
                     </div>
                   </div>
                   <div class="col-md-8">
                     <div class="raw-margin-top-24">
                         @input_maker_label('Phone')
-                        <input id="meta[phone]" class="form-control" type="text" name="meta[phone]" value="{{ $user['meta']['phone'] }}" placeholder="Phone">
+                        <input id="meta[phone]" class="form-control" type="text" name="meta[phone]" value="{{ $user['meta']['phone'] }}" placeholder="Phone" required>
                     </div>
                   </div>
               </div>

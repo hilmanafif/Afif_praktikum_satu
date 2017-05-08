@@ -5,6 +5,7 @@ use Auth;
 use App\Models\Logsystem;
 use App\Models\Agama;
 use App\Models\User;
+use App\Models\UserMeta;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Services\UserService;
@@ -124,6 +125,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if ($request->meta && $request->user_id){
+          $userMeta=UserMeta::findOrFail($request->user_id);
+          $userMeta->update($request->meta);
+          return back()->with('message', 'Successfully updated');
+        }
+
         $result = $this->service->update($id, $request->except(['_token', '_method']));
 
         if ($result) {
