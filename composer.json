@@ -10,9 +10,10 @@
         "alfredo-ramos/parsedown-extra-laravel": "^0.5.1",
         "tymon/jwt-auth": "^0.5.9",
         "codesleeve/laravel-stapler": "^1.0",
-        "yab/laracogs": "2.2.0",
-        "yab/crudmaker": "1.2.0",
-        "laravel/tinker": "^1.0"
+        "yab/laracogs": "^2.2.0",
+        "yab/crudmaker": "^1.2.0",
+        "laravel/tinker": "^1.0",
+        "barryvdh/laravel-snappy": "^0.3.3"
     },
     "require-dev": {
     },
