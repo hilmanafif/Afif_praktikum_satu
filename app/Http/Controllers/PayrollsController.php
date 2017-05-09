@@ -192,12 +192,12 @@ class PayrollsController extends Controller
         $data['payroll'] = $payroll;
         if ($payroll->payrolltype_id==1) {
           $pdf = PDF::loadView('payrolls.cetakAkhirBulan', $data);
-          $namefile = "Slip gaji ".$payroll->users->name." akhir bulan";
+          $namefile = "Slip gaji ".$payroll->users->name." akhir bulan.pdf";
           return $pdf->download($namefile);
         }
         elseif ($payroll->payrolltype_id==2) {
           $pdf = PDF::loadView('payrolls.cetakTengahBulan', $data);
-          $namefile = "Slip gaji ".$payroll->users->name." tengah bulan";
+          $namefile = "Slip gaji ".$payroll->users->name." tengah bulan.pdf";
           return $pdf->download($namefile);
         }
     }
