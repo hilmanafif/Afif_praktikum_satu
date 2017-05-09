@@ -23,14 +23,14 @@
     <div class="row panel-body megamenu">
         <div class="col-xs-6 col-md-4">
           <h4>Daftar Penghasilan</h4>
-          <a href="{!! url('') !!}"><span class="fa fa-money"></span> Struk Gaji Awal Bulan</a>
-          <a href="{!! url('') !!}"><span class="fa fa-print"></span> Penghasilan Perbulan</a>
+          <a href="{!! url('/payrolls') !!}"><span class="fa fa-money"></span> Struk Gaji Awal Bulan</a>
+          <a href="{!! url('/payrolls') !!}"><span class="fa fa-print"></span> Penghasilan Perbulan</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-bank"></span> Penghasilan Tanpa Potongan Bank</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-hourglass-half "></span> Dapenma dan Pesangon</a>
         </div>
         <div class="col-xs-6 col-md-4">
           <h4>Input Data</h4>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-credit-card"></span> Data Pegawai</a>
+          <a href="{!! url('/admin/users') !!}"><span class="fa fa-credit-card"></span> Data Pegawai</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-calendar-o"></span> Absensi</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-calculator"></span> Potongan</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-hourglass-1"></span> Jamsostek dan Dapenma</a>
@@ -58,13 +58,13 @@
         </div>
         <div class="col-xs-6 col-md-4">
           <h4>Referensi</h4>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-star"></span> Pangkat/Golongan</a>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-star"></span> Jabatan</a>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-building"></span> Bagian/Unit</a>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-map-marker"></span> Wilayahs</a>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-legal"></span> Status Pegawai</a>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-flag"></span> Status Kerja</a>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-money"></span> Gaji Pokok</a>
+          <a href="{!! url('/pangkats') !!}"><span class="fa fa-star"></span> Pangkat/Golongan</a>
+          <a href="{!! url('/jabatans') !!}"><span class="fa fa-star"></span> Jabatan</a>
+          <a href="{!! url('/bagians') !!}"><span class="fa fa-building"></span> Bagian/Unit</a>
+          <a href="{!! url('/wilayahs') !!}"><span class="fa fa-map-marker"></span> Wilayahs</a>
+          <a href="{!! url('/statuspegawais') !!}"><span class="fa fa-legal"></span> Status Pegawai</a>
+          <a href="{!! url('/statuskerjas') !!}"><span class="fa fa-flag"></span> Status Kerja</a>
+          <a href="{!! url('/gajipokoks') !!}"><span class="fa fa-money"></span> Gaji Pokok</a>
         </div>
         <div class="col-xs-6 col-md-4">
           <h4>Report</h4>
