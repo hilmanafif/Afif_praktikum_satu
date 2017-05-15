@@ -14,11 +14,11 @@ class AddProfilToUserMetaTable extends Migration
     public function up()
     {
         Schema::table('user_meta', function (Blueprint $table) {
-          $table->string('tempat_lahir');
-          $table->date('tanggal_lahir');
-          $table->string('jenis_kelamin');
-          $table->integer('agama_id');
-          $table->string('alamat');
+          $table->string('tempat_lahir')->nullable();
+          $table->date('tanggal_lahir')->nullable();
+          $table->string('jenis_kelamin')->nullable();
+          $table->integer('agama_id')->nullable();
+          $table->string('alamat')->nullable();
           $table->string('no_ktp')->nullable();
           $table->string('img_ktp')->nullable();
         });
