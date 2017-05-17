@@ -191,14 +191,24 @@ class PayrollsController extends Controller
         $payroll = $this->service->find($id);
         $data['payroll'] = $payroll;
         if ($payroll->payrolltype_id==1) {
-          $pdf = PDF::loadView('payrolls.cetakAkhirBulan', $data);
-          $namefile = "Slip gaji ".$payroll->users->name." akhir bulan.pdf";
-          return $pdf->download($namefile);
+          $pdf = PDF::loadView('payrolls.cetakAkhirBulan', $data)->setPaper('a4')->setOrientation('landscape');;
+          $filename = "Slip gaji ".$payroll->users->name." akhir bulan.pdf";
+          return $pdf->inline($filename);
         }
         elseif ($payroll->payrolltype_id==2) {
-          $pdf = PDF::loadView('payrolls.cetakTengahBulan', $data);
-          $namefile = "Slip gaji ".$payroll->users->name." tengah bulan.pdf";
-          return $pdf->download($namefile);
+          $pdf = PDF::loadView('payrolls.cetakTengahBulan', $data)->setPaper('a4')->setOrientation('landscape');;
+          $filename = "Slip gaji ".$payroll->users->name." tengah bulan.pdf";
+          return $pdf->inline($filename);
         }
+    }
+    public function cetakMultipleSlipGaji(Request $request)
+    {
+        return $request->all();
+        $payrolls = Payroll::all();
+        $data['payrolls'] = $payrolls;
+
+          $pdf = PDF::loadView('payrolls.cetakMultiplePayroll', $data)->setPaper('a4')->setOrientation('landscape');
+          $filename = "Slip gaji.pdf";
+          return $pdf->inline($filename);
     }
 }

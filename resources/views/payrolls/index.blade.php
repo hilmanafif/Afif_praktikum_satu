@@ -27,7 +27,15 @@
               <button class="btn btn-primary" style="margin-top: 25px;margin-right: 10px" name="phase" value="1" onclick='return confirm("Generate payroll?")'>Generate Payroll 1</button>
               <button class="btn btn-primary" style="margin-top: 25px" value="2" name="phase" onclick'=return confirm("Generate payroll?")'>Generate Payroll 2</button>
               </div>
-        {!! Form::close() !!}
+              {!! Form::close() !!}
+
+                <form action="{{url('payrolls/cetakMultiple')}}" method="post">
+                  {!! csrf_field() !!}
+                  <div class="clearfix">
+                    <button class="btn btn-primary" style="margin-top: 25px;" name="submit" value="all" onclick='return confirm("Print payroll?")'>Print All</button>
+                    <button class="btn btn-primary" style="margin-top: 25px;" name="submit" value="selected" onclick='return confirm("Print payroll?")'>Print Selected</button>
+                    <button class="btn btn-primary" style="margin-top: 25px;" name="submit" id="perwil" value="perwil">Print Per Wilayah</button>
+                  </div>
             <h1 class="pull-left">Payrolls</h1>
         </div>
     </div>
@@ -49,7 +57,7 @@
                     <tbody>
                     @foreach($payrolls as $payroll)
                         <tr>
-                          <td><input type="checkbox"></td>
+                          <td><input type="checkbox" name="cetakList[]" value="{{$payroll->id}}"></td>
                           <td>{{ $payroll->name }}</td>
                           <td>{{ $payroll->users->employee_number }}</td>
                           <td>{{ date("d F Y", strtotime($payroll->start_date)) }} - {{ date("d F Y", strtotime($payroll->end_date)) }}</td>
@@ -62,7 +70,7 @@
                     @endforeach
                     </tbody>
                 </table>
-
+              </form>
                 <div class="row text-center">
                     {!! $payrolls; !!}
                 </div>
