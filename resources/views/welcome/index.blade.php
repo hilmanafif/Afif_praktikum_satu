@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>JerbeeHRM</title>
+    <title>{{ env('APP_NAME') }}</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css">
@@ -24,7 +24,7 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">JerbeeHRM</a>
+                <a class="navbar-brand page-scroll" href="#page-top">{{ env('APP_NAME') }}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,7 +37,11 @@
                         <a class="page-scroll" href="#services">Fitur</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/dashboard">Login / Register</a>
+                        @if (Auth::user())
+                        <a class="page-scroll" href="{!! url('dashboard') !!}">Dashboard</a>
+                        @else
+                        <a class="page-scroll" href="#page-top" data-toggle="modal" data-target="#myModal">Login</a>
+                        @endif
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -242,6 +246,24 @@
             </div>
         </div>
     </section>
+
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login / Register</h4>
+        </div>
+        <div class="modal-body">
+          @include('auth.login')
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
