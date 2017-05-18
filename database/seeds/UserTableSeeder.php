@@ -28,10 +28,8 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('admin'),
                 'startworking_date' => '2000-01-01',
             ]);
-        }
-
         $service->create($user, 'admin', 'admin', false);
-
+        }
         /* create($user, $password, $role = 'member', $sendEmail = true) */
 
         if (!User::where('name', 'member')->first()) {
@@ -47,8 +45,7 @@ class UserTableSeeder extends Seeder
                 'password' => bcrypt('member'),
                 'startworking_date' => '2011-01-01',
             ]);
-        }
-
         $service->create($user, 'member', 'member', false);
+        }
     }
 }
