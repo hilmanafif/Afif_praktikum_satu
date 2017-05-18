@@ -3,10 +3,10 @@
 @section('content')
     <div class="row">
       <div class="container">
-      <div class="col-md-3">
+      <div class="col-xs-3">
         <img src="{{url('img/tirta-raharja.jpg')}}" class="img-responsive center-block" style="max-height:150px;">
       </div>
-      <div class="col-md-9">
+      <div class="col-xs-9">
         <center>
           <h1>PERINCIAN PENGHASILAN PEGAWAI</h1>
           <h3>PDAM TIRTA RAHARJA KABUPATEN BANDUNG</h3>
@@ -122,7 +122,7 @@
 
     <hr>
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-xs-5">
         <table class="table table-bordered">
           <tr>
             <td>Total Penghasilan</td>
@@ -138,9 +138,9 @@
           </tr>
         </table>
       </div>
-      <div class="col-md-3">
+      <div class="col-xs-3">
       </div>
-      <div class="col-md-4">
+      <div class="col-xs-4">
         <table class="table text-center" style="border:none">
           <tr>
             <td style="border:none">Nama Kota, {{date("d F Y")}}</td>

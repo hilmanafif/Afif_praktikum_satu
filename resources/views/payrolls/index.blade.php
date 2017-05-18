@@ -8,36 +8,60 @@
               {!! csrf_field() !!}
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!} --}}
-            {!! Form::open(['url' => 'generatePayroll']) !!}
             <div class="row">
-            <div class="pull-right">
-              <div class="form-group" style="float:left;margin-top: 25px;">
-                  <div class="col-md-6" style="padding:0 0 0 0">
-                    <label for="fromDate">From</label>
-                      <input type="date" name="fromDate" class="form-control" required>
+
+              {!! Form::open(['url' => 'generatePayroll']) !!}
+              <div class="col-md-6 pull-right">
+                <div class="clearfix pull-right">
+                  <div class="form-group" style="float:left;margin-top: 25px;">
+                      <div class="col-md-6" style="padding:0 0 0 10">
+                        <label for="fromDate">From</label>
+                          <input type="date" name="fromDate" class="form-control" required>
+                      </div>
+                      <div class="col-md-6" style="padding:0 0 0 0">
+                        <label for="fromDate">To</label>
+                          <input type="date" name="toDate" class="form-control" required>
+                    </div>
                   </div>
-                  <div class="col-md-6" style="padding:0 0 0 10">
-                    <label for="fromDate">To</label>
-                      <input type="date" name="toDate" class="form-control" required>
                 </div>
-              </div>
-            </div>
-          </div>
-            <div class="pull-right">
+            <div class="clearfix pull-right">
               <button class="btn btn-primary" style="margin-top: 25px;margin-right: 10px" name="phase" value="1" onclick='return confirm("Generate payroll?")'>Generate Payroll 1</button>
               <button class="btn btn-primary" style="margin-top: 25px" value="2" name="phase" onclick'=return confirm("Generate payroll?")'>Generate Payroll 2</button>
               </div>
-              {!! Form::close() !!}
+            </div>
+            {!! Form::close() !!}
 
-                <form action="{{url('payrolls/cetakMultiple')}}" method="post">
-                  {!! csrf_field() !!}
-                  <div class="clearfix">
-                    <button class="btn btn-primary" style="margin-top: 25px;" name="submit" value="all" onclick='return confirm("Print payroll?")'>Print All</button>
-                    <button class="btn btn-primary" style="margin-top: 25px;" name="submit" value="selected" onclick='return confirm("Print payroll?")'>Print Selected</button>
-                    <button class="btn btn-primary" style="margin-top: 25px;" name="submit" id="perwil" value="perwil">Print Per Wilayah</button>
+            <form action="{{url('payrolls/cetakMultiple')}}" method="post">
+            <div class="col-md-6">
+                {!! csrf_field() !!}
+                <div class="clearfix">
+                  <div class="form-group col-md-12" style="float:left;margin-top: 25px;padding:0">
+                      <div class="col-md-4" style="padding:0 0 0 0">
+                        <label for="printType">Print</label>
+                        <select class="form-control" name="printType" id="printType" required>
+                          <option value="all">Print All</option>
+                          <option value="selected">Print Selected</option>
+                        </select>
+                      </div>
+                      <div class="col-md-6" style="padding:0 0 0 10">
+                        <label for="periode">Periode</label>
+                        <select class="form-control" name="periode" id="periode" required>
+                          @foreach ($payrollPeriod as $periode)
+                            <option value="{{$periode->start_date.",".$periode->end_date}}">{{date("d F Y",strtotime($periode->start_date))}} - {{date("d F Y",strtotime($periode->end_date))}}</option>
+                          @endforeach
+                        </select>
+                    </div>
                   </div>
-            <h1 class="pull-left">Payrolls</h1>
-        </div>
+                </div>
+                <div class="clearfix">
+                  <button class="btn btn-primary" style="margin-top: 25px;" onclick='return confirm("Print payroll?")'>Print All</button>
+                </div>
+          <h1 class="pull-left">Payrolls</h1>
+      </div>
+
+
+      </div>
+    </div>
     </div>
 
     <div class="row raw-margin-top-24">
@@ -47,7 +71,7 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th><input type="checkbox"></th>
+                        <th><input type="checkbox" id="checkAll"></th>
                         <th>Nama</th>
                         <th>NIK</th>
                         <th>Periode</th>
@@ -64,18 +88,32 @@
                           {{-- <td>Rp. {{ number_format($payroll->gapok,0,'','.') }}</td> --}}
                             <td>
                                 <a class="btn btn-primary btn-xs" href="{{url('payrolls/'.$payroll->id)}}"><i class="fa fa-search"></i> View</a>
-                                <a class="btn btn-success btn-xs" href="{{url('payrolls/cetak/'.$payroll->id)}}"><i class="fa fa-print"></i> Print</a>
+                                <a class="btn btn-success btn-xs" target="_blank" href="{{url('payrolls/cetak/'.$payroll->id)}}"><i class="fa fa-print"></i> Print</a>
                             </td>
                         </tr>
                     @endforeach
                     </tbody>
                 </table>
-              </form>
                 <div class="row text-center">
                     {!! $payrolls; !!}
                 </div>
             @endif
         </div>
     </div>
-
+  </form>
 @stop
+@section('javascript')
+  <script type="text/javascript">
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+});
+$('#printType').on('change', function() {
+  if (this.value == "selected") {
+    $('#periode').prop('disabled', true);
+  }
+  else {
+    $('#periode').prop('disabled', false);
+  }
+})
+  </script>
+@endsection
