@@ -27,7 +27,8 @@ class PayrollsController extends Controller
     public function index(Request $request)
     {
         $payrolls = $this->service->paginated();
-        return view('payrolls.index')->with('payrolls', $payrolls);
+        $payrollPeriod = Payroll::select('start_date','end_date')->groupBy('start_date','end_date')->orderBy('start_date', 'DESC')->get();
+        return view('payrolls.index',compact('payrolls','payrollPeriod'));
     }
 
     /**
@@ -203,8 +204,20 @@ class PayrollsController extends Controller
     }
     public function cetakMultipleSlipGaji(Request $request)
     {
-        return $request->all();
-        $payrolls = Payroll::all();
+        $payrolls = [];
+        if ($request->printType=="selected") {
+          foreach ($request->cetakList as $selectedPayroll) {
+            $payroll=Payroll::find($selectedPayroll);
+            $payrolls[]=$payroll;
+          }
+        }
+        elseif ($request->printType=="all") {
+            $periodRange=explode(",",$request->periode);
+            $startDate=$periodRange[0];
+            $endDate=$periodRange[1];
+            $payrolls= Payroll::where('start_date',$startDate)->where('end_date',$endDate)->get();
+        }
+
         $data['payrolls'] = $payrolls;
 
           $pdf = PDF::loadView('payrolls.cetakMultiplePayroll', $data)->setPaper('a4')->setOrientation('landscape');
