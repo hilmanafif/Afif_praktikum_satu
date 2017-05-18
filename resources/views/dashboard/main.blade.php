@@ -1,15 +1,30 @@
 @extends('dashboard')
 
+@section('pre-javascript')
+
+@stop
+
 @section('content')
 
 @if (Auth::user())
 
 <br />
 
-<div class="jumbotron">
-    <h1>Selamat Datang</h1>
-    <p>Anda login sebagai <b>{{ Auth::user()->name }}</b>. Akses fitur melalui menu samping atau dashboard.</p>
+<div class="row">
+<div class="col-md-5">
+  <div class="jumbotron" style="background:#0f69d7; color:#ffffff; height:290px;">
+      <h2>Selamat Datang</h2>
+      <p>Anda login sebagai <b>{{ Auth::user()->name }}</b>. Fitur yang bisa diakses sementara adalah fitur implementasi Aplikasi Payroll Fase 1.</p>
   </div>
+</div>
+<div class="col-md-6">
+  <div class="jumbotron" style="height:290px;">
+
+  </div>
+</div>
+</div>
+
+
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#menu1"><span class="fa fa-group"></span> Penggajian</a></li>

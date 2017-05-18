@@ -10,25 +10,24 @@
       @if (Gate::allows('role',['admin','member']))
       <div class="panel panel-default">
             <div class="panel-heading">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapsecontent"><span class="fa fa-newspaper-o"></span> Content</a>
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapsecontent"><span class="fa fa-newspaper-o"></span> CMS</a>
             </div>
             <div id="collapsecontent" class="panel-collapse collapse">
                 <div class="panel-body">
                   <ul class="nav nav-sidebar">
-                    <li>
-                        <a href="{!! url('contents') !!}"><span class="fa fa-file-text"></span> Articles</a>
-                    </li>
+                    <!--
                     <li>
                         <a href="{!! url('comments') !!}"><span class="fa fa-comment-o"></span> Comments</a>
                     </li>
+                    -->
                     <li>
-                        <a href="{!! url('categories') !!}"><span class="fa fa-paperclip"></span> Referensi - Categories</a>
+                        <a href="{!! url('topics') !!}"><span class="fa fa-quote-right"></span> Topics</a>
                     </li>
                     <li>
-                        <a href="{!! url('topics') !!}"><span class="fa fa-quote-right"></span> Referensi - Topics</a>
+                        <a href="{!! url('categories') !!}"><span class="fa fa-paperclip"></span> Category</a>
                     </li>
                     <li>
-                        <a href="{!! url('offlinewriters') !!}"><span class="fa fa-male"></span> Referensi - Offline Writers</a>
+                        <a href="{!! url('offlinewriters') !!}"><span class="fa fa-male"></span> Non-user Writer</a>
                     </li>
                   </ul>
                 </div>

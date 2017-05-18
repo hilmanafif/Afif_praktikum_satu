@@ -13,7 +13,8 @@
         "yab/laracogs": "^2.2.0",
         "yab/crudmaker": "^1.2.0",
         "laravel/tinker": "^1.0",
-        "barryvdh/laravel-snappy": "^0.3.3"
+        "barryvdh/laravel-snappy": "^0.3.3",
+        "cviebrock/eloquent-sluggable": "^4.2"
     },
     "require-dev": {
     },

@@ -9,7 +9,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('categories.create') !!}">Add New</a>
-            <h1 class="pull-left">Categories</h1>
+            <h1 class="pull-left">Category</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">
@@ -19,7 +19,7 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>Name</th>
+                        <th>Category</th>
                         <th width="200px" class="text-right">Action</th>
                     </thead>
                     <tbody>
@@ -34,7 +34,7 @@
                                     {!! method_field('DELETE') !!}
                                     <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this category?')"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
-                                <a class="btn btn-warning btn-xs" href="{!! route('categories.show', [$category->id]) !!}"><i class="fa fa-search"></i> Show</a>
+                                <a class="btn btn-warning btn-xs" href="{!! url('/'.'jendela'.'/'.$category->slug) !!}"><i class="fa fa-search"></i> Lihat</a>
                                 <a class="btn btn-warning btn-xs" href="{!! route('categories.edit', [$category->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
                             </td>
                         </tr>

@@ -31,7 +31,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Tentang Kami</a>
+                        <a class="page-scroll" href="#about">Tentang Aplikasi Ini</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Fitur</a>
@@ -59,7 +59,7 @@
                 <h1 id="homeHeading">{{ $contentcopywritings[0]->name }}</h1>
                 <hr>
                 <p>{{ $contentcopywritings[0]->body }}</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Tentang Kami</a>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Tentang Aplikasi Ini</a>
             </div>
         </div>
     </header>
@@ -81,7 +81,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Fitur &amp; Teknologi</h2>
+                    <h2 class="section-heading">Fitur</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -220,8 +220,8 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Login dan Registrasi untuk segera memulai.</h2>
-                <a href="/dashboard" class="btn btn-default btn-xl sr-button">Login / Register</a>
+                <h2>Silakan login untuk mengakses sistem.</h2>
+                <a href="#page-top" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-xl sr-button">Login</a>
             </div>
         </div>
     </aside>
@@ -230,18 +230,17 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Kontak Kami</h2>
+                    <h2 class="section-heading">Bagian Kepegawaian PDAM Tirta Raharja</h2>
                     <hr class="primary">
-                    <p>Tertarik menggunakan sistem atau aplikasi di atas untuk organisasi atau perusahaan anda?<br />Hubungi marketing kami.<br />
-                      PT Jerbee Indonesia, Bandung, Indonesia</p>
+                    <p>Jl. Kol. Masturi Km.3 Cipageran - Kota Cimahi, Jawa Barat Indonesia</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>+62 022 7323768</p>
+                    <p>+62 022 6654184</p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p>info@jerbeeindonesia.com</a></p>
+                    <p>https://www.facebook.com/groups/tirtaraharja</a></p>
                 </div>
             </div>
         </div>
@@ -256,7 +255,7 @@
           <h4 class="modal-title">Login / Register</h4>
         </div>
         <div class="modal-body">
-          @include('auth.login')
+          @include('auth.smalllogin')
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
