@@ -7,12 +7,12 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{{ env('APP_NAME') }}</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('css/magnific-popup.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('css/creative.css') }}" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-    <link rel="stylesheet" href="css/creative.css">
 </head>
 
 <body id="page-top">
@@ -264,12 +264,12 @@
     </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script src="js/creative.min.js"></script>
+    <script src="{{ url('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ url('js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url('js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url('js/creative.min.js') }}"></script>
 
 </body>
 
