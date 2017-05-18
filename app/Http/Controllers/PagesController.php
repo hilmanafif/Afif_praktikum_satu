@@ -17,7 +17,7 @@ class PagesController extends Controller
      */
     public function dashboard(Request $request)
     {
-        $user = $request->user();
-        return view('dashboard.main')->with('user', $user);
+         return view('dashboard.main', compact('user'));
+         //return view('dashboard.main')->with('user', $user);
     }
 }

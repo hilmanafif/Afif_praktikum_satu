@@ -7,7 +7,7 @@
 
             <h1 class="text-center">Login</h1>
 
-            <form method="POST" action="/login">
+            <form method="POST" action="{!! url('login') !!}">
                 {!! csrf_field() !!}
                 <div class="col-md-12 raw-margin-top-24">
                     <label>Email</label>
@@ -22,13 +22,13 @@
                         Remember Me <input type="checkbox" name="remember">
                     </label>
                 </div>
-                <div class="col-md-12 raw-margin-top-24">
-                    <a class="btn btn-default pull-left" href="/password/reset">Forgot Password</a>
-                    <button class="btn btn-primary pull-right" type="submit">Login</button>
-                </div>
-
-                <div class="col-md-12 raw-margin-top-24">
-                    <a class="btn raw100 btn-info" href="/register">Register</a>
+                <div class="col-md-12">
+                  <br />
+                    <button class="btn btn-primary" type="submit">Login</button>
+                    <!-- Dimatiin untuk deploy client/PDAM
+                    <button class="btn" href="{!! url('password/reset') !!}">Forgot Password</button>
+                    <button class="btn btn-info" href="{!! url('register') !!}">Register</button>
+                    -->
                 </div>
             </form>
 
@@ -36,4 +36,3 @@
     </div>
 
 @stop
-

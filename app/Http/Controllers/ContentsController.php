@@ -1,10 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\ContentService;
+use App\Models\Content;
+use App\Models\Topic;
 use App\Http\Requests\ContentRequest;
 
 class ContentsController extends Controller
@@ -21,8 +23,25 @@ class ContentsController extends Controller
      */
     public function index(Request $request)
     {
-        $contents = $this->service->paginated();
-        return view('contents.index')->with('contents', $contents);
+        $findtopik = Topic::find($request->topic);
+        $findtopikjendela = array();
+        $contents = Content::where('topic_id',$request->topic)->get();
+        foreach ($contents as $findtopikopini) {
+           // Ada jendela apa aja di fokus tersebut
+           $jendelaname = $findtopikopini->category->name;
+           if(!in_array($jendelaname, $findtopikjendela, true)){
+              array_push($findtopikjendela, $jendelaname);
+           }
+           // Jendela opini
+           $findtopikopini->jendela = $jendelaname;
+        }
+        $findtopik->writer = $findtopik->user->name;
+        $findtopik->foto_url = url($findtopik->foto->url('small'));
+        $findtopik->fokus_url = url('/'.'topik'.'/'.$findtopik->slug);
+        $findtopik->created_at = date($findtopik->created_at);
+        $findtopik->jendela = implode (", ", $findtopikjendela);
+        $findtopik->jumlah_opini = $contents->count();
+        return view('contents.index', compact('contents', 'findtopik'));
     }
 
     /**
@@ -54,13 +73,17 @@ class ContentsController extends Controller
      */
     public function store(ContentRequest $request)
     {
+        $request->request->add(['user_id' => Auth::user()->id]);
+        $request->request->add(['topic_id' => $request->topic]);
+        $request->request->add(['offlinewriter_id' => $request->offlinewriter_id]);
+
         $result = $this->service->create($request->except('_token'));
 
         if ($result) {
-            return redirect(route('contents.index'))->with('message', 'Successfully created');
+            return redirect(route('contents.index').'?topic='.$request->topic)->with('message', 'Successfully created');
         }
 
-        return redirect(route('contents.index'))->with('message', 'Failed to create');
+        return redirect(route('contents.index').'?topic='.$request->topic)->with('message', 'Failed to create');
     }
 
     /**
@@ -99,7 +122,7 @@ class ContentsController extends Controller
         $result = $this->service->update($id, $request->except('_token'));
 
         if ($result) {
-            return redirect(route('contents.index'))->with('message', 'Successfully updated');
+            return redirect(route('contents.index').'?topic='.$request->topic)->with('message', 'Successfully updated');
         }
 
         return back()->with('message', 'Failed to update');
@@ -111,14 +134,14 @@ class ContentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, Request $request)
     {
         $result = $this->service->destroy($id);
 
         if ($result) {
-            return redirect(route('contents.index'))->with('message', 'Successfully deleted');
+            return redirect(route('contents.index').'?topic='.$request->topic)->with('message', 'Successfully deleted');
         }
 
-        return redirect(route('contents.index'))->with('message', 'Failed to delete');
+        return redirect(route('contents.index').'?topic='.$request->topic)->with('message', 'Failed to delete');
     }
 }

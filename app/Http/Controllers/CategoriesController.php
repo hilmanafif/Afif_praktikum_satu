@@ -54,6 +54,7 @@ class CategoriesController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        $request->request->add(['body' => '']);
         $result = $this->service->create($request->except('_token'));
 
         if ($result) {

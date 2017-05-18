@@ -166,6 +166,7 @@ return [
         AlfredoRamos\ParsedownExtra\ParsedownExtraServiceProvider::class,
         Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
         Codesleeve\LaravelStapler\Providers\L5ServiceProvider::class,
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
 
         /*
          * Package Service Providers...

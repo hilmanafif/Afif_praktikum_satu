@@ -1,10 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Services\TopicService;
+use App\Models\Topic;
 use App\Http\Requests\TopicRequest;
 
 class TopicsController extends Controller
@@ -21,7 +22,7 @@ class TopicsController extends Controller
      */
     public function index(Request $request)
     {
-        $topics = $this->service->paginated();
+        $topics = Topic::orderBy('status','desc')->orderBy('id','desc')->paginate(20);
         return view('topics.index')->with('topics', $topics);
     }
 
@@ -54,6 +55,7 @@ class TopicsController extends Controller
      */
     public function store(TopicRequest $request)
     {
+        $request->request->add(['user_id' => Auth::user()->id]);
         $result = $this->service->create($request->except('_token'));
 
         if ($result) {

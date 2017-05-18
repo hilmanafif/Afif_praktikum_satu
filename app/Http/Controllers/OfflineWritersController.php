@@ -4,12 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Services\OfflineWriterService;
-use App\Http\Requests\OfflineWriterRequest;
+use App\Services\OfflinewriterService;
+use App\Http\Requests\OfflinewriterRequest;
 
-class OfflineWritersController extends Controller
+class OfflinewritersController extends Controller
 {
-    public function __construct(OfflineWriterService $offlinewriterService)
+    public function __construct(OfflinewriterService $offlinewriterService)
     {
         $this->service = $offlinewriterService;
     }
@@ -52,7 +52,7 @@ class OfflineWritersController extends Controller
      * @param  \Illuminate\Http\OfflineWriterRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OfflineWriterRequest $request)
+    public function store(OfflinewriterRequest $request)
     {
         $result = $this->service->create($request->except('_token'));
 
@@ -94,7 +94,7 @@ class OfflineWritersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OfflineWriterRequest $request, $id)
+    public function update(OfflinewriterRequest $request, $id)
     {
         $result = $this->service->update($id, $request->except('_token'));
 

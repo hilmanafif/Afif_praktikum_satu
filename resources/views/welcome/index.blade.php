@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>JerbeeHRM</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>{{ env('APP_NAME') }}</title>
+    <link rel="stylesheet" href="{{ url('css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('css/magnific-popup.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url('css/creative.css') }}" type="text/css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
-    <link rel="stylesheet" href="css/creative.css">
 </head>
 
 <body id="page-top">
@@ -24,20 +24,24 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">JerbeeHRM</a>
+                <a class="navbar-brand page-scroll" href="#page-top">{{ env('APP_NAME') }}</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Tentang Kami</a>
+                        <a class="page-scroll" href="#about">Tentang Aplikasi Ini</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Fitur</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="/dashboard">Login / Register</a>
+                        @if (Auth::user())
+                        <a class="page-scroll" href="{!! url('dashboard') !!}">Dashboard</a>
+                        @else
+                        <a class="page-scroll" href="#page-top" data-toggle="modal" data-target="#myModal">Login</a>
+                        @endif
                     </li>
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
@@ -55,7 +59,7 @@
                 <h1 id="homeHeading">{{ $contentcopywritings[0]->name }}</h1>
                 <hr>
                 <p>{{ $contentcopywritings[0]->body }}</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Tentang Kami</a>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Tentang Aplikasi Ini</a>
             </div>
         </div>
     </header>
@@ -77,7 +81,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Fitur &amp; Teknologi</h2>
+                    <h2 class="section-heading">Fitur</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -216,8 +220,8 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Login dan Registrasi untuk segera memulai.</h2>
-                <a href="/dashboard" class="btn btn-default btn-xl sr-button">Login / Register</a>
+                <h2>Silakan login untuk mengakses sistem.</h2>
+                <a href="#page-top" data-toggle="modal" data-target="#myModal" class="btn btn-default btn-xl sr-button">Login</a>
             </div>
         </div>
     </aside>
@@ -226,29 +230,46 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Kontak Kami</h2>
+                    <h2 class="section-heading">Bagian Kepegawaian PDAM Tirta Raharja</h2>
                     <hr class="primary">
-                    <p>Tertarik menggunakan sistem atau aplikasi di atas untuk organisasi atau perusahaan anda?<br />Hubungi marketing kami.<br />
-                      PT Jerbee Indonesia, Bandung, Indonesia</p>
+                    <p>Jl. Kol. Masturi Km.3 Cipageran - Kota Cimahi, Jawa Barat Indonesia</p>
                 </div>
                 <div class="col-lg-4 col-lg-offset-2 text-center">
                     <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>+62 022 7323768</p>
+                    <p>+62 022 6654184</p>
                 </div>
                 <div class="col-lg-4 text-center">
                     <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p>info@jerbeeindonesia.com</a></p>
+                    <p>https://www.facebook.com/groups/tirtaraharja</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="https://unpkg.com/scrollreveal@3.3.2/dist/scrollreveal.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
-    <script src="js/creative.min.js"></script>
+    <div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Login / Register</h4>
+        </div>
+        <div class="modal-body">
+          @include('auth.smalllogin')
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <script src="{{ url('js/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ url('js/bootstrap.min.js') }}"></script>
+    <script src="{{ url('js/jquery.easing.min.js') }}"></script>
+    <script src="{{ url('js/scrollreveal.min.js') }}"></script>
+    <script src="{{ url('js/jquery.magnific-popup.min.js') }}"></script>
+    <script src="{{ url('js/creative.min.js') }}"></script>
 
 </body>
 

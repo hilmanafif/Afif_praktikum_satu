@@ -1,15 +1,74 @@
 @extends('dashboard')
 
+@section('pre-javascript')
+<script src="{{ url('js/Chart.bundle.min.js') }}"></script>
+@stop
+
+@section('javascript')
+<script>
+    var year = ['April#1','April #2','Mei #1'];
+    var data_click = [477, 477, 478];
+    var data_viewer = [475, 476, 478];
+
+    var barChartData = {
+        labels: year,
+        datasets: [{
+            label: 'Total Karyawan',
+            backgroundColor: "rgba(220,220,220,0.5)",
+            data: data_click
+        }, {
+            label: 'Generated Slip',
+            backgroundColor: "rgba(151,187,205,0.5)",
+            data: data_viewer
+        }]
+    };
+
+    window.onload = function() {
+        var ctx = document.getElementById("canvas").getContext("2d");
+        window.myBar = new Chart(ctx, {
+            type: 'bar',
+            data: barChartData,
+            options: {
+                elements: {
+                    rectangle: {
+                        borderWidth: 2,
+                        borderColor: 'rgb(0, 255, 0)',
+                        borderSkipped: 'bottom'
+                    }
+                },
+                responsive: true,
+                title: {
+                    display: true,
+                    text: 'Slip Gaji'
+                }
+            }
+        });
+
+    };
+</script>
+@stop
+
 @section('content')
 
 @if (Auth::user())
 
 <br />
 
-<div class="jumbotron">
-    <h1>Selamat Datang</h1>
-    <p>Anda login sebagai <b>{{ Auth::user()->name }}</b>. Akses fitur melalui menu samping atau dashboard.</p>
+<div class="row">
+<div class="col-md-5">
+  <div class="jumbotron" style="background:#0f69d7; color:#ffffff; height:290px; padding:20px;">
+      <h2>Selamat Datang</h2>
+      <p>Anda login sebagai <b>{{ Auth::user()->name }}</b>. Fitur yang bisa diakses sementara adalah fitur implementasi Aplikasi Payroll Fase 1.</p>
   </div>
+</div>
+<div class="col-md-6">
+  <div class="jumbotron" style="height:290px; padding:20px;">
+      <canvas id="canvas" height="280" width="600"></canvas>
+  </div>
+</div>
+</div>
+
+
 
 <ul class="nav nav-tabs">
   <li class="active"><a data-toggle="tab" href="#menu1"><span class="fa fa-group"></span> Penggajian</a></li>
