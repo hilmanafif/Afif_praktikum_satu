@@ -31,6 +31,7 @@ class AddProfilToUserMetaTable extends Migration
      */
     public function down()
     {
+      Schema::table('user_meta', function (Blueprint $table) {
       $table->dropColumn('tempat_lahir');
       $table->dropColumn('tanggal_lahir');
       $table->dropColumn('jenis_kelamin');
@@ -38,5 +39,6 @@ class AddProfilToUserMetaTable extends Migration
       $table->dropColumn('alamat');
       $table->dropColumn('no_ktp');
       $table->dropColumn('img_ktp');
+      });
     }
 }
