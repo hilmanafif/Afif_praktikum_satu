@@ -4,7 +4,7 @@
     <div class="row">
       <div class="container">
       <div class="col-xs-3">
-        <img src="{{url('img/tirta-raharja.jpg')}}" class="img-responsive center-block" style="max-height:150px;">
+        <img src="{{ url(App\Models\Company::find(1)->logo->url('original')) }}" class="img-responsive center-block" style="padding:10px; max-height:150px;">
       </div>
       <div class="col-xs-9">
         <center>
@@ -143,16 +143,16 @@
       <div class="col-xs-4">
         <table class="table text-center" style="border:none">
           <tr>
-            <td style="border:none">Nama Kota, {{date("d F Y")}}</td>
+            <td style="border:none">{{ App\Models\Company::find(1)->city }}, {{date("d F Y")}}</td>
           </tr>
           <tr>
-            <td style="border:none">Kepala Bagian SDM</td>
+            <td style="border:none">{{ App\Models\Company::find(1)->officer_position }}</td>
           </tr>
           <tr>
             <td style="border:none;height:100px;"></td>
           </tr>
           <tr>
-            <td style="border:none">Heri Rahendra, SmHk. SSos</td>
+            <td style="border:none">{{ App\Models\Company::find(1)->officer_name }}</td>
           </tr>
         </table>
       </div>

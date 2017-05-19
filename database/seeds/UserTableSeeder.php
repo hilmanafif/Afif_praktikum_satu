@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\UserMeta;
 use App\Services\UserService;
 use Illuminate\Database\Seeder;
 
@@ -29,6 +30,9 @@ class UserTableSeeder extends Seeder
                 'startworking_date' => '2000-01-01',
             ]);
         $service->create($user, 'admin', 'admin', false);
+        UserMeta::where('user_id',$user->id)->update([
+                "is_active" => 1,
+            ]);
         }
         /* create($user, $password, $role = 'member', $sendEmail = true) */
 
@@ -46,6 +50,9 @@ class UserTableSeeder extends Seeder
                 'startworking_date' => '2011-01-01',
             ]);
         $service->create($user, 'member', 'member', false);
+        UserMeta::where('user_id',$user->id)->update([
+                "is_active" => 1,
+            ]);
         }
     }
 }
