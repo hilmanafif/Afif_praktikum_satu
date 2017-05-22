@@ -24,6 +24,8 @@ class UserService
      */
     public $model;
 
+    public $pagination;
+
     /**
      * User Meta model
      * @var UserMeta
@@ -52,6 +54,7 @@ class UserService
         $this->userMeta = $userMeta;
         $this->team = $team;
         $this->role = $role;
+        $this->pagination   = env('PAGINATION', 12);
     }
 
     /**
@@ -62,6 +65,11 @@ class UserService
     public function all()
     {
         return $this->model->all();
+    }
+
+    public function paginated()
+    {
+        return $this->model->orderBy('name')->paginate($this->pagination);
     }
 
     /**
@@ -189,10 +197,12 @@ class UserService
         try {
             return DB::transaction(function () use ($userId, $payload) {
                 $user = $this->model->find($userId);
+                /*
                 $payload['pangkat_id'] = $payload['pangkats'];
                 $payload['jabatan_id'] = $payload['jabatans'];
                 $payload['bagian_id'] = $payload['bagians'];
                 $payload['wilayah_id'] = $payload['wilayahs'];
+                */
 
                 if (isset($payload['meta']['marketing']) && ($payload['meta']['marketing'] == 1 || $payload['meta']['marketing'] == 'on')) {
                     $payload['meta']['marketing'] = 1;
