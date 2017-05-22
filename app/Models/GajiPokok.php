@@ -25,6 +25,10 @@ class GajiPokok extends Model
         // create rules
     ];
 
-    // GajiPokok 
+    // GajiPokok
+
+    public function Pangkats(){
+      return $this->belongsTo(Pangkat::class,'pangkat_id');
+    }
 
 }
