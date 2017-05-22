@@ -71,7 +71,7 @@ class PayrollsController extends Controller
     }
 
     public function generatePayroll(Request $request){
-      $employees=User::all();
+      $employees=User::where('pangkat_id','!=',0)->get();
       $start_date=$request->fromDate;
       $end_date=$request->toDate;
       $phase=$request->phase;
