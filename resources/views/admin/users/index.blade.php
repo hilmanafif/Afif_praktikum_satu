@@ -17,7 +17,7 @@
             <table class="table table-striped raw-margin-top-24">
 
                 <thead>
-                    <th>Email</th>
+                    <th>Name</th>
                     <th class="text-right">Actions</th>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
 
                         @if ($user->id !== Auth::id())
                             <tr>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->name }}</td>
                                 <td>
                                     <form method="post" action="{!! url('admin/users/'.$user->id) !!}">
                                         {!! csrf_field() !!}
