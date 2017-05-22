@@ -95,6 +95,7 @@
                   <li>
                       <a href="{!! url('documenttypes') !!}"><span class="fa fa-paperclip"></span> Document Type</a>
                   </li>
+                  <!--
                   <li>
                       <a href="{!! url('educations') !!}"><span class="fa fa-graduation-cap"></span> Education</a>
                   </li>
@@ -113,6 +114,7 @@
                   <li>
                       <a href="{!! url('leavetypes') !!}"><span class="fa fa-hotel"></span> Leave Type</a>
                   </li>
+                  -->
                 </ul>
                 </div>
             </div>

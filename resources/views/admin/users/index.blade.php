@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <form id="" class="pull-right raw-margin-top-24 raw-margin-left-24" method="post" action="/admin/users/search">
                 {!! csrf_field() !!}
                 <input class="form-control" name="search" placeholder="Search">
@@ -13,11 +13,11 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <table class="table table-striped raw-margin-top-24">
 
                 <thead>
-                    <th>Email</th>
+                    <th>Name</th>
                     <th class="text-right">Actions</th>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
 
                         @if ($user->id !== Auth::id())
                             <tr>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->name }}</td>
                                 <td>
                                     <form method="post" action="{!! url('admin/users/'.$user->id) !!}">
                                         {!! csrf_field() !!}
@@ -42,6 +42,9 @@
                 </tbody>
 
             </table>
+            <div class="row text-center">
+                {!! $users; !!}
+            </div>
         </div>
     </div>
 
