@@ -132,12 +132,14 @@ class PayrollsController extends Controller
     public function show($id)
     {
         $payroll = $this->service->find($id);
-        if ($payroll->payrolltype_id==1) {
-          return view('payrolls.payrollAkhirBulan')->with('payroll', $payroll);
-        }
-        elseif ($payroll->payrolltype_id==2) {
-          return view('payrolls.payrollTengahBulan')->with('payroll', $payroll);
-        }
+        $payroll['subtotal']=$payroll->gapok;
+        $payroll['subtotalA']=$payroll->gapok;
+        $payroll['subtotalB']=0;
+        $payroll['totalPenghasilan']=$payroll->gapok;
+        $payroll['totalPotongan']=0;
+        $payroll['jumlahTunjangan']=0;
+        $payroll['gajiBersih']=$payroll->gapok;
+        return view('payrolls.payrollRegular')->with('payroll', $payroll);
     }
 
     /**
@@ -190,17 +192,22 @@ class PayrollsController extends Controller
     public function cetakSlipGaji($id)
     {
         $payroll = $this->service->find($id);
+        $payroll['subtotal']=$payroll->gapok;
+        $payroll['subtotalA']=$payroll->gapok;
+        $payroll['subtotalB']=0;
+        $payroll['totalPenghasilan']=$payroll->gapok;
+        $payroll['totalPotongan']=0;
+        $payroll['jumlahTunjangan']=0;
+        $payroll['gajiBersih']=$payroll->gapok;
         $data['payroll'] = $payroll;
+        $pdf = PDF::loadView('payrolls.cetakPayroll', $data)->setPaper('a4')->setOrientation('landscape');;
         if ($payroll->payrolltype_id==1) {
-          $pdf = PDF::loadView('payrolls.cetakAkhirBulan', $data)->setPaper('a4')->setOrientation('landscape');;
           $filename = "Slip gaji ".$payroll->users->name." akhir bulan.pdf";
-          return $pdf->inline($filename);
         }
         elseif ($payroll->payrolltype_id==2) {
-          $pdf = PDF::loadView('payrolls.cetakTengahBulan', $data)->setPaper('a4')->setOrientation('landscape');;
           $filename = "Slip gaji ".$payroll->users->name." tengah bulan.pdf";
-          return $pdf->inline($filename);
         }
+        return $pdf->inline($filename);
     }
     public function cetakMultipleSlipGaji(Request $request)
     {
@@ -208,17 +215,36 @@ class PayrollsController extends Controller
         if ($request->printType=="selected") {
           foreach ($request->cetakList as $selectedPayroll) {
             $payroll=Payroll::find($selectedPayroll);
+            $payroll['subtotal']=$payroll->gapok;
+            $payroll['subtotalA']=$payroll->gapok;
+            $payroll['subtotalB']=0;
+            $payroll['totalPenghasilan']=$payroll->gapok;
+            $payroll['totalPotongan']=0;
+            $payroll['jumlahTunjangan']=0;
+            $payroll['gajiBersih']=$payroll->gapok;
             $payrolls[]=$payroll;
           }
         }
-        elseif ($request->printType=="all") {
+        elseif ($request->printType=="all"){
             $periodRange=explode(",",$request->periode);
             $startDate=$periodRange[0];
             $endDate=$periodRange[1];
             $payrolls= Payroll::where('start_date',$startDate)->where('end_date',$endDate)->get();
+            foreach ($payrolls as $payroll) {
+              // if (!$payroll->users->jabatans) {
+              //   return "no jabatan_id ".$payroll->users->id;
+              // }
+              $payroll['subtotal']=$payroll->gapok;
+              $payroll['subtotalA']=$payroll->gapok;
+              $payroll['subtotalB']=0;
+              $payroll['totalPenghasilan']=$payroll->gapok;
+              $payroll['totalPotongan']=0;
+              $payroll['jumlahTunjangan']=0;
+              $payroll['gajiBersih']=$payroll->gapok;
+            }
         }
 
-        $data['payrolls'] = $payrolls;
+          $data['payrolls'] = $payrolls;
 
           $pdf = PDF::loadView('payrolls.cetakMultiplePayroll', $data)->setPaper('a4')->setOrientation('landscape');
           $filename = "Slip gaji.pdf";
