@@ -19,14 +19,22 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>Name</th>
+                        <th>Pangkat</th>
+                        <th>Ruang</th>
+                        <th>Gaji Pokok</th>
                         <th width="200px" class="text-right">Action</th>
                     </thead>
                     <tbody>
                     @foreach($gajipokoks as $gajipokok)
                         <tr>
                             <td>
-                                {{ $gajipokok->name }}
+                                {{ $gajipokok->pangkats->name }}
+                            </td>
+                            <td>
+                                {{ $gajipokok->ruang }}
+                            </td>
+                            <td>
+                              {{"Rp. " . number_format($gajipokok->gaji_pokok,0,',','.')}}
                             </td>
                             <td>
                                 <form method="post" action="{!! route('gajipokoks.destroy', [$gajipokok->id]) !!}">
