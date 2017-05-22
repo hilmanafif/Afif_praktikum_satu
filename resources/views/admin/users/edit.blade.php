@@ -39,7 +39,8 @@
             <div class="col-md-5">
               <div class="row">
 					        <div class="col-md-8">
-
+                          {{ method_field('PUT') }}
+                          <input type="hidden" name="id" value="{{ $user->id }}">
 					                <div class="raw-margin-top-24">
 					                    @input_maker_label('Email')
 					                    @input_maker_create('email', ['type' => 'string'], $user)
@@ -94,8 +95,8 @@
         </div>
 
 				<div class="tab-pane" id="2">
+          <form method="POST" action="/admin/users/update">
 					<div class="row">
-            <form method="POST" action="/admin/users/update">
               {{ method_field('PUT') }}
               <input type="hidden" name="user_id" value="{{$user->id}}">
 							<div class="col-md-5">
@@ -156,7 +157,6 @@
                   <input type="file" name="ktp">
                 </div>
               </div>
-            </form>
 					</div>
           <div class="row row-eq-height">
             <div class="col-md-10" style="margin-top:12px; border-top:1px solid #ddd;">
@@ -165,10 +165,11 @@
               <button class="btn btn-primary" type="submit">Save</button>
             </div>
           </div>
+          </form>
 				</div>
 
-        <div class="tab-pane" id="3">
 
+        <div class="tab-pane" id="3">
 					<div class="row">
 							<div class="col-md-5">
 									<h3>Anggota Keluarga</h3>
@@ -251,46 +252,40 @@
                   </div>
                   <br />
                   <a class="btn btn-default" href="{{ URL::previous() }}">Cancel</a>
-                  <button class="btn btn-primary" type="submit">Save</button>
+                  <button class="btn btn-primary" type="submit">Tambah</button>
                   </form>
 							</div>
 					</div>
-          <div class="row row-eq-height">
-            <div class="col-md-10" style="margin-top:12px; border-top:1px solid #ddd;">
-              <br />
-              <a class="btn btn-default" href="{{ URL::previous() }}">Cancel</a>
-              <button class="btn btn-primary" type="submit">Save</button>
-            </div>
-          </div>
-
 				</div>
-        <div class="tab-pane" id="4">
 
+
+        <div class="tab-pane" id="4">
 					<div class="row">
 							<div class="col-md-8">
 									Pendidikan
 							</div>
 					</div>
-
 				</div>
-        <div class="tab-pane" id="5">
 
+
+        <div class="tab-pane" id="5">
 					<div class="row">
 							<div class="col-md-8">
 									Karir
 							</div>
 					</div>
-
 				</div>
-        <div class="tab-pane" id="6">
 
+
+        <div class="tab-pane" id="6">
 					<div class="row">
 							<div class="col-md-8">
 									Pengalaman
 							</div>
 					</div>
-
 				</div>
+
+
 			</div>
   </div>
 
