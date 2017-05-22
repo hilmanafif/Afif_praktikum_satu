@@ -45,7 +45,8 @@
 
                 <div class="raw-margin-top-24">
                     <a class="btn btn-default pull-left" href="{{ URL::previous() }}">Cancel</a>
-                    <button class="btn btn-primary pull-right" type="submit">Invite</button>
+                    <button class="btn btn-success pull-right" name="submit" value="create" type="submit">Create</button>
+                    <button class="btn btn-primary pull-right" name="submit" value="invite" type="submit">Invite</button>
                 </div>
             </form>
         </div>
