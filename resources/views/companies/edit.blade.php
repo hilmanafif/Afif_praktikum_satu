@@ -11,11 +11,32 @@
   <div class="row">
       <div class="col-md-6 raw-margin-bottom-24">
           <div>
-              {!! Form::model($company, ['route' => ['companies.update', $company->id], 'method' => 'patch']) !!}
+              {!! Form::model($company, ['route' => ['companies.update', $company->id], 'method' => 'patch', 'files' => true]) !!}
                   {!! csrf_field() !!}
                   {!! method_field('PATCH') !!}
 
-                  @form_maker_object($company, FormMaker::getTableColumns('companies'))
+                      @form_maker_object($company, [
+                        'name'=>['alt_name'=>'Name'],
+                        'tax'=>['alt_name'=>'Tax Identification Number'],
+                        'reg'=>['alt_name'=>'Legal Registry / Certificate'],
+                        'phone'=>[],
+                        'fax'=>[],
+                        'address1'=>[],
+                        'address2'=>[],
+                        'city'=>[],
+                        'province'=>[],
+                        'zip'=>[],
+                        'country'=>[],
+                        'timezone'=>[],
+                        'currency'=>[],
+                        'officer_position'=>[],
+                        'officer_name'=>[]
+                        ])
+                  <div class="form-group">
+                    <label class="control-label" for="avatar">Logo</label><br />
+                    <img class="img-thumbnail" src="{{ url($company->logo->url('small')) }}">
+                    <input type="file" name="logo">
+                  </div>
 
                   <div class="raw-margin-top-24">
                       <a class="btn btn-default" href="{{ URL::previous() }}">Cancel</a>

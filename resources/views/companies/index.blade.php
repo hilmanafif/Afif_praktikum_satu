@@ -34,8 +34,7 @@
                                     {!! method_field('DELETE') !!}
                                     <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this company?')"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
-                                <a class="btn btn-warning pull-right btn-xs" href="{!! route('companies.show', [$company->id]) !!}"><i class="fa fa-search"></i> Show</a>
-                                <a class="btn btn-warning pull-right btn-xs" href="{!! route('companies.edit', [$company->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
+                                <a class="btn btn-warning btn-xs" href="{!! route('companies.edit', [$company->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
                             </td>
                         </tr>
                     @endforeach
