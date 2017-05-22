@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\OfflineWriter;
+use App\Models\Offlinewriter;
 use Illuminate\Support\Facades\Schema;
 
-class OfflineWriterService
+class OfflinewriterService
 {
     /**
      * Service Model
@@ -26,7 +26,7 @@ class OfflineWriterService
      *
      * @param OfflineWriter $offlinewriter
      */
-    public function __construct(OfflineWriter $offlinewriter)
+    public function __construct(Offlinewriter $offlinewriter)
     {
         $this->model        = $offlinewriter;
         $this->pagination   = env('PAGINATION', 15);
