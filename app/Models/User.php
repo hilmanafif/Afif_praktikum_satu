@@ -100,6 +100,59 @@ class User extends Authenticatable
     {
         return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'pasangan')->count();
     }
+    public function gajiPokok($id){
+      $employee=User::findOrFail($id);
+      $gapok=GajiPokok::where('pangkat_id',$employee->pangkat_id)
+                      ->where('ruang',$employee->ruang)
+                      ->first();
+      if (!$gapok) {
+        return "gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
+      }
+      return $gapok->gaji_pokok;
+    }
+    public function tunjanganIstri($id){
+      $jumlahPasangan=$this->jumlahPasangan($id);
+      $gapok=$this->gajiPokok($id);
+      $tunjanganPersen=10/100;
+
+      if ($jumlahPasangan>1) {
+        $jumlahPasangan=1;
+      }
+
+      $tunjanganIstri=$gapok*$tunjanganPersen*$jumlahPasangan;
+
+      return $tunjanganIstri;
+    }
+    public function tunjanganAnak($id){
+      $jumlahAnak=$this->jumlahAnak($id);
+      $gapok=$this->gajiPokok($id);
+      $tunjanganPersen=5/100;
+
+      if ($jumlahAnak>2) {
+        $jumlahAnak=2;
+      }
+
+      $tunjanganAnak=$gapok*$tunjanganPersen*$jumlahAnak;
+
+      return $tunjanganAnak;
+    }
+    public function natura($id){
+      $jumlahAnak=$this->jumlahAnak($id);
+      $jumlahPasangan=$this->jumlahPasangan($id);
+      $naturaPerJiwa=100000;
+
+      if ($jumlahPasangan>1) {
+        $jumlahPasangan=1;
+      }
+      if ($jumlahAnak>2) {
+        $jumlahAnak=2;
+      }
+
+      $jumlahJiwa=$jumlahAnak+$jumlahPasangan+1;
+      $natura=$jumlahJiwa*$naturaPerJiwa;
+
+      return $natura;
+    }
     /**
      * Check if user has role
      *

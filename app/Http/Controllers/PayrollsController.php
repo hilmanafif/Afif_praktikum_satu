@@ -71,7 +71,7 @@ class PayrollsController extends Controller
     }
 
     public function generatePayroll(Request $request){
-      $employees=User::where('pangkat_id','!=',0)->get();
+      $employees=User::where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
       $start_date=$request->fromDate;
       $end_date=$request->toDate;
       $phase=$request->phase;
@@ -132,14 +132,24 @@ class PayrollsController extends Controller
     public function show($id)
     {
         $payroll = $this->service->find($id);
+        $employee=User::findOrFail($payroll->users->id);
+
+        $userModel=new User;
+        $payroll['tunjanganIstri']=$userModel->tunjanganIstri($employee->id);
+        $payroll['tunjanganAnak']=$userModel->tunjanganAnak($employee->id);
+        $payroll['natura']=$userModel->natura($employee->id);
+        $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
+        $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
+        $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+
         $payroll['subtotal']=$payroll->gapok;
-        $payroll['subtotalA']=$payroll->gapok;
-        $payroll['subtotalB']=0;
-        $payroll['totalPenghasilan']=$payroll->gapok;
+        $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
+        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+        $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
         $payroll['totalPotongan']=0;
         $payroll['jumlahTunjangan']=0;
-        $payroll['gajiBersih']=$payroll->gapok;
-        return view('payrolls.payrollRegular')->with('payroll', $payroll);
+        $payroll['gajiBersih']=$payroll['totalPenghasilan']-$payroll['totalPotongan'];
+        return view('payrolls.payrollRegular')->with('payroll',$payroll);
     }
 
     /**
@@ -192,14 +202,25 @@ class PayrollsController extends Controller
     public function cetakSlipGaji($id)
     {
         $payroll = $this->service->find($id);
+        $employee=User::findOrFail($payroll->users->id);
+
+        $userModel=new User;
+        $payroll['tunjanganIstri']=$userModel->tunjanganIstri($employee->id);
+        $payroll['tunjanganAnak']=$userModel->tunjanganAnak($employee->id);
+        $payroll['natura']=$userModel->natura($employee->id);
+        $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
+        $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
+        $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+
         $payroll['subtotal']=$payroll->gapok;
-        $payroll['subtotalA']=$payroll->gapok;
-        $payroll['subtotalB']=0;
-        $payroll['totalPenghasilan']=$payroll->gapok;
+        $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
+        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+        $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
         $payroll['totalPotongan']=0;
         $payroll['jumlahTunjangan']=0;
-        $payroll['gajiBersih']=$payroll->gapok;
+        $payroll['gajiBersih']=$payroll['totalPenghasilan']-$payroll['totalPotongan'];
         $data['payroll'] = $payroll;
+        $data['tunjangan'] = $payroll;
         $pdf = PDF::loadView('payrolls.cetakPayroll', $data)->setPaper('a4')->setOrientation('landscape');;
         if ($payroll->payrolltype_id==1) {
           $filename = "Slip gaji ".$payroll->users->name." akhir bulan.pdf";
@@ -215,13 +236,23 @@ class PayrollsController extends Controller
         if ($request->printType=="selected") {
           foreach ($request->cetakList as $selectedPayroll) {
             $payroll=Payroll::find($selectedPayroll);
+            $employee=User::findOrFail($payroll->users->id);
+
+            $userModel=new User;
+            $payroll['tunjanganIstri']=$userModel->tunjanganIstri($employee->id);
+            $payroll['tunjanganAnak']=$userModel->tunjanganAnak($employee->id);
+            $payroll['natura']=$userModel->natura($employee->id);
+            $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
+            $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
+            $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+
             $payroll['subtotal']=$payroll->gapok;
-            $payroll['subtotalA']=$payroll->gapok;
-            $payroll['subtotalB']=0;
-            $payroll['totalPenghasilan']=$payroll->gapok;
+            $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
+            $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+            $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
             $payroll['totalPotongan']=0;
             $payroll['jumlahTunjangan']=0;
-            $payroll['gajiBersih']=$payroll->gapok;
+            $payroll['gajiBersih']=$payroll['totalPenghasilan']-$payroll['totalPotongan'];
             $payrolls[]=$payroll;
           }
         }
@@ -234,13 +265,24 @@ class PayrollsController extends Controller
               // if (!$payroll->users->jabatans) {
               //   return "no jabatan_id ".$payroll->users->id;
               // }
+              $employee=User::findOrFail($payroll->users->id);
+
+              $userModel=new User;
+              $payroll['tunjanganIstri']=$userModel->tunjanganIstri($employee->id);
+              $payroll['tunjanganAnak']=$userModel->tunjanganAnak($employee->id);
+              $payroll['natura']=$userModel->natura($employee->id);
+              $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
+              $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
+              $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+
               $payroll['subtotal']=$payroll->gapok;
-              $payroll['subtotalA']=$payroll->gapok;
-              $payroll['subtotalB']=0;
-              $payroll['totalPenghasilan']=$payroll->gapok;
+              $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
+              $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+              $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
               $payroll['totalPotongan']=0;
               $payroll['jumlahTunjangan']=0;
-              $payroll['gajiBersih']=$payroll->gapok;
+              $payroll['gajiBersih']=$payroll['totalPenghasilan']-$payroll['totalPotongan'];
+              $payrolls[]=$payroll;
             }
         }
 

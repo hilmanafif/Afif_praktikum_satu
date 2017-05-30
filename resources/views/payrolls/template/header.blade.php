@@ -6,7 +6,7 @@
   <center>
     <h1>PERINCIAN PENGHASILAN PEGAWAI</h1>
     <h3>PDAM TIRTA RAHARJA KABUPATEN BANDUNG</h3>
-    GAJI <b>{{date("d F Y", strtotime($payroll->start_date))}}-{{date("d F Y", strtotime($payroll->end_date))}}</b>
+    GAJI <b>{{date("F Y", strtotime($payroll->start_date))}}</b>
   </center>
 </div>
 </div>
