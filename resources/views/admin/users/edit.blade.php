@@ -34,12 +34,11 @@
 			<div class="tab-content">
 			  <div class="tab-pane active" id="1">
           <form method="POST" action="/user/settings">
-          {!! csrf_field() !!}
+            {!! csrf_field() !!}
           <div class="row row-eq-height">
             <div class="col-md-5">
               <div class="row">
 					        <div class="col-md-8">
-                          {{ method_field('PUT') }}
                           <input type="hidden" name="id" value="{{ $user->id }}">
 					                <div class="raw-margin-top-24">
 					                    @input_maker_label('Email')
