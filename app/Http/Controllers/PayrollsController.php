@@ -141,10 +141,11 @@ class PayrollsController extends Controller
         $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
         $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
         $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+        $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
 
         $payroll['subtotal']=$payroll->gapok;
         $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
-        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
         $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
         $payroll['totalPotongan']=0;
         $payroll['jumlahTunjangan']=0;
@@ -211,10 +212,11 @@ class PayrollsController extends Controller
         $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
         $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
         $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+        $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
 
         $payroll['subtotal']=$payroll->gapok;
         $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
-        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
         $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
         $payroll['totalPotongan']=0;
         $payroll['jumlahTunjangan']=0;
@@ -245,10 +247,12 @@ class PayrollsController extends Controller
             $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
             $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
             $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+            $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
+
 
             $payroll['subtotal']=$payroll->gapok;
             $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
-            $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+            $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
             $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
             $payroll['totalPotongan']=0;
             $payroll['jumlahTunjangan']=0;
@@ -274,10 +278,12 @@ class PayrollsController extends Controller
               $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
               $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
               $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
+              $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
+
 
               $payroll['subtotal']=$payroll->gapok;
               $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
-              $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana'];
+              $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
               $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
               $payroll['totalPotongan']=0;
               $payroll['jumlahTunjangan']=0;

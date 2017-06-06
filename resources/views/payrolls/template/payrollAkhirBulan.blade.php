@@ -123,6 +123,20 @@
       <td></td>
     </tr>
     <tr>
+      <td>Tunjangan Perumahan</td>
+      <td>Rp. {{number_format($payroll['tunjanganPerumahan'],0,',','.')}}</td>
+
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Pajak</td>
+      <td></td>
+
+      <td>PPh 21</td>
+      <td></td>
+    </tr>
+    <tr>
       <td><b>Sub Total B</b></td>
       <td><b>Rp. {{number_format($payroll['subtotalB'],0,',','.')}}</b></td>
 

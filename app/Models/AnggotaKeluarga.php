@@ -20,7 +20,8 @@ class AnggotaKeluarga extends Model
 		'tempat_lahir',
 		'tanggal_lahir',
 		'jenis_kelamin',
-		'agama_id',
+    'agama_id',
+		'is_active',
 
     ];
 
@@ -28,6 +29,6 @@ class AnggotaKeluarga extends Model
         // create rules
     ];
 
-    // AnggotaKeluarga 
+    // AnggotaKeluarga
 
 }

@@ -94,11 +94,11 @@ class User extends Authenticatable
     }
     public function jumlahAnak($id)
     {
-        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->count();
+        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->count();
     }
     public function jumlahPasangan($id)
     {
-        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'pasangan')->count();
+        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'pasangan')->where('is_active', 1)->count();
     }
     public function gajiPokok($id){
       $employee=User::findOrFail($id);
