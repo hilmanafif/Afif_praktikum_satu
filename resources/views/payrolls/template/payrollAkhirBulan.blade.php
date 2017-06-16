@@ -123,13 +123,6 @@
       <td></td>
     </tr>
     <tr>
-      <td>Tunjangan Perumahan</td>
-      <td>Rp. {{number_format($payroll['tunjanganPerumahan'],0,',','.')}}</td>
-
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>Pajak</td>
       <td></td>
 
