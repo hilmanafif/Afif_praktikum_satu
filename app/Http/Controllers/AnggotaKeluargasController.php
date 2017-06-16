@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\AnggotaKeluarga;
 use App\Services\AnggotaKeluargaService;
 use App\Http\Requests\AnggotaKeluargaCreateRequest;
 use App\Http\Requests\AnggotaKeluargaUpdateRequest;
@@ -123,5 +124,23 @@ class AnggotaKeluargasController extends Controller
         }
 
         return redirect(route('anggotakeluargas.index'))->with('message', 'Failed to delete');
+    }
+    public function changeActive($id)
+    {
+        $ak = AnggotaKeluarga::findOrFail($id);
+
+        if ($ak->is_active==1) {
+          $result = $ak->update(['is_active'=>0]);
+        }
+        else {
+          $result = $ak->update(['is_active'=>1]);
+        }
+
+        if ($result) {
+            //return back()->with('message', 'Successfully updated');
+            return back()->with('message', 'Successfully updated');
+        }
+
+        return back()->with('message', 'Failed to update');
     }
 }

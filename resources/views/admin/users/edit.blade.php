@@ -179,6 +179,11 @@
                       <td>{{$anggotaKeluarga->nama}}</td>
                       <td>{{$anggotaKeluarga->hub_keluarga}}</td>
                       <td><a href="{{url('anggotakeluargas/'.$anggotaKeluarga->id)}}" class="btn btn-xs btn-primary pull-right">View</a></td>
+                      @if ($anggotaKeluarga->is_active==1)
+                        <td><a href="{{url('anggotakeluargas/'.$anggotaKeluarga->id.'/changeActive')}}" onclick="return confirm('Nonaktifkan {{$anggotaKeluarga->nama}} dari tunjangan?')" class="btn btn-xs btn-success pull-right">Aktif</a></td>
+                      @else
+                        <td><a href="{{url('anggotakeluargas/'.$anggotaKeluarga->id.'/changeActive')}}" onclick="return confirm('Aktifkan {{$anggotaKeluarga->nama}} dari tunjangan?')" class="btn btn-xs btn-danger pull-right">Nonaktif</a></td>
+                      @endif
                     </tr>
                     @endforeach
                   </table>

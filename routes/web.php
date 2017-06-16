@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 // Non protected/public routes
+Route::get('/exec', 'AnggotaKeluargasController@exec');
 Route::get('/', 'WelcomeController@index');
 // Login Logout
 Route::get('login', 'Auth\LoginController@showLoginForm');
@@ -237,6 +238,7 @@ Route::group(['middleware' => ['auth', 'active']], function () {
 
       // AnggotaKeluarga
       Route::resource('anggotakeluargas', 'AnggotaKeluargasController');
+      Route::get('anggotakeluargas/{id}/changeActive', 'AnggotaKeluargasController@changeActive');
       Route::post('anggotakeluargas/search', [
           'as' => 'anggotakeluargas.search',
           'uses' => 'AnggotaKeluargasController@search'
