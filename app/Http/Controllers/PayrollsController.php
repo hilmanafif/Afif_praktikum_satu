@@ -161,7 +161,7 @@ class PayrollsController extends Controller
 
         $payroll['subtotal']=$payroll->gapok;
         $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
-        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan']+$payroll['tunjanganKendaraan'];
+        $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganKendaraan'];
         $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
         $payroll['totalPotongan']=0;
         $payroll['jumlahTunjangan']=0;
