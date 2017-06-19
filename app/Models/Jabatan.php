@@ -22,8 +22,8 @@ class Jabatan extends Model
             'Tunjab',
             'Tunpres',
             'Tupel',
-        		'Turam',
-
+            'Turam',
+        		'Tunken',
     ];
 
     public static $rules = [

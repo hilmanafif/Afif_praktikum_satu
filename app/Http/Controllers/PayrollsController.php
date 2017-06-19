@@ -141,6 +141,7 @@ class PayrollsController extends Controller
         $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
         $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
         $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
+        $payroll['tunjanganKendaraan']=$employee->jabatans->Tunken;
         //TEMPORARY
         if ($employee->tupel_id=="P1") {
           $payroll['tunjanganPelaksana']=100000;

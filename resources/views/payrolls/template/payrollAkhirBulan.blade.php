@@ -110,7 +110,7 @@
     </tr>
     <tr>
       <td>Tunjangan Kendaraan</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll['tunjanganKendaraan'],0,',','.')}}</td>
 
       <td>BPJS Kesehatan</td>
       <td></td>
