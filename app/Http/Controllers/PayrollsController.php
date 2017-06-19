@@ -140,8 +140,23 @@ class PayrollsController extends Controller
         $payroll['natura']=$userModel->natura($employee->id);
         $payroll['tunjanganKinerja']=$employee->jabatans->Tunpres;
         $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
-        $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
         $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
+        //TEMPORARY
+        if ($employee->tupel_id=="P1") {
+          $payroll['tunjanganPelaksana']=100000;
+        }
+        elseif ($employee->tupel_id=="P2") {
+          $payroll['tunjanganPelaksana']=200000;
+        }
+        elseif ($employee->tupel_id=="P3") {
+          $payroll['tunjanganPelaksana']=300000;
+        }
+        elseif ($employee->tupel_id=="P4") {
+          $payroll['tunjanganPelaksana']=400000;
+        }
+        else {
+          $payroll['tunjanganPelaksana']=0;
+        }
 
         $payroll['subtotal']=$payroll->gapok;
         $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
