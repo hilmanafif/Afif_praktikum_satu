@@ -33,12 +33,13 @@
 
 			<div class="tab-content">
 			  <div class="tab-pane active" id="1">
-          <form method="POST" action="/user/settings">
-            {!! csrf_field() !!}
+          <form method="POST" action="/admin/users/update">
+          {!! csrf_field() !!}
           <div class="row row-eq-height">
             <div class="col-md-5">
               <div class="row">
 					        <div class="col-md-8">
+                          {{ method_field('PUT') }}
                           <input type="hidden" name="id" value="{{ $user->id }}">
 					                <div class="raw-margin-top-24">
 					                    @input_maker_label('Email')
@@ -57,6 +58,7 @@
                               </div>
                           @endif
 
+                          <!--
 													<div class="raw-margin-top-24">
 															<label>
 																	<input type="checkbox" name="meta[marketing]" value="1" @if ($user->meta->marketing) checked @endif>
@@ -70,6 +72,7 @@
 											            I agree to the <a href="{{ url('terms-and-conditions') }}">Terms &amp; Conditions</a>
 											        </label>
 											    </div>
+                          -->
 
 					        </div>
 					    </div>

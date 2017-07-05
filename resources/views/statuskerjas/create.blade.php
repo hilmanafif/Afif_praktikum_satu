@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h1>StatusKerjas : Create</h1>
+        <h1>Status Kerja : Create</h1>
     </div>
 </div>
 

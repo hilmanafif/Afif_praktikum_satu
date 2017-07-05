@@ -9,7 +9,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('jabatans.create') !!}">Add New</a>
-            <h1 class="pull-left">Jabatans</h1>
+            <h1 class="pull-left">List Jabatan</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">
@@ -19,12 +19,24 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>Name</th>
+                        <th>Kode Umum</th>
+                        <th>Kode</th>
+                        <th>Nama Umum</th>
+                        <th>Nama</th>
                         <th width="200px" class="text-right">Action</th>
                     </thead>
                     <tbody>
                     @foreach($jabatans as $jabatan)
                         <tr>
+                            <td>
+                                {{ $jabatan->kode_umum }}
+                            </td>
+                            <td>
+                                {{ $jabatan->kode }}
+                            </td>
+                            <td>
+                                {{ $jabatan->name_umum }}
+                            </td>
                             <td>
                                 {{ $jabatan->name }}
                             </td>
@@ -34,8 +46,7 @@
                                     {!! method_field('DELETE') !!}
                                     <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this jabatan?')"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
-                                <a class="btn btn-warning btn-xs" href="{!! route('jabatans.show', [$jabatan->id]) !!}"><i class="fa fa-search"></i> Show</a>
-                                <a class="btn btn-warning btn-xs" href="{!! route('jabatans.edit', [$jabatan->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
+                                <a style="margin-right:4px;" class="btn btn-warning btn-xs pull-right" href="{!! route('jabatans.edit', [$jabatan->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
                             </td>
                         </tr>
                     @endforeach

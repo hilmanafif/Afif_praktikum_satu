@@ -9,7 +9,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('pangkats.create') !!}">Add New</a>
-            <h1 class="pull-left">Pangkats</h1>
+            <h1 class="pull-left">List Pangkat</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">
@@ -19,12 +19,20 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>Name</th>
+                        <th>Kode</th>
+                        <th>Kode Sistem Lama</th>
+                        <th>Nama</th>
                         <th width="200px" class="text-right">Action</th>
                     </thead>
                     <tbody>
                     @foreach($pangkats as $pangkat)
                         <tr>
+                            <td>
+                                {{ $pangkat->kode }}
+                            </td>
+                            <td>
+                                {{ $pangkat->kodepangkat_lama }}
+                            </td>
                             <td>
                                 {{ $pangkat->name }}
                             </td>
@@ -34,8 +42,7 @@
                                     {!! method_field('DELETE') !!}
                                     <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this pangkat?')"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
-                                <a class="btn btn-warning btn-xs" href="{!! route('pangkats.show', [$pangkat->id]) !!}"><i class="fa fa-search"></i> Show</a>
-                                <a class="btn btn-warning btn-xs" href="{!! route('pangkats.edit', [$pangkat->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
+                                <a style="margin-right:4px;" class="btn btn-warning btn-xs pull-right" href="{!! route('pangkats.edit', [$pangkat->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
                             </td>
                         </tr>
                     @endforeach

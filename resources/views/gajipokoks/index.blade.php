@@ -9,7 +9,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('gajipokoks.create') !!}">Add New</a>
-            <h1 class="pull-left">GajiPokoks</h1>
+            <h1 class="pull-left">List Gaji Pokok</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">
@@ -19,6 +19,7 @@
             @else
                 <table class="table table-striped">
                     <thead>
+                        <th>Kode Sistem Lama</th>
                         <th>Pangkat</th>
                         <th>Ruang</th>
                         <th>Gaji Pokok</th>
@@ -27,6 +28,9 @@
                     <tbody>
                     @foreach($gajipokoks as $gajipokok)
                         <tr>
+                            <td>
+                                {{ $gajipokok->kodgol_lama }}
+                            </td>
                             <td>
                                 {{ $gajipokok->pangkats->name }}
                             </td>
@@ -42,8 +46,7 @@
                                     {!! method_field('DELETE') !!}
                                     <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this gajipokok?')"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
-                                <a class="btn btn-warning btn-xs" href="{!! route('gajipokoks.show', [$gajipokok->id]) !!}"><i class="fa fa-search"></i> Show</a>
-                                <a class="btn btn-warning btn-xs" href="{!! route('gajipokoks.edit', [$gajipokok->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
+                                <a style="margin-right:4px;" class="btn btn-warning btn-xs pull-right" href="{!! route('gajipokoks.edit', [$gajipokok->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
                             </td>
                         </tr>
                     @endforeach

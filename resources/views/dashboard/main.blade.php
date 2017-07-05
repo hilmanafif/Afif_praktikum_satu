@@ -117,10 +117,10 @@
         </div>
         <div class="col-xs-6 col-md-4">
           <h4>Referensi</h4>
-          <a href="{!! url('/pangkats') !!}"><span class="fa fa-star"></span> Pangkat/Golongan</a>
+          <a href="{!! url('/pangkats') !!}"><span class="fa fa-star"></span> Pangkat (Golongan)</a>
           <a href="{!! url('/jabatans') !!}"><span class="fa fa-star"></span> Jabatan</a>
-          <a href="{!! url('/bagians') !!}"><span class="fa fa-building"></span> Bagian/Unit</a>
-          <a href="{!! url('/wilayahs') !!}"><span class="fa fa-map-marker"></span> Wilayahs</a>
+          <a href="{!! url('/bagians') !!}"><span class="fa fa-building"></span> Bagian (Unit)</a>
+          <a href="{!! url('/wilayahs') !!}"><span class="fa fa-map-marker"></span> Wilayah</a>
           <a href="{!! url('/statuspegawais') !!}"><span class="fa fa-legal"></span> Status Pegawai</a>
           <a href="{!! url('/statuskerjas') !!}"><span class="fa fa-flag"></span> Status Kerja</a>
           <a href="{!! url('/gajipokoks') !!}"><span class="fa fa-money"></span> Gaji Pokok</a>

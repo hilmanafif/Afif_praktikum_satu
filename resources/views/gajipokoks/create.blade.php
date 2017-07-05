@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h1>GajiPokoks : Create</h1>
+        <h1>Gaji Pokok : Create</h1>
     </div>
 </div>
 

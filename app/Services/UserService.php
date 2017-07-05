@@ -64,12 +64,12 @@ class UserService
      */
     public function all()
     {
-        return $this->model->all();
+        return $this->model->orderBy('employee_number')->orderBy('name')->all();
     }
 
     public function paginated()
     {
-        return $this->model->orderBy('name')->paginate($this->pagination);
+        return $this->model->orderBy('employee_number')->orderBy('name')->paginate($this->pagination);
     }
 
     /**

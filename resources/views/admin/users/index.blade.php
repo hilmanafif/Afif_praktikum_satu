@@ -17,7 +17,8 @@
             <table class="table table-striped raw-margin-top-24">
 
                 <thead>
-                    <th>Name</th>
+                    <th>NIPP</th>
+                    <th>Nama</th>
                     <th class="text-right">Actions</th>
                 </thead>
                 <tbody>
@@ -25,6 +26,7 @@
 
                         @if ($user->id !== Auth::id())
                             <tr>
+                                <td>{{ $user->employee_number }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>
                                     <!--

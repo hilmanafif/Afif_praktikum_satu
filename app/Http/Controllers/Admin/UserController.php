@@ -131,7 +131,7 @@ class UserController extends Controller
           return back()->with('message', 'Successfully updated');
         }
 
-        $result = $this->service->update($id, $request->except(['_token', '_method']));
+        $result = $this->service->update($request->id, $request->except(['_token', '_method']));
 
         if ($result) {
             return back()->with('message', 'Successfully updated');

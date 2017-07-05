@@ -4,7 +4,7 @@
 
 <div class="row">
     <div class="col-md-12">
-        <h1>Jabatans : Create</h1>
+        <h1>Jabatan : Create</h1>
     </div>
 </div>
 
