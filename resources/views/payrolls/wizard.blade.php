@@ -198,7 +198,7 @@
   <div class="row setup-content" id="step-3">
     <div class="col-xs-6 col-md-offset-3 jumbotron" style="background:#0f69d7; color:#fff;" >
       <div class="col-md-12">
-        @if (in_array($user->roles->first()->name, ['manajer']))
+        @if (in_array($user->roles->first()->name, ['admin']))
           <div class="row">
             <div class="col-md-4">
               <img src="img/payrollwizard3.png" class="img-responsive" alt="">
@@ -210,7 +210,7 @@
             </div>
           </div>
         @endif
-        @if (in_array($user->roles->first()->name, ['admin']))
+        @if (in_array($user->roles->first()->name, ['manajer']))
         <div class="row">
           <div class="col-md-4">
             <img src="img/payrollwizard3.png" class="img-responsive" alt="">

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatuskerjaTupelToUsersTable extends Migration
+class AddApprovedToPayrollsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddStatuskerjaTupelToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-          $table->boolean('statuskerja_id');
-          $table->boolean('tupel_id');
+        Schema::table('payrolls', function (Blueprint $table) {
+          $table->boolean('approved');
+          $table->string('employee_number');
         });
     }
 
@@ -26,9 +26,9 @@ class AddStatuskerjaTupelToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-          $table->dropColumn('statuskerja_id');
-          $table->dropColumn('tupel_id');
+        Schema::table('payrolls', function (Blueprint $table) {
+          $table->dropColumn('approved');
+          $table->dropColumn('employee_number');
             //
         });
     }
