@@ -19,9 +19,7 @@
           <p>Total gaji pokok: Rp. {{ number_format($total_gapok,0,'','.') }}</p>
         </div>
         <div class="col-md-4">
-          <form style="display:inline;" method="get" action="{!! route('payrollwizards',['button'=>'tostep3']) !!}">
-              <button class="btn btn-primary btn-xs pull-left" style="padding:10px;" type="submit"></i>Kembali ke Wizard</button>
-          </form>
+          <a class="btn btn-primary btn-xs" style="padding:12px;" href="{{url('payrollwizards?button=tostep3')}}">Kembali ke Wizard</a>
         </div>
     </div>
 
