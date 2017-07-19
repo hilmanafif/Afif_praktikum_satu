@@ -9,7 +9,7 @@
                 <input class="form-control" name="search" placeholder="Search">
             </form>
             <a class="btn btn-default pull-right raw-margin-top-24" href="{{ url('admin/users/invite') }}">Invite New User</a>
-            <h1>User Admin</h1>
+            <h1>List User</h1>
         </div>
     </div>
     <div class="row">
@@ -19,6 +19,7 @@
                 <thead>
                     <th>NIPP</th>
                     <th>Nama</th>
+                    <th>Status</th>
                     <th class="text-right">Actions</th>
                 </thead>
                 <tbody>
@@ -28,6 +29,29 @@
                             <tr>
                                 <td>{{ $user->employee_number }}</td>
                                 <td>{{ $user->name }}</td>
+                                <td>
+                                  @if ($user->statuskerja_id == 1)
+                                    <span class="label label-success">Aktif</span>
+                                  @endif
+                                  @if ($user->statuskerja_id == 2)
+                                    <span class="label label-info">Mengundurkan Diri</span>
+                                  @endif
+                                  @if ($user->statuskerja_id == 3)
+                                    <span class="label label-info">Diberhentikan</span>
+                                  @endif
+                                  @if ($user->statuskerja_id == 6)
+                                    <span class="label label-info">Meninggal</span>
+                                  @endif
+                                  @if ($user->statuskerja_id == 7)
+                                    <span class="label label-info">Pensiun Dini</span>
+                                  @endif
+                                  @if ($user->statuskerja_id == 8)
+                                    <span class="label label-info">Pensiun</span>
+                                  @endif
+                                  @if ($user->statuskerja_id == 10)
+                                    <span class="label label-info">Tidak Diperpanjang Kontrak</span>
+                                  @endif
+                                </td>
                                 <td>
                                     <!--
                                     <form method="post" action="{!! url('admin/users/'.$user->id) !!}">

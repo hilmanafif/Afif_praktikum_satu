@@ -4,35 +4,15 @@
 
     <div class="row">
         <div class="col-md-12">
+            <h1 class="pull-left">Payrolls</h1>
             {{-- {!! Form::open(['route' => 'payrolls.search','class' => 'pull-right raw-margin-top-24 raw-margin-left-24']) !!}
               {!! csrf_field() !!}
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!} --}}
             <div class="row">
 
-              {!! Form::open(['url' => 'generatePayroll']) !!}
-              <div class="col-md-6 pull-right">
-                <div class="clearfix pull-right">
-                  <div class="form-group" style="float:left;margin-top: 25px;">
-                      <div class="col-md-6" style="padding:0 0 0 10">
-                        <label for="fromDate">From</label>
-                          <input type="date" name="fromDate" class="form-control" required>
-                      </div>
-                      <div class="col-md-6" style="padding:0 0 0 0">
-                        <label for="fromDate">To</label>
-                          <input type="date" name="toDate" class="form-control" required>
-                    </div>
-                  </div>
-                </div>
-            <div class="clearfix pull-right">
-              <button class="btn btn-primary" style="margin-top: 25px;margin-right: 10px" name="phase" value="1" onclick='return confirm("Generate payroll?")'>Generate Payroll 1</button>
-              <button class="btn btn-primary" style="margin-top: 25px" value="2" name="phase" onclick'=return confirm("Generate payroll?")'>Generate Payroll 2</button>
-              </div>
-            </div>
-            {!! Form::close() !!}
-
             <form action="{{url('payrolls/cetakMultiple')}}" method="post">
-            <div class="col-md-6">
+            <div class="col-md-12">
                 {!! csrf_field() !!}
                 <div class="clearfix">
                   <div class="form-group col-md-12" style="float:left;margin-top: 25px;padding:0">
@@ -43,20 +23,19 @@
                           <option value="selected">Print Selected</option>
                         </select>
                       </div>
-                      <div class="col-md-6" style="padding:0 0 0 10">
+                      <div class="col-md-4" style="padding:0 0 0 10">
                         <label for="periode">Periode</label>
                         <select class="form-control" name="periode" id="periode" required>
                           @foreach ($payrollPeriod as $periode)
                             <option value="{{$periode->start_date.",".$periode->end_date}}">{{date("d F Y",strtotime($periode->start_date))}} - {{date("d F Y",strtotime($periode->end_date))}}</option>
                           @endforeach
                         </select>
-                    </div>
+                      </div>
+                      <div class="col-md-4" style="padding:0 0 0 0">
+                        <button class="btn btn-primary" style="margin-top: 25px;" onclick='return confirm("Print payroll?")'>Print All</button>
+                      </div>
                   </div>
                 </div>
-                <div class="clearfix">
-                  <button class="btn btn-primary" style="margin-top: 25px;" onclick='return confirm("Print payroll?")'>Print All</button>
-                </div>
-          <h1 class="pull-left">Payrolls</h1>
       </div>
 
 
@@ -72,8 +51,8 @@
                 <table class="table table-striped">
                     <thead>
                         <th><input type="checkbox" id="checkAll"></th>
-                        <th>Nama</th>
                         <th>NIK</th>
+                        <th>Nama</th>
                         <th>Periode</th>
                         {{-- <th>Gapok</th> --}}
                         <th>Action</th>
@@ -82,8 +61,8 @@
                     @foreach($payrolls as $payroll)
                         <tr>
                           <td><input type="checkbox" name="cetakList[]" value="{{$payroll->id}}"></td>
-                          <td>{{ $payroll->name }}</td>
                           <td>{{ $payroll->users->employee_number }}</td>
+                          <td>{{ $payroll->name }}</td>
                           <td>{{ date("d F Y", strtotime($payroll->start_date)) }} - {{ date("d F Y", strtotime($payroll->end_date)) }}</td>
                           {{-- <td>Rp. {{ number_format($payroll->gapok,0,'','.') }}</td> --}}
                             <td>

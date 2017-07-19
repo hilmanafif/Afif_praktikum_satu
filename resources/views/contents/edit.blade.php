@@ -44,7 +44,7 @@ CKEDITOR.replace('description',
                   <style>
                     .disabled { pointer-events: none; }
                   </style>
-                  @if (in_array($user->roles->first()->name, ['redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
+                  @if (in_array($user->roles->first()->name, ['admin']))
 
                   @form_maker_object($content, [
                     'name'=>['alt_name'=>'Judul Topik'],

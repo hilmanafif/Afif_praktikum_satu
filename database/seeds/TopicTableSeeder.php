@@ -16,7 +16,7 @@ class TopicTableSeeder extends Seeder
           'name' => 'Copywriting Aplikasi Payroll PDAM Tirta Raharja',
           'description' => 'Copywriting Aplikasi Payroll PDAM Tirta Raharja',
           'body' => '',
-          'user_id' => 3,
+          'user_id' => 1,
           'status' => 'PUBLISHED',
           'sticky' => 'YES',
           'slug' => 'copywriting-aplikasi-payroll',

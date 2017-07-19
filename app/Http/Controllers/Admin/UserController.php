@@ -26,7 +26,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->service->paginated();
+        //$users = $this->service->paginated();
+        $users = User::orderBy('statuskerja_id')->orderBy('employee_number')->orderBy('name')->paginate();
         return view('admin.users.index')->with('users', $users);
     }
 

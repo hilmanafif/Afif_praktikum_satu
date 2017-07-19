@@ -41,6 +41,7 @@ class ContentsController extends Controller
         $findtopik->created_at = date($findtopik->created_at);
         $findtopik->jendela = implode (", ", $findtopikjendela);
         $findtopik->jumlah_opini = $contents->count();
+
         return view('contents.index', compact('contents', 'findtopik'));
     }
 

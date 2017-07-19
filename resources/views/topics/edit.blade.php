@@ -30,7 +30,7 @@ CKEDITOR.replace('description',
   @if ($user=Auth::user())
   <div class="row">
       <div class="col-md-12">
-          <h1>Topic : Edit</h1>
+          <h1>Topik : Edit</h1>
       </div>
   </div>
 
@@ -45,10 +45,10 @@ CKEDITOR.replace('description',
                   {!! csrf_field() !!}
                   {!! method_field('PATCH') !!}
 
-                  @if (in_array($user->roles->first()->name, ['admin','redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
+                  @if (in_array($user->roles->first()->name, ['redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
 
                   @form_maker_object($topic,[
-                    'name'=>['alt_name'=>'Judul'],
+                    'name'=>['alt_name'=>'Judul Topik'],
                     'description'=>['type'=>'text','alt_name'=>'Deskripsi Singkat'],
                     'body'=>['type'=>'text','alt_name'=>'Tajuk Rencana'],
                     'user_id'=>['type'=>'hidden'],
@@ -61,7 +61,7 @@ CKEDITOR.replace('description',
                   @else
 
                   @form_maker_object($topic,[
-                    'name'=>['alt_name'=>'Judul'],
+                    'name'=>['alt_name'=>'Judul Topik'],
                     'description'=>['type'=>'text','alt_name'=>'Deskripsi Singkat'],
                     'body'=>['type'=>'text','alt_name'=>'Tajuk Rencana'],
                     'user_id'=>['type'=>'hidden'],

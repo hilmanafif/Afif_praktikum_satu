@@ -81,6 +81,7 @@
 													@input_maker_label('Phone')
 													<input id="meta[phone]" class="form-control" type="text" name="meta[phone]" value="{{ $user['meta']['phone'] }}" placeholder="Phone">
 											</div>
+											<!--
 											<div class="raw-margin-top-24">
 													@input_maker_label('Bagian')
 													@input_maker_create('bagians', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'], $user)
@@ -97,7 +98,7 @@
 													@input_maker_label('Jabatan')
 													@input_maker_create('jabatans', ['type' => 'relationship', 'model' => 'App\Models\Jabatan', 'label' => 'name', 'value' => 'id'], $user)
 											</div>
-
+											-->
 											<div class="raw-margin-top-24">
 													<a class="btn btn-default pull-left" href="{{ URL::previous() }}">Cancel</a>
 													<button class="btn btn-primary pull-right" type="submit">Save</button>

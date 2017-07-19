@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-md-12" style="padding:0px 20px;">
-            <p style="color:#999; text-transform:uppercase;">{{ $findtopik->created_at }} | {{ $findtopik->jendela }} | {{ $findtopik->jumlah_opini }} Articles</p>
+            <p style="color:#999; text-transform:uppercase;">{{ $findtopik->created_at }} | {{ $findtopik->jendela }} | {{ $findtopik->jumlah_opini }} opini</p>
             <p style="color:#999; text-transform:uppercase;">Oleh: {{ $findtopik->writer }}</p>
             <p>
             {!! $findtopik->description !!}
@@ -24,8 +24,8 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>Article</th>
-                        <th>Writer</th>
+                        <th>Judul Opini</th>
+                        <th>Pakar / Penulis</th>
                         <th width="200px" class="text-right">Action</th>
                     </thead>
                     <tbody>
@@ -33,11 +33,9 @@
                         <tr>
                             <td>{{ $content->name }}</td>
                             <td>
-                              @if ($content->offlinewriter)
+                            @if ($content->offlinewriter_id)
                               {{ $content->offlinewriter->name }}
-                              @else
-                              {{ $content->user->name }}
-                              @endif
+                            @endif
                             </td>
                             <td>
                                 <form method="post" action="{!! route('contents.destroy', [$content->id]).'?topic='.$findtopik->id !!}">
@@ -61,5 +59,4 @@
           <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('contents.create').'?topic='.$findtopik->id !!}">Add New</a>
         </div>
     </div>
-    <br />
 @stop

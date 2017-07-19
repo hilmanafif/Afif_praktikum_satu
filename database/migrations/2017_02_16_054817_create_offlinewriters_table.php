@@ -15,12 +15,12 @@ class CreateOfflinewritersTable extends Migration
     {
         Schema::create('offlinewriters', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('name');
-			$table->string('description');
-			$table->string('twitter');
-			$table->string('email');
-			$table->string('phone');
-
+      			$table->string('name');
+      			$table->string('description');
+      			$table->string('twitter');
+      			$table->string('email');
+      			$table->string('phone');
+            $table->string('status')->default('NORMAL');
             $table->timestamps();
         });
     }

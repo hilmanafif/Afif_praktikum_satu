@@ -269,16 +269,44 @@
         <div class="tab-pane" id="4">
 					<div class="row">
 							<div class="col-md-8">
-									Pendidikan
+									[ Akan diisi data Pendidikan ]
 							</div>
 					</div>
 				</div>
 
 
         <div class="tab-pane" id="5">
+          <form method="POST" action="/admin/users/update">
 					<div class="row">
+              {{ method_field('PUT') }}
+              <input type="hidden" name="id" value="{{$user->id}}">
 							<div class="col-md-8">
-									Karir
+                {!! csrf_field() !!}
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Bagian')
+                    @input_maker_create('bagians', ['type' => 'relationship', 'model' => 'App\Models\Bagian', 'label' => 'name', 'value' => 'id'], $user)
+                </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Wilayah')
+                    @input_maker_create('wilayahs', ['type' => 'relationship', 'model' => 'App\Models\Wilayah', 'label' => 'name', 'value' => 'id'], $user)
+                </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Pangkat')
+                    @input_maker_create('pangkats', ['type' => 'relationship', 'model' => 'App\Models\Pangkat', 'label' => 'name', 'value' => 'id'], $user)
+                </div>
+                <div class="raw-margin-top-24">
+                    @input_maker_label('Jabatan')
+                    @input_maker_create('jabatans', ['type' => 'relationship', 'model' => 'App\Models\Jabatan', 'label' => 'name', 'value' => 'id'], $user)
+                </div>
+                <div class="row row-eq-height">
+                  <div class="col-md-10" style="margin-top:12px; border-top:1px solid #ddd;">
+                    <br />
+                    <a class="btn btn-default" href="{{ URL::previous() }}">Cancel</a>
+                    <button class="btn btn-primary" type="submit">Save</button>
+                  </div>
+                </div>
+                </form>
+
 							</div>
 					</div>
 				</div>

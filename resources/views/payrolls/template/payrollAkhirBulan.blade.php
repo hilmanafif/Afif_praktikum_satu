@@ -7,7 +7,7 @@
       <td>Gaji Pokok</td>
       <td>Rp. {{number_format($payroll->gapok,0,',','.')}}</td>
 
-      <td>Dapenma</td>
+      <td>BPJS Kesehatan</td>
       <td></td>
 
       <td>BTN</td>
@@ -21,7 +21,7 @@
       <td>BPJS KT</td>
       <td></td>
 
-      <td>Motor</td>
+      <td>Kendaraan</td>
       <td></td>
       <td>Ke x sisa y</td>
     </tr>
@@ -29,7 +29,7 @@
       <td>Tunjangan Anak</td>
       <td>Rp. {{number_format($payroll['tunjanganAnak'],0,',','.')}}</td>
 
-      <td>Iuran DW</td>
+      <td>BPJS Pensiun</td>
       <td></td>
 
       <td>Kop. Rutin</td>
@@ -40,7 +40,7 @@
       <td>Natura</td>
       <td>Rp. {{number_format($payroll['natura'],0,',','.')}}</td>
 
-      <td>Inkop Pamsi</td>
+      <td>Dapenma</td>
       <td></td>
 
       <td>Kop. Perum</td>
@@ -51,7 +51,7 @@
       <td>Honor</td>
       <td></td>
 
-      <td>Iuran Koperasi</td>
+      <td>Hutang Pegawai</td>
       <td></td>
 
       <td>Kop. Kredit</td>
@@ -62,7 +62,7 @@
       <td><b>Sub Total A</b></td>
       <td><b>Rp. {{number_format($payroll->subtotalA,0,',','.')}}</b></td>
 
-      <td>Hutang Pegawai</td>
+      <td>ZIS</td>
       <td></td>
 
       <td>BJB</td>
@@ -70,10 +70,10 @@
       <td>Ke x sisa y</td>
     </tr>
     <tr>
-      <td>Tunjangan Kinerja</td>
-      <td>Rp. {{number_format($payroll['tunjanganKinerja'],0,',','.')}}</td>
+      <td>Tunjangan Jabatan</td>
+      <td>Rp. {{number_format($payroll['tunjanganJabatan'],0,',','.')}}</td>
 
-      <td>ZIS</td>
+      <td>Iuran DW</td>
       <td></td>
 
       <td>Waserda</td>
@@ -82,10 +82,10 @@
 
     </tr>
     <tr>
-      <td>Tunjangan Jabatan</td>
-      <td>Rp. {{number_format($payroll['tunjanganJabatan'],0,',','.')}}</td>
+      <td>Tunjangan Kinerja</td>
+      <td>Rp. {{number_format($payroll['tunjanganKinerja'],0,',','.')}}</td>
 
-      <td>Lain-lain</td>
+      <td>Iuran Koperasi</td>
       <td></td>
       <td colspan="3" rowspan="6" style="border:none">
         <div class="row">
@@ -109,17 +109,17 @@
       </td>
     </tr>
     <tr>
-      <td>Tunjangan Kendaraan</td>
-      <td>Rp. {{number_format($payroll['tunjanganKendaraan'],0,',','.')}}</td>
-
-      <td>BPJS Kesehatan</td>
-      <td></td>
-    </tr>
-    <tr>
       <td>Tunjangan Pelaksana</td>
       <td>Rp. {{number_format($payroll['tunjanganPelaksana'],0,',','.')}}</td>
 
-      <td>BPJS Pensiun</td>
+      <td>Inkop Pamsi</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Tunjangan Kendaraan</td>
+      <td>Rp. {{number_format($payroll['tunjanganKendaraan'],0,',','.')}}</td>
+
+      <td>Lain-lain</td>
       <td></td>
     </tr>
     <tr>

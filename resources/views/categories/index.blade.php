@@ -9,7 +9,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('categories.create') !!}">Add New</a>
-            <h1 class="pull-left">Category</h1>
+            <h1 class="pull-left">Jendela</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">
@@ -19,7 +19,7 @@
             @else
                 <table class="table table-striped">
                     <thead>
-                        <th>Category</th>
+                        <th>Judul Jendela</th>
                         <th width="200px" class="text-right">Action</th>
                     </thead>
                     <tbody>

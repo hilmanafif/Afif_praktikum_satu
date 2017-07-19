@@ -16,8 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(RolesTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(CompanyTableSeeder::class);
-        $this->call(DepartmentTableSeeder::class);
-        $this->call(LocationTableSeeder::class);
 
         $this->call(AgamaTableSeeder::class);
         $this->call(StatKawinTableSeeder::class);
@@ -32,19 +30,13 @@ class DatabaseSeeder extends Seeder
         $this->call(BagianTableSeeder::class);
         $this->call(SubjabatanTableSeeder::class);
 
-
         $this->call(TimezoneTableSeeder::class);
-        $this->call(EducationTableSeeder::class);
         $this->call(LanguageTableSeeder::class);
-        $this->call(SkillTableSeeder::class);
-        $this->call(EmploymentstatusTableSeeder::class);
-        $this->call(JobtitleTableSeeder::class);
-        $this->call(SalarycomponentTableSeeder::class);
-        $this->call(LeavetypeTableSeeder::class);
-        $this->call(DocumenttypeTableSeeder::class);
 
+        $this->call(OfflinewriterTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
         $this->call(ContentTableSeeder::class);
+        $this->call(TopicTableSeeder::class);
 
         Model::reguard();
     }

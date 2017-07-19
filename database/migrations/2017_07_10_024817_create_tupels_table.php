@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCategoriesTable extends Migration
+class CreateTupelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->increments('id');
-			$table->string('name');
-			$table->string('description');
-			$table->text('body');
-
-            $table->timestamps();
+      Schema::create('tupels', function (Blueprint $table) {
+      $table->increments('id');
+			$table->integer('tupel');
+			$table->string('jabatan');
+			$table->integer('tukebar');
+			$table->integer('tujkinerja');
+      $table->timestamps();
         });
     }
 
@@ -30,6 +30,6 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+          Schema::dropIfExists('tupels');
     }
 }

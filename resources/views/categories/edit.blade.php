@@ -4,7 +4,7 @@
 
   <div class="row">
       <div class="col-md-12">
-          <h1>Category: Edit</h1>
+          <h1>Jendela : Edit</h1>
       </div>
   </div>
 

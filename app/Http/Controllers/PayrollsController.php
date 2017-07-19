@@ -11,6 +11,7 @@ use App\Models\Payroll;
 use App\Models\User;
 use App\Models\GajiPokok;
 use PDF;
+use DB;
 
 class PayrollsController extends Controller
 {
@@ -26,7 +27,7 @@ class PayrollsController extends Controller
      */
     public function index(Request $request)
     {
-        $payrolls = $this->service->paginated();
+        $payrolls = Payroll::where('approved','=',1)->orderBy('title')->orderBy('employee_number')->orderBy('name')->paginate();
         $payrollPeriod = Payroll::select('start_date','end_date')->groupBy('start_date','end_date')->orderBy('start_date', 'DESC')->get();
         return view('payrolls.index',compact('payrolls','payrollPeriod'));
     }
@@ -71,9 +72,10 @@ class PayrollsController extends Controller
     }
 
     public function generatePayroll(Request $request){
-      $employees=User::where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
+      $employees=User::where('statuskerja_id','=',1)->where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
       $start_date=$request->fromDate;
       $end_date=$request->toDate;
+      $slip_name=$request->name;
       $phase=$request->phase;
       //HARDCODED PAYROLL TYPE
         //FIRST PHASE PAYROLL
@@ -86,16 +88,18 @@ class PayrollsController extends Controller
                           ->where('ruang',$employee->ruang)
                           ->first();
           if (!$gapok) {
-            return "gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
+            return "Gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
           }
-          $datas = ["title"=>"Gaji ".$employee->name." tahap 1",
-                    "user_id"=>$employee->id,
-                    "name"=>$employee->name,
-                    "pangkat_id"=>$employee->pangkat_id,
-                    "start_date"=>$start_date,
-                    "end_date"=>$end_date,
-                    "gapok"=>$gapok->gaji_pokok,
-                    "payrolltype_id"=>1];
+          $datas = ["title" => $slip_name,
+                    "user_id" => $employee->id,
+                    "employee_number" => $employee->employee_number,
+                    "name" => $employee->name,
+                    "pangkat_id" => $employee->pangkat_id,
+                    "start_date" => $start_date,
+                    "end_date" => $end_date,
+                    "gapok" => $gapok->gaji_pokok,
+                    "payrolltype_id" => 1,
+                    "approved" => 0];
           $result = $this->service->create($datas);
           }
         //SECOND PHASE PAYROLL
@@ -106,21 +110,23 @@ class PayrollsController extends Controller
           if (!$gapok) {
             return "gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
           }
-          $datas = ["title"=>"Gaji ".$employee->name." tahap 2",
+          $datas = ["title"=> $slip_name,
                     "user_id"=>$employee->id,
+                    "employee_number"=>$employee->employee_number,
                     "name"=>$employee->name,
                     "pangkat_id"=>$employee->pangkat_id,
                     "start_date"=>$start_date,
                     "end_date"=>$end_date,
                     "gapok"=>$gapok->gaji_pokok,
-                    "payrolltype_id"=>2];
+                    "payrolltype_id"=>2,
+                    "approved"=> 0];
           $result = $this->service->create($datas);
         }
         else {
           return 404;
         }
       }
-      return redirect(route('payrolls.index'))->with('message', 'Payroll Generated');
+      return redirect(route('payrollwizards',['button'=>'tostep2','status'=>'generated', 'total' => count($employees)]));
     }
 
     /**
@@ -216,6 +222,7 @@ class PayrollsController extends Controller
 
         return redirect(route('payrolls.index'))->with('message', 'Failed to delete');
     }
+
     public function cetakSlipGaji($id)
     {
         $payroll = $this->service->find($id);
@@ -313,5 +320,41 @@ class PayrollsController extends Controller
           $pdf = PDF::loadView('payrolls.cetakMultiplePayroll', $data)->setPaper('a4')->setOrientation('landscape');
           $filename = "Slip gaji.pdf";
           return $pdf->inline($filename);
+    }
+
+    public function wizard(Request $request)
+    {
+        $unapproveds = Payroll::groupBy('title')->select('title', DB::raw('count(*) as total'))->where('approved','=',0)->get();
+        return view('payrolls.wizard')->with('unapproveds',$unapproveds);
+    }
+
+    public function wizardreject(Request $request)
+    {
+        $result = Payroll::where('approved','=',0)->where('title','=',$request->title)->delete();
+
+        if ($result) {
+            return redirect(route('payrollwizards',['button'=>'tostep3']))->with('message', 'Generated slip berhasil ditolak/dihapus!');
+        }
+        return redirect(route('payrollwizards',['button'=>'tostep3']))->with('message', 'Generated slip gagal ditolak/dihapus!');
+    }
+
+    public function wizardapprove(Request $request)
+    {
+        $result = Payroll::where('approved','=',0)->where('title','=',$request->title)->update(['approved' => 1]);
+
+        if ($result) {
+            return redirect(route('payrollwizards',['button'=>'tostep3']))->with('message', 'Generated slip berhasil diapprove!');
+        }
+        return redirect(route('payrollwizards',['button'=>'tostep3']))->with('message', 'Generated slip gagal diapprove!');
+    }
+
+    public function wizardreview(Request $request)
+    {
+        $payrolls = Payroll::where('approved','=',0)->where('title','=',$request->title)->orderBy('employee_number')->orderBy('name')->paginate();
+        //$payrollPeriod = Payroll::select('start_date','end_date')->groupBy('start_date','end_date')->orderBy('start_date', 'DESC')->get();
+        $title = $request->title;
+        $total_slip = $payrolls->total();
+        $total_gapok = Payroll::where('approved','=',0)->where('title','=',$request->title)->sum('gapok');
+        return view('payrolls.review',compact('payrolls','title','total_slip','total_gapok'));
     }
 }

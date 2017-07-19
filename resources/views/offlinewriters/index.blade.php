@@ -9,7 +9,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('offlinewriters.create') !!}">Add New</a>
-            <h1 class="pull-left">Non-user Writer</h1>
+            <h1 class="pull-left">Pakar</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">

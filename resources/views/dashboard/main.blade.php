@@ -82,14 +82,15 @@
     <div class="row panel-body megamenu">
         <div class="col-xs-6 col-md-4">
           <h4>Daftar Penghasilan</h4>
-          <a href="{!! url('/payrolls') !!}"><span class="fa fa-money"></span> Struk Gaji Awal Bulan</a>
-          <a href="{!! url('/payrolls') !!}"><span class="fa fa-print"></span> Penghasilan Perbulan</a>
+          <a href="{!! url('/payrollwizards') !!}"><span class="fa fa-money"></span> Wizard/Panduan Proses Penggajian</a>
+          <a href="{!! url('/payrolls') !!}"><span class="fa fa-print"></span> Print Slip Gaji Bulanan</a>
+          <a href="{!! url('/payrolls') !!}"><span class="fa fa-print"></span> Print Slip Tunjangan Bulanan</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-bank"></span> Penghasilan Tanpa Potongan Bank</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-hourglass-half "></span> Dapenma dan Pesangon</a>
         </div>
         <div class="col-xs-6 col-md-4">
           <h4>Input Data</h4>
-          <a href="{!! url('/admin/users') !!}"><span class="fa fa-credit-card"></span> Data Pegawai</a>
+          <a href="{!! url('/admin/users') !!}"><span class="fa fa-user"></span> Data Pegawai</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-calendar-o"></span> Absensi</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-calculator"></span> Potongan</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-hourglass-1"></span> Jamsostek dan Dapenma</a>
@@ -110,7 +111,7 @@
     <div class="row panel-body megamenu">
         <div class="col-xs-6 col-md-4">
           <h4>Kepegawaian</h4>
-          <a class="disable" href="{!! url('') !!}"><span class="fa fa-user"></span> Detail Data</a>
+          <a href="{!! url('/admin/users') !!}"><span class="fa fa-user"></span> Data Pegawai</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-file-text"></span> Curriculum Vitae</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-glass"></span> Ulang Tahun</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-eye"></span> Penilaian Kinerja</a>

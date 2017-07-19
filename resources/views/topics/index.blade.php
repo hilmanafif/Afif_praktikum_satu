@@ -10,7 +10,7 @@
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
             {!! Form::close() !!}
             <a class="btn btn-primary pull-right" style="margin-top: 25px" href="{!! route('topics.create') !!}">Add New</a>
-            <h1 class="pull-left">Topic</h1>
+            <h1 class="pull-left">Topik</h1>
         </div>
     </div>
     <div class="row raw-margin-top-24">
@@ -24,7 +24,7 @@
                 </style>
                 <table class="table table-striped">
                     <thead>
-                        <th>Judul</th>
+                        <th>Judul Topik</th>
                         <th width="40%" class="text-right">Action</th>
                     </thead>
                     <tbody>
@@ -42,21 +42,19 @@
                                     {!! method_field('DELETE') !!}
                                     <button class="btn btn-danger btn-xs pull-right" type="submit" onclick="return confirm('Are you sure you want to delete this topic?')"><i class="fa fa-trash"></i> Delete</button>
                                 </form>
-                                <!--
                                 <a class="btn btn-warning btn-xs" href="{!! url('/'.'topik'.'/'.$topic->slug) !!}"><i class="fa fa-search"></i> Lihat</a>
-                                -->
                                 <a class="btn btn-warning btn-xs" href="{!! route('topics.edit', [$topic->id]) !!}"><i class="fa fa-pencil"></i> Edit</a>
-                                <a class="btn btn-default btn-xs" href="{!! url('/'.'contents'.'/?topic='.$topic->id) !!}">Articles</a>
-                                <span class="label label-default disabled">Comment</span>
+                                <a class="btn btn-default btn-xs" href="{!! url('/'.'contents'.'/?topic='.$topic->id) !!}">Opini Pakar</a>
+                                <span class="label label-default disabled">Opini Publik</span>
                                 @if($topic->status == 'PUBLISHED')
-                                  @if (in_array($user->roles->first()->name, ['admin','redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
+                                  @if (in_array($user->roles->first()->name, ['redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
                                   <span class="label label-info">Published</span>
                                   @else
                                   <span class="label label-info disabled">Published</span>
                                   @endif
                                 @endif
                                 @if($topic->status == 'DRAFT')
-                                  @if (in_array($user->roles->first()->name, ['admin','redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
+                                  @if (in_array($user->roles->first()->name, ['redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
                                   <span class="label label-success">Draft</span>
                                   @else
                                   <span class="label label-success disabled">Draft</span>

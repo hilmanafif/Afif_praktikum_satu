@@ -22,7 +22,8 @@ class Payroll extends Model
 		'end_date',
 		'gapok',
     'payrolltype_id',
-
+    'approved',
+    'employee_number'
     ];
 
     public static $rules = [

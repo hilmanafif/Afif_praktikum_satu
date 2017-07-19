@@ -40,10 +40,10 @@ CKEDITOR.replace('description',
             {!! Form::open(['route' => 'topics.store', 'files' => true]) !!}
                 {!! csrf_field() !!}
 
-                @if (in_array($user->roles->first()->name, ['admin','redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
+                @if (in_array($user->roles->first()->name, ['redaktur','wakilpemimpinredaksi','pemimpinredaksi']))
 
                 @form_maker_table("topics",[
-                  'name'=>['alt_name'=>'Judul'],
+                  'name'=>['alt_name'=>'Judul Topik'],
                   'description'=>['type'=>'text','alt_name'=>'Deskripsi Singkat'],
                   'body'=>['type'=>'text','alt_name'=>'Tajuk Rencana'],
                   'user_id'=>['type'=>'hidden'],
@@ -57,7 +57,7 @@ CKEDITOR.replace('description',
                 @else
 
                 @form_maker_table("topics",[
-                  'name'=>['alt_name'=>'Judul'],
+                  'name'=>['alt_name'=>'Judul Topik'],
                   'description'=>['type'=>'text','alt_name'=>'Deskripsi Singkat'],
                   'body'=>['type'=>'text','alt_name'=>'Tajuk Rencana'],
                   'user_id'=>['type'=>'hidden'],

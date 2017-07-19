@@ -15,17 +15,16 @@ class CreateContentsTable extends Migration
     {
         Schema::create('contents', function (Blueprint $table) {
             $table->increments('id');
-			$table->string('name');
-			$table->string('description');
-			$table->string('quote');
-			$table->text('body');
-			$table->integer('user_id');
-			$table->integer('offline_writer_id');
-			$table->string('offline_writer');
-			$table->integer('category_id');
-			$table->integer('topic_id');
-			$table->string('status');
-
+      			$table->string('name');
+      			$table->string('description');
+      			$table->string('quote');
+      			$table->text('body');
+      			$table->integer('user_id');
+      			$table->integer('offlinewriter_id');
+      			$table->string('offlinewriter_status')->default('YES');
+      			$table->integer('category_id');
+      			$table->integer('topic_id');
+            $table->string('status')->default('DRAFT');
             $table->timestamps();
         });
     }

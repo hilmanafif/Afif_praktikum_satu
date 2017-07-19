@@ -21,7 +21,7 @@ CKEDITOR.replace('description',
 
 <div class="row">
     <div class="col-md-12">
-        <h1>Non-user Writer: Create</h1>
+        <h1>Pakar: Create</h1>
     </div>
 </div>
 
