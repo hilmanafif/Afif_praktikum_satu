@@ -83,8 +83,8 @@
         <div class="col-xs-6 col-md-4">
           <h4>Daftar Penghasilan</h4>
           <a href="{!! url('/payrollwizards') !!}"><span class="fa fa-money"></span> Wizard/Panduan Proses Penggajian</a>
-          <a href="{!! url('/payrolls') !!}"><span class="fa fa-print"></span> Print Slip Gaji Bulanan</a>
-          <a href="{!! url('/payrolls') !!}"><span class="fa fa-print"></span> Print Slip Tunjangan Bulanan</a>
+          <a href="{!! url('/payrolls?payrolltype=1') !!}"><span class="fa fa-print"></span> Print Slip Gaji Bulanan</a>
+          <a href="{!! url('/payrolls?payrolltype=2') !!}"><span class="fa fa-print"></span> Print Slip Tunjangan Bulanan</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-bank"></span> Penghasilan Tanpa Potongan Bank</a>
           <a class="disable" href="{!! url('') !!}"><span class="fa fa-hourglass-half "></span> Dapenma dan Pesangon</a>
         </div>

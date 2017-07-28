@@ -30,5 +30,3 @@
     <td colspan="3">{{isset($payroll->users->jabatans->name)?$payroll->users->jabatans->name:"Tidak Diketahui"}}</td>
   </tr>
 </table>
-
-<hr>

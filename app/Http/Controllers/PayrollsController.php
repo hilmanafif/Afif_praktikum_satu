@@ -27,7 +27,7 @@ class PayrollsController extends Controller
      */
     public function index(Request $request)
     {
-        $payrolls = Payroll::where('approved','=',1)->orderBy('title')->orderBy('employee_number')->orderBy('name')->paginate();
+        $payrolls = Payroll::where('payrolltype_id','=',$request->payrolltype)->where('approved','=',1)->orderBy('start_date', 'DESC')->orderBy('employee_number')->orderBy('name')->paginate();
         $payrollPeriod = Payroll::select('start_date','end_date')->groupBy('start_date','end_date')->orderBy('start_date', 'DESC')->get();
         return view('payrolls.index',compact('payrolls','payrollPeriod'));
     }
@@ -40,7 +40,8 @@ class PayrollsController extends Controller
     public function search(Request $request)
     {
         $payrolls = $this->service->search($request->search);
-        return view('payrolls.index')->with('payrolls', $payrolls);
+        $payrollPeriod = Payroll::select('start_date','end_date')->groupBy('start_date','end_date')->orderBy('start_date', 'DESC')->get();
+        return view('payrolls.index',compact('payrolls','payrollPeriod'));
     }
 
     /**
@@ -76,11 +77,11 @@ class PayrollsController extends Controller
       $start_date=$request->fromDate;
       $end_date=$request->toDate;
       $slip_name=$request->name;
-      $phase=$request->phase;
+      $payrolltype=$request->payrolltype;
       //HARDCODED PAYROLL TYPE
         //FIRST PHASE PAYROLL
         foreach ($employees as $employee) {
-        if ($phase==1){
+        if ($payrolltype){
           //FIND GAPOK
           // $pangkat=$employee->pangkats;
           // $masakerja=User::masakerja($employee->id);
@@ -98,12 +99,13 @@ class PayrollsController extends Controller
                     "start_date" => $start_date,
                     "end_date" => $end_date,
                     "gapok" => $gapok->gaji_pokok,
-                    "payrolltype_id" => 1,
+                    "payrolltype_id" => $payrolltype,
                     "approved" => 0];
           $result = $this->service->create($datas);
           }
         //SECOND PHASE PAYROLL
-        elseif ($phase==2) {
+        /*
+        elseif ($payrolltype==2) {
           $gapok=GajiPokok::where('pangkat_id',$employee->pangkat_id)
                           ->where('ruang',$employee->ruang)
                           ->first();
@@ -118,10 +120,11 @@ class PayrollsController extends Controller
                     "start_date"=>$start_date,
                     "end_date"=>$end_date,
                     "gapok"=>$gapok->gaji_pokok,
-                    "payrolltype_id"=>2,
+                    "payrolltype_id"=>$payrolltype,
                     "approved"=> 0];
           $result = $this->service->create($datas);
         }
+        */
         else {
           return 404;
         }
@@ -148,22 +151,7 @@ class PayrollsController extends Controller
         $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
         $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
         $payroll['tunjanganKendaraan']=$employee->jabatans->Tunken;
-        //TEMPORARY
-        if ($employee->tupel_id=="P1") {
-          $payroll['tunjanganPelaksana']=100000;
-        }
-        elseif ($employee->tupel_id=="P2") {
-          $payroll['tunjanganPelaksana']=200000;
-        }
-        elseif ($employee->tupel_id=="P3") {
-          $payroll['tunjanganPelaksana']=300000;
-        }
-        elseif ($employee->tupel_id=="P4") {
-          $payroll['tunjanganPelaksana']=400000;
-        }
-        else {
-          $payroll['tunjanganPelaksana']=0;
-        }
+        $payroll['tunjanganPelaksana']=$userModel->tunjanganPelaksana($employee->tupel_id);
 
         $payroll['subtotal']=$payroll->gapok;
         $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];

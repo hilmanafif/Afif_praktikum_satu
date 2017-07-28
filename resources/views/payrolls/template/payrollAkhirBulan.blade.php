@@ -87,25 +87,11 @@
 
       <td>Iuran Koperasi</td>
       <td></td>
-      <td colspan="3" rowspan="6" style="border:none">
-        <div class="row">
-          <div class="col-xs-12">
-            <table class="table text-center" style="border:none">
-              <tr>
-                <td style="border:none">{{ App\Models\Company::find(1)->city }}, {{date("d F Y")}}</td>
-              </tr>
-              <tr>
-                <td style="border:none">{{ App\Models\Company::find(1)->officer_position }}</td>
-              </tr>
-              <tr>
-                <td style="border:none;height:100px;"></td>
-              </tr>
-              <tr>
-                <td style="border:none">{{ App\Models\Company::find(1)->officer_name }}</td>
-              </tr>
-            </table>
-          </div>
-      </div>
+      <td colspan="3" rowspan="6" style="text-align:center;">
+        <p>{{ App\Models\Company::find(1)->city }}, {{date("d F Y")}}</p>
+        <p>{{ App\Models\Company::find(1)->officer_position }}</p>
+        <br /><br /><br /><br /><br />
+        <p>{{ App\Models\Company::find(1)->officer_name }}</p>
       </td>
     </tr>
     <tr>

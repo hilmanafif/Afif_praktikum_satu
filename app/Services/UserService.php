@@ -190,18 +190,21 @@ class UserService
      */
     public function update($userId, $payload)
     {
+        /*
         if (isset($payload['meta']) && ! isset($payload['meta']['terms_and_cond'])) {
             throw new Exception("You must agree to the terms and conditions.", 1);
         }
+        */
 
         try {
             return DB::transaction(function () use ($userId, $payload) {
-                $user = $this->model->find($userId);
-
+                $user = $this->model->find(262);
+                /*
                 $payload['pangkat_id'] = $payload['pangkats'];
                 $payload['jabatan_id'] = $payload['jabatans'];
                 $payload['bagian_id'] = $payload['bagians'];
                 $payload['wilayah_id'] = $payload['wilayahs'];
+                */
 
                 if (isset($payload['meta']['marketing']) && ($payload['meta']['marketing'] == 1 || $payload['meta']['marketing'] == 'on')) {
                     $payload['meta']['marketing'] = 1;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use Auth;
 use App\Models\Logsystem;
+use App\Models\Anggotakeluarga;
 use App\Models\Agama;
 use App\Models\User;
 use App\Models\UserMeta;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Services\UserService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserInviteRequest;
+use Hash;
 
 class UserController extends Controller
 {
@@ -106,7 +108,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $agamas = Agama::select('name','id')->get();
         $user = $this->service->find($id);
@@ -114,7 +116,10 @@ class UserController extends Controller
         $jumlahAnak=$getUser->jumlahAnak($user->id);
         $jumlahPasangan=$getUser->jumlahPasangan($user->id);
         $jumlahAnggotaKeluarga=$jumlahPasangan+$jumlahAnak;
-        return view('admin.users.edit',compact('user', 'agamas','jumlahAnak','jumlahPasangan','jumlahAnggotaKeluarga'));
+        if ($request->mode=='edit') {
+          $anggotakeluarga = Anggotakeluarga::find($request->anggotakeluarga_id);
+        }
+        return view('admin.users.edit',compact('user', 'agamas','jumlahAnak','jumlahPasangan','jumlahAnggotaKeluarga','anggotakeluarga'));
     }
 
     /**
@@ -124,10 +129,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        if ($request->meta && $request->user_id){
-          $userMeta=UserMeta::findOrFail($request->user_id);
+
+        if ($request->meta && $request->id){
+          $userMeta=UserMeta::findOrFail($request->id);
           $userMeta->update($request->meta);
           return back()->with('message', 'Successfully updated');
         }
@@ -159,5 +165,28 @@ class UserController extends Controller
         }
 
         return redirect('admin/users')->with('message', 'Failed to delete');
+    }
+
+    public function password($id)
+    {
+        $user = User::find($id);
+
+        if ($user) {
+            return view('admin.users.password')
+            ->with('user', $user);
+        }
+
+        return back()->withErrors(['Could not find user']);
+    }
+
+    public function passwordupdate(Request $request, $id)
+    {
+        $password = $request->new_password;
+        $user = User::find($id);
+        User::where('id',$id)->update([
+                "password" => $password,
+            ]);
+        return redirect('admin/users/'.$user->id.'/edit')->with('message', 'Password updated successfully');
+
     }
 }

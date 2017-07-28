@@ -223,9 +223,32 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::get('users/invite', 'UserController@getInvite');
         Route::get('users/switch/{id}', 'UserController@switchToUser');
         Route::post('users/invite', 'UserController@postInvite');
+        Route::get('users/password/{id}', 'UserController@password');
+        Route::post('users/password/{id}', 'UserController@passwordupdate');
         // Roles
         Route::resource('roles', 'RoleController', ['except' => ['show']]);
         Route::post('roles/search', 'RoleController@search');
         Route::get('roles/search', 'RoleController@index');
     });
 });
+
+// Tupel
+Route::resource('tupels', 'TupelsController');
+Route::post('tupels/search', [
+    'as' => 'tupels.search',
+    'uses' => 'TupelsController@search'
+]);
+
+// Tupel
+Route::resource('tupels', 'TupelsController');
+Route::post('tupels/search', [
+    'as' => 'tupels.search',
+    'uses' => 'TupelsController@search'
+]);
+
+// Tupel
+Route::resource('tupels', 'TupelsController');
+Route::post('tupels/search', [
+    'as' => 'tupels.search',
+    'uses' => 'TupelsController@search'
+]);

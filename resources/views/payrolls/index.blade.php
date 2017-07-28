@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-12">
             <h1 class="pull-left">Payrolls</h1>
-            {{-- {!! Form::open(['route' => 'payrolls.search','class' => 'pull-right raw-margin-top-24 raw-margin-left-24']) !!}
+            {!! Form::open(['route' => 'payrolls.search','class' => 'pull-right raw-margin-top-24 raw-margin-left-24']) !!}
               {!! csrf_field() !!}
               <input class="form-control form-inline pull-right" name="search" placeholder="Search">
-            {!! Form::close() !!} --}}
+            {!! Form::close() !!}
             <div class="row">
 
             <form action="{{url('payrolls/cetakMultiple')}}" method="post">
@@ -53,7 +53,8 @@
                         <th><input type="checkbox" id="checkAll"></th>
                         <th>NIK</th>
                         <th>Nama</th>
-                        <th>Periode</th>
+                        <th>Judul Slip</th>
+                        {{-- <th>Periode</th> --}}
                         {{-- <th>Gapok</th> --}}
                         <th>Action</th>
                     </thead>
@@ -63,10 +64,11 @@
                           <td><input type="checkbox" name="cetakList[]" value="{{$payroll->id}}"></td>
                           <td>{{ $payroll->users->employee_number }}</td>
                           <td>{{ $payroll->name }}</td>
-                          <td>{{ date("d F Y", strtotime($payroll->start_date)) }} - {{ date("d F Y", strtotime($payroll->end_date)) }}</td>
+                          <td>{{ $payroll->title }}</td>
+                          {{-- <td>{{ date("d F Y", strtotime($payroll->start_date)) }} - {{ date("d F Y", strtotime($payroll->end_date)) }}</td> --}}
                           {{-- <td>Rp. {{ number_format($payroll->gapok,0,'','.') }}</td> --}}
                             <td>
-                                <a class="btn btn-primary btn-xs" href="{{url('payrolls/'.$payroll->id)}}"><i class="fa fa-search"></i> View</a>
+                                <a class="btn btn-primary btn-xs" href="{{url('payrolls/'.$payroll->id.'?payrolltype='.$payroll->payrolltype_id)}}"><i class="fa fa-search"></i> View</a>
                                 <a class="btn btn-success btn-xs" target="_blank" href="{{url('payrolls/cetak/'.$payroll->id)}}"><i class="fa fa-print"></i> Print</a>
                             </td>
                         </tr>
@@ -74,7 +76,7 @@
                     </tbody>
                 </table>
                 <div class="row text-center">
-                    {!! $payrolls; !!}
+                    {!! $payrolls->appends(request()->input())->links(); !!}
                 </div>
             @endif
         </div>

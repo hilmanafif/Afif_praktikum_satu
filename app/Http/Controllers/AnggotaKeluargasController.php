@@ -103,7 +103,8 @@ class AnggotaKeluargasController extends Controller
 
         if ($result) {
             //return back()->with('message', 'Successfully updated');
-            return redirect(route('anggotakeluargas.index'))->with('message', 'Successfully updated');
+            //return redirect(route('anggotakeluargas.index'))->with('message', 'Successfully updated');
+            return redirect('admin/users/'.$request->user_id.'/edit?button=4')->with('message', 'Successfully deleted')->with('button', '4');
         }
 
         return back()->with('message', 'Failed to update');

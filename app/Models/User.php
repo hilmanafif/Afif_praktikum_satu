@@ -10,6 +10,7 @@ use App\Models\Team;
 use App\Models\UserMeta;
 use App\Models\Wilayah;
 use App\Models\Jabatan;
+use App\Models\Tupel;
 use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -110,6 +111,7 @@ class User extends Authenticatable
       }
       return $gapok->gaji_pokok;
     }
+
     public function tunjanganIstri($id){
       $jumlahPasangan=$this->jumlahPasangan($id);
       $gapok=$this->gajiPokok($id);
@@ -120,9 +122,9 @@ class User extends Authenticatable
       }
 
       $tunjanganIstri=$gapok*$tunjanganPersen*$jumlahPasangan;
-
       return $tunjanganIstri;
     }
+
     public function tunjanganAnak($id){
       $jumlahAnak=$this->jumlahAnak($id);
       $gapok=$this->gajiPokok($id);
@@ -133,9 +135,9 @@ class User extends Authenticatable
       }
 
       $tunjanganAnak=$gapok*$tunjanganPersen*$jumlahAnak;
-
       return $tunjanganAnak;
     }
+
     public function natura($id){
       $jumlahAnak=$this->jumlahAnak($id);
       $jumlahPasangan=$this->jumlahPasangan($id);
@@ -150,9 +152,14 @@ class User extends Authenticatable
 
       $jumlahJiwa=$jumlahAnak+$jumlahPasangan+1;
       $natura=$jumlahJiwa*$naturaPerJiwa;
-
       return $natura;
     }
+
+    public function tunjanganPelaksana($id){
+      $tunjanganPelaksana = Tupel::where('id','=',$id);
+      return $tunjanganPelaksana->first()->tupel;
+    }
+
     /**
      * Check if user has role
      *

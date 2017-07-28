@@ -29,7 +29,7 @@ class CompanyTableSeeder extends Seeder
       */
       // Deployment untuk PDAM
       Company::create([
-          'name' => 'PDAM Tirtaraharja',
+          'name' => 'PDAM Tirta Raharja',
           'tax' => '02.130.0367009',
           'reg' => '180/7009/SIUP-K/341.23/2015',
           'phone' => '+6222-6654184',

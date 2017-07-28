@@ -13,13 +13,15 @@ class CreateTupelsTable extends Migration
      */
     public function up()
     {
-      Schema::create('tupels', function (Blueprint $table) {
-      $table->increments('id');
-			$table->integer('tupel');
-			$table->string('jabatan');
-			$table->integer('tukebar');
-			$table->integer('tujkinerja');
-      $table->timestamps();
+        Schema::create('tupels', function (Blueprint $table) {
+            $table->increments('id');
+		$table->integer('tupel');
+		$table->integer('tukebar');
+		$table->integer('tujkinerja');
+		$table->string('jabatan');
+		$table->integer('jabatan_id');
+
+            $table->timestamps();
         });
     }
 
@@ -30,6 +32,6 @@ class CreateTupelsTable extends Migration
      */
     public function down()
     {
-          Schema::dropIfExists('tupels');
+        Schema::dropIfExists('tupels');
     }
 }

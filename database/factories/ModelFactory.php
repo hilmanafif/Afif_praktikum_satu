@@ -853,3 +853,63 @@ $factory->define(App\Models\AnggotaKeluarga::class, function (Faker\Generator $f
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Tupel Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Tupel::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'tupel' => '1',
+		'tukebar' => '1',
+		'tujkinerja' => '1',
+		'jabatan' => '1',
+		'jabatan_id' => '1',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Tupel Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Tupel::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'tupel' => '1',
+		'tukebar' => '1',
+		'tujkinerja' => '1',
+		'jabatan' => '1',
+		'jabatan_id' => '1',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Tupel Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Tupel::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'tupel' => '1',
+		'tukebar' => '1',
+		'tujkinerja' => '1',
+		'jabatan' => '1',
+		'jabatan_id' => '1',
+
+
+    ];
+});

@@ -2,10 +2,10 @@
 
 namespace App\Services;
 
-use App\Models\Payroll;
+use App\Models\Tupel;
 use Illuminate\Support\Facades\Schema;
 
-class PayrollService
+class TupelService
 {
     /**
      * Service Model
@@ -24,11 +24,11 @@ class PayrollService
     /**
      * Service Constructor
      *
-     * @param Payroll $payroll
+     * @param Tupel $tupel
      */
-    public function __construct(Payroll $payroll)
+    public function __construct(Tupel $tupel)
     {
-        $this->model        = $payroll;
+        $this->model        = $tupel;
         $this->pagination   = env('PAGINATION', 25);
     }
 
@@ -63,11 +63,10 @@ class PayrollService
         $query = $this->model->orderBy('created_at', 'desc');
         $query->where('id', 'LIKE', '%'.$payload.'%');
 
-        $columns = Schema::getColumnListing('payrolls');
+        $columns = Schema::getColumnListing('tupels');
 
-        // MODIFIKASI: hanya yang sudah approved
         foreach ($columns as $attribute) {
-            $query->orWhere($attribute, 'LIKE', '%'.$payload.'%')->where('approved','=',1);
+            $query->orWhere($attribute, 'LIKE', '%'.$payload.'%');
         };
 
         return $query->paginate($this->pagination)->appends([

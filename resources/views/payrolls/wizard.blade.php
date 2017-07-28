@@ -168,8 +168,8 @@
           <input maxlength="200" type="text" name="name" class="form-control" placeholder="Misal: 'Gaji Juli 2017' atau 'Tunjangan Juli 2017'"  />
         </div>
         <div class="form-group pull-right">
-          <button class="btn btn-danger" name="phase" value="1" onclick='return confirm("Generate payroll?")'>Generate Slip Gaji</button>
-          <button class="btn btn-danger" name="phase" value="2" onclick'=return confirm("Generate payroll?")'>Generate Slip Tunjangan</button>
+          <button class="btn btn-danger" name="payrolltype" value="1" onclick='return confirm("Generate payroll?")'>Generate Slip Gaji</button>
+          <button class="btn btn-danger" name="payrolltype" value="2" onclick'=return confirm("Generate payroll?")'>Generate Slip Tunjangan</button>
         </div>
         <div class="row">
           <button id="tostep3" name="tostep3" class="btn btn-primary nextBtn btn-lg pull-right" type="button" style="display:none;">Next</button>
