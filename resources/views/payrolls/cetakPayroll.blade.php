@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="{{url('/css/app.css')}}">
+<link rel="stylesheet" type="text/css" href="/var/www/html/app/public/css/app.css">
 
 <div class="row">
       @include('payrolls.template.header')

@@ -21,6 +21,13 @@ class Payroll extends Model
     'start_date',
 		'end_date',
 		'gapok',
+    'tunjangan_anak',
+    'tunjangan_istri',
+    'tunjangan_natura',
+    'tunjangan_kinerja',
+    'tunjangan_jabatan',
+    'tunjangan_kendaraan',
+    'tunjangan_pelaksana',
     'payrolltype_id',
     'approved',
     'employee_number'

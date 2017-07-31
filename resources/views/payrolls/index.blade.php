@@ -27,7 +27,7 @@
                         <label for="periode">Periode</label>
                         <select class="form-control" name="periode" id="periode" required>
                           @foreach ($payrollPeriod as $periode)
-                            <option value="{{$periode->start_date.",".$periode->end_date}}">{{date("d F Y",strtotime($periode->start_date))}} - {{date("d F Y",strtotime($periode->end_date))}}</option>
+                            <option value="{{$periode->title}}">{{ $periode->title }}</option>
                           @endforeach
                         </select>
                       </div>
