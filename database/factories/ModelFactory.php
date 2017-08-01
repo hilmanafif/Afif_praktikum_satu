@@ -913,3 +913,41 @@ $factory->define(App\Models\Tupel::class, function (Faker\Generator $faker) {
 
     ];
 });
+
+/*
+|--------------------------------------------------------------------------
+| Pendidikan Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Pendidikan::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'user_id' => '1',
+		'nama' => 'laravel',
+		'tingkat' => 'laravel',
+		'tahun_lulus' => '1',
+
+
+    ];
+});
+
+/*
+|--------------------------------------------------------------------------
+| Pengalaman Factory
+|--------------------------------------------------------------------------
+*/
+
+$factory->define(App\Models\Pengalaman::class, function (Faker\Generator $faker) {
+    return [
+
+        'id' => '1',
+		'instansi' => 'laravel',
+		'jabatan' => 'laravel',
+		'dari_tanggal' => '2017-08-01',
+		'sampai_tanggal' => '2017-08-01',
+
+
+    ];
+});

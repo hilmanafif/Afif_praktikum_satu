@@ -212,6 +212,20 @@ Route::group(['middleware' => ['auth', 'active']], function () {
           'uses' => 'AnggotaKeluargasController@search'
       ]);
 
+      // Pendidikan
+      Route::resource('pendidikans', 'PendidikansController');
+      Route::post('pendidikans/search', [
+          'as' => 'pendidikans.search',
+          'uses' => 'PendidikansController@search'
+      ]);
+
+      // Pengalaman
+      Route::resource('pengalamans', 'PengalamansController');
+      Route::post('pengalamans/search', [
+          'as' => 'pengalamans.search',
+          'uses' => 'PengalamansController@search'
+      ]);
+
     });
 
     // HARUS login, HARUS admin dan controllernya HARUS di /admin

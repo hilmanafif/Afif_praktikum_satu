@@ -11,6 +11,8 @@ use App\Models\UserMeta;
 use App\Models\Wilayah;
 use App\Models\Jabatan;
 use App\Models\Tupel;
+use App\Models\Pendidikan;
+use App\Models\Pengalaman;
 use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -100,6 +102,22 @@ class User extends Authenticatable
     public function jumlahPasangan($id)
     {
         return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'pasangan')->where('is_active', 1)->count();
+    }
+    public function pendidikans()
+    {
+        return $this->hasMany(Pendidikan::class,'user_id');
+    }
+    public function jumlahPendidikan($id)
+    {
+        return Pendidikan::where('user_id',$id)->count();
+    }
+    public function pengalamans()
+    {
+        return $this->hasMany(Pengalaman::class,'user_id');
+    }
+    public function jumlahPengalaman($id)
+    {
+        return Pengalaman::where('user_id',$id)->count();
     }
     public function gajiPokok($id){
       $employee=User::findOrFail($id);

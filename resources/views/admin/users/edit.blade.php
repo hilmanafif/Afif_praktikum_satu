@@ -318,7 +318,7 @@
                     </div>
                   </div>
                   <br />
-                  <a class="btn btn-default" href="{{url('admin/users/'.$anggotaKeluarga->user_id.'/edit?button=4')}}">Cancel / Create New</a>
+                  <a class="btn btn-default" href="{{url('admin/users/'.$user->id.'/edit?button=4')}}">Cancel / Create New</a>
                   <button class="btn btn-primary" type="submit">Simpan</button>
                 </form>
                 @endif
@@ -328,16 +328,163 @@
 
         <div class="tab-pane" id="5">
 					<div class="row">
-							<div class="col-md-8">
-								<br />[ Akan diisi data Pendidikan ]
+							<div class="col-md-5">
+									<h3>Pendidikan</h3>
+                  @if($user->pendidikans)
+                  <table class="table">
+                    @foreach ($user->pendidikans as $pendidikan)
+                    <tr style="background:#eee;">
+                      <td>{{$pendidikan->nama}}</td>
+                      <td>{{$pendidikan->tingkat}}</td>
+                      <td>{{$pendidikan->tahun_lulus}}</td>
+                      <td><a href="{{url('admin/users/'.$pendidikan->user_id.'/edit?button=5&mode=editpendidikan&pendidikan_id='.$pendidikan->id)}}" class="btn btn-xs btn-primary pull-right">Edit</a></td>
+                    </tr>
+                    @endforeach
+                  </table>
+                  <br>
+                  <table style="width:70%;">
+                    <tr>
+                      <td style="font-weight:bold;">Jumlah Pendidikan</td>
+                      <td>: {{ $jumlahPendidikan }}</td>
+                    </tr>
+                  </table>
+                @else
+                  <p>Data pendidikan tidak ditemukan</p>
+                @endif
+							</div>
+              <div class="col-md-5" style="border-left:1px solid #ddd;">
+                @if (app('request')->input('mode')=='editpendidikan')
+                  {!! Form::model($pendidikan, ['route' => ['pendidikans.update', $pendidikan->id], 'method' => 'patch']) !!}
+                      {!! csrf_field() !!}
+                      {!! method_field('PATCH') !!}
+                      <h3>Edit Pendidikan</h3>
+                      @form_maker_object($pendidikan, [
+                        'nama'=>['alt_name'=>'Nama'],
+                        'id'=>['type'=>'hidden'],
+                        'user_id'=>['type'=>'hidden'],
+                        'tingkat'=>['alt_name'=>'Tingkat', 'type'=>'select', 'options' => [
+                              'SD/MI/Sederajat' => 'SD/MI/Sederajat',
+                              'SMP/MTs/Sederajat' => 'SMP/MTs/Sederajat',
+                              'SMA/MA/Sederajat' => 'SMA/MA/Sederajat',
+                              'D3' => 'D3',
+                              'S1' => 'S1',
+                          ]],
+                        'tahun_lulus',
+                      ])
+                      <br />
+                      <a class="btn btn-default" href="{{url('admin/users/'.$pendidikan->user_id.'/edit?button=5')}}">Cancel / Create New</a>
+                      <button class="btn btn-primary" type="submit">Simpan</button>
+                  {!! Form::close() !!}
+                @else
+                <form method="POST" action="/pendidikans">
+                   {{ csrf_field() }}
+                  <input type="hidden" name="user_id" value="{{$user->id}}">
+									<h3>Penambahan Pendidikan</h3>
+                  <div class="raw-margin-top-24">
+                      @input_maker_label('Nama')
+                      <input type="text" name="nama" placeholder="Nama" class="form-control" required>
+                  </div>
+                  <div class="raw-margin-top-24">
+                      @input_maker_label('Tingkat')
+                      <select class="form-control" name="tingkat" required>
+                        <option style="display:none">Tingkat</option>
+                        <option value="SD/MI/Sederajat">SD/MI/Sederajat</option>
+                        <option value="SMP/Mts/Sederajat">SMP/Mts/Sederajat</option>
+                        <option value="SMA/MA/Sederajat">SMA/MA/Sederajat</option>
+                        <option value="D3">D3</option>
+                        <option value="S1">S1</option>
+                      </select>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="raw-margin-top-24">
+                          @input_maker_label('Tahun Lulus')
+                          <input type="text" name="tahun_lulus" placeholder="Tahun Lulus" class="form-control" required>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <a class="btn btn-default" href="{{url('admin/users/'.$user->id.'/edit?button=5')}}">Cancel / Create New</a>
+                  <button class="btn btn-primary" type="submit">Simpan</button>
+                </form>
+                @endif
 							</div>
 					</div>
 				</div>
 
         <div class="tab-pane" id="6">
-					<div class="row">
-							<div class="col-md-8">
-								<br />[ Akan diisi data Pengalaman ]
+          <div class="row">
+							<div class="col-md-5">
+									<h3>Pengalaman</h3>
+                  @if($user->pengalamans)
+                  <table class="table">
+                    @foreach ($user->pengalamans as $pengalaman)
+                    <tr style="background:#eee;">
+                      <td>{{$pengalaman->instansi}}</td>
+                      <td>{{$pengalaman->jabatan}}</td>
+                      <td><a href="{{url('admin/users/'.$pengalaman->user_id.'/edit?button=6&mode=editpengalaman&pengalaman_id='.$pengalaman->id)}}" class="btn btn-xs btn-primary pull-right">Edit</a></td>
+                    </tr>
+                    @endforeach
+                  </table>
+                  <br>
+                  <table style="width:70%;">
+                    <tr>
+                      <td style="font-weight:bold;">Jumlah Pengalaman</td>
+                      <td>: {{ $jumlahPengalaman }}</td>
+                    </tr>
+                  </table>
+                @else
+                  <p>Data pengalaman tidak ditemukan</p>
+                @endif
+							</div>
+              <div class="col-md-5" style="border-left:1px solid #ddd;">
+                @if (app('request')->input('mode')=='editpengalaman')
+                  {!! Form::model($pengalaman, ['route' => ['pengalamans.update', $pengalaman->id], 'method' => 'patch']) !!}
+                      {!! csrf_field() !!}
+                      {!! method_field('PATCH') !!}
+                      <h3>Edit Pengalaman</h3>
+                      @form_maker_object($pengalaman, [
+                        'instansi'=>['alt_name'=>'Instansi'],
+                        'id'=>['type'=>'hidden'],
+                        'user_id'=>['type'=>'hidden'],
+                        'jabatan'=>['alt_name'=>'Jabatan'],
+                        'dari_tanggal'=>['type'=>'date'],
+                        'sampai_tanggal'=>['type'=>'date'],
+                      ])
+                      <br />
+                      <a class="btn btn-default" href="{{url('admin/users/'.$pengalaman->user_id.'/edit?button=6')}}">Cancel / Create New</a>
+                      <button class="btn btn-primary" type="submit">Simpan</button>
+                  {!! Form::close() !!}
+                @else
+                <form method="POST" action="/pengalamans">
+                   {{ csrf_field() }}
+                  <input type="hidden" name="user_id" value="{{$user->id}}">
+									<h3>Penambahan Pengalaman</h3>
+                  <div class="raw-margin-top-24">
+                      @input_maker_label('Instansi')
+                      <input type="text" name="instansi" placeholder="Instansi" class="form-control" required>
+                  </div>
+                  <div class="raw-margin-top-24">
+                      @input_maker_label('Jabatan')
+                      <input type="text" name="jabatan" placeholder="Jabatan" class="form-control" required>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="raw-margin-top-24">
+                          @input_maker_label('Dari Tanggal')
+                          <input type="date" name="dari_tanggal" placeholder="Dari Tanggal" class="form-control" required>
+                      </div>
+                      <div class="raw-margin-top-24">
+                        @input_maker_label('Sampai Tanggal')
+                        <input type="date" name="sampai_tanggal" placeholder="Sampai Tanggal" class="form-control" required>
+                      </div>
+                    </div>
+                  </div>
+                  <br />
+                  <a class="btn btn-default" href="{{url('admin/users/'.$user->id.'/edit?button=6')}}">Cancel / Create New</a>
+                  <button class="btn btn-primary" type="submit">Simpan</button>
+                </form>
+                @endif
 							</div>
 					</div>
 				</div>

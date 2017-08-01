@@ -5,6 +5,8 @@ use Auth;
 use App\Models\Logsystem;
 use App\Models\Anggotakeluarga;
 use App\Models\Agama;
+use App\Models\Pendidikan;
+use App\Models\Pengalaman;
 use App\Models\User;
 use App\Models\UserMeta;
 use App\Http\Requests;
@@ -116,10 +118,16 @@ class UserController extends Controller
         $jumlahAnak=$getUser->jumlahAnak($user->id);
         $jumlahPasangan=$getUser->jumlahPasangan($user->id);
         $jumlahAnggotaKeluarga=$jumlahPasangan+$jumlahAnak;
+        $jumlahPendidikan=$getUser->jumlahPendidikan($user->id);
+        $jumlahPengalaman=$getUser->jumlahPengalaman($user->id);
         if ($request->mode=='edit') {
           $anggotakeluarga = Anggotakeluarga::find($request->anggotakeluarga_id);
+        }else if($request->mode=='editpendidikan') {
+          $pendidikan = Pendidikan::find($request->pendidikan_id);
+        }else if($request->mode=='editpengalaman') {
+          $pengalaman = Pengalaman::find($request->pengalaman_id);
         }
-        return view('admin.users.edit',compact('user', 'agamas','jumlahAnak','jumlahPasangan','jumlahAnggotaKeluarga','anggotakeluarga'));
+        return view('admin.users.edit',compact('user', 'agamas','jumlahAnak','jumlahPasangan','jumlahAnggotaKeluarga','anggotakeluarga','jumlahPendidikan','jumlahPengalaman','pendidikan','pengalaman'));
     }
 
     /**
