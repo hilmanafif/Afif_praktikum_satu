@@ -9,7 +9,13 @@
     <td>Kode Jabatan</td>
     <td>{{isset($payroll->users->jabatans->kode)?$payroll->users->jabatans->kode:"Tidak Diketahui"}}</td>
 
-    <td rowspan="3" style="max-width:100px;"><img src="{{url('img/user-img.png')}}" style="width:100px;" class="img-responsive center-block"></td>
+    <td rowspan="3" style="max-width:100px;">
+      @if (app('request')->input('payrolltype')=='1')
+      <img src="{{url('img/user-img.png')}}" style="width:100px;" class="img-responsive center-block">
+      @else
+      <img src="/var/www/html/app/public/img/user-img.png" style="width:100px;" class="img-responsive center-block">
+      @endif
+    </td>
 
   </tr>
   <tr>
