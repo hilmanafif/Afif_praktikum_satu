@@ -276,7 +276,7 @@ class PayrollsController extends Controller
           foreach ($request->cetakList as $selectedPayroll) {
             $payroll=Payroll::find($selectedPayroll);
             $employee=User::findOrFail($payroll->users->id);
-
+            /*
             $userModel=new User;
             $payroll['tunjanganIstri']=$userModel->tunjanganIstri($employee->id);
             $payroll['tunjanganAnak']=$userModel->tunjanganAnak($employee->id);
@@ -285,8 +285,15 @@ class PayrollsController extends Controller
             $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
             $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
             $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
-
-
+            */
+            $payroll['tunjanganIstri']=$payroll->tunjangan_istri;
+            $payroll['tunjanganAnak']=$payroll->tunjangan_anak;
+            $payroll['natura']=$payroll->tunjangan_natura;
+            $payroll['tunjanganKinerja']=$payroll->tunjangan_kinerja;
+            $payroll['tunjanganJabatan']=$payroll->tunjangan_jabatan;
+            $payroll['tunjanganPerumahan']=$payroll->tunjangan_perumahan;
+            $payroll['tunjanganKendaraan']=$payroll->tunjangan_kendaraan;
+            $payroll['tunjanganPelaksana']=$payroll->tunjangan_pelaksana;
             $payroll['subtotal']=$payroll->gapok;
             $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
             $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
@@ -298,16 +305,19 @@ class PayrollsController extends Controller
           }
         }
         elseif ($request->printType=="all"){
+            /*
             $periodRange=explode(",",$request->periode);
             $startDate=$periodRange[0];
             $endDate=$periodRange[1];
             $payrolls= Payroll::where('start_date',$startDate)->where('end_date',$endDate)->get();
+            */
+            $payrolls= Payroll::where('title',$request->periode)->get();
             foreach ($payrolls as $payroll) {
               // if (!$payroll->users->jabatans) {
               //   return "no jabatan_id ".$payroll->users->id;
               // }
               $employee=User::findOrFail($payroll->users->id);
-
+              /*
               $userModel=new User;
               $payroll['tunjanganIstri']=$userModel->tunjanganIstri($employee->id);
               $payroll['tunjanganAnak']=$userModel->tunjanganAnak($employee->id);
@@ -316,8 +326,15 @@ class PayrollsController extends Controller
               $payroll['tunjanganJabatan']=$employee->jabatans->Tunjab;
               $payroll['tunjanganPelaksana']=$employee->jabatans->Tupel;
               $payroll['tunjanganPerumahan']=$employee->jabatans->Turam;
-
-
+              */
+              $payroll['tunjanganIstri']=$payroll->tunjangan_istri;
+              $payroll['tunjanganAnak']=$payroll->tunjangan_anak;
+              $payroll['natura']=$payroll->tunjangan_natura;
+              $payroll['tunjanganKinerja']=$payroll->tunjangan_kinerja;
+              $payroll['tunjanganJabatan']=$payroll->tunjangan_jabatan;
+              $payroll['tunjanganPerumahan']=$payroll->tunjangan_perumahan;
+              $payroll['tunjanganKendaraan']=$payroll->tunjangan_kendaraan;
+              $payroll['tunjanganPelaksana']=$payroll->tunjangan_pelaksana;
               $payroll['subtotal']=$payroll->gapok;
               $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
               $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
