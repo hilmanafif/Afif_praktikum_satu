@@ -102,7 +102,7 @@ class PayrollsController extends Controller
                     "start_date" => $start_date,
                     "end_date" => $end_date,
                     "gapok" => $gapok->gaji_pokok,
-                    "tunjangan_istri" => $employee->tunjanganIstri($employee->id),
+                    "tunjangan_istri" => 40000,
                     "tunjangan_anak" => $employee->tunjanganAnak($employee->id),
                     "tunjangan_natura" => $employee->natura($employee->id),
                     "tunjangan_kinerja" => $employee->jabatans->Tunpres,
