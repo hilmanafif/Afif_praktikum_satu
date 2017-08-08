@@ -13,7 +13,7 @@
       @if (app('request')->input('payrolltype')=='1')
       <img src="{{url('foto/'.str_replace(' ','',$payroll->users->employee_number).'.png')}}" style="width:100px;" class="img-responsive center-block">
       @else
-      <img src="/var/www/html/app/public/img/user-img.png" style="width:100px;" class="img-responsive center-block">
+      <img src="/var/www/html/app/public/foto/{{ str_replace(' ','',$payroll->users->employee_number) }}.png" style="width:100px;" class="img-responsive center-block">
       @endif
     </td>
 
