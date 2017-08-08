@@ -8,7 +8,7 @@
       <td>Rp. {{number_format($payroll->gapok,0,',','.')}}</td>
 
       <td>BPJS Kesehatan</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->bpjskes,0,',','.')}}</td>
 
       <td>BTN</td>
       <td><div style="min-width:100px"></div></td>
@@ -19,7 +19,7 @@
       <td>Rp. {{number_format($payroll['tunjanganIstri'],0,',','.')}}</td>
 
       <td>BPJS KT</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->bpjs,0,',','.')}}</td>
 
       <td>Kendaraan</td>
       <td></td>
@@ -30,10 +30,10 @@
       <td>Rp. {{number_format($payroll['tunjanganAnak'],0,',','.')}}</td>
 
       <td>BPJS Pensiun</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->bpjspensiun,0,',','.')}}</td>
 
       <td>Kop. Rutin</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->pinjrutin,0,',','.')}}</td>
       <td>Ke x sisa y</td>
     </tr>
     <tr>
@@ -41,10 +41,10 @@
       <td>Rp. {{number_format($payroll['natura'],0,',','.')}}</td>
 
       <td>Dapenma</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->dapenma,0,',','.')}}</td>
 
       <td>Kop. Perum</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->pinjperum,0,',','.')}}</td>
       <td>Ke x sisa y</td>
     </tr>
     <tr>
@@ -52,7 +52,7 @@
       <td></td>
 
       <td>Hutang Pegawai</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->utangpeg,0,',','.')}}</td>
 
       <td>Kop. Kredit</td>
       <td></td>
@@ -63,10 +63,10 @@
       <td><b>Rp. {{number_format($payroll->subtotalA,0,',','.')}}</b></td>
 
       <td>ZIS</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->zakat,0,',','.')}}</td>
 
       <td>BJB</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->bjb,0,',','.')}}</td>
       <td>Ke x sisa y</td>
     </tr>
     <tr>
@@ -74,10 +74,10 @@
       <td>Rp. {{number_format($payroll['tunjanganJabatan'],0,',','.')}}</td>
 
       <td>Iuran DW</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->iurandw,0,',','.')}}</td>
 
       <td>Waserda</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->warung,0,',','.')}}</td>
       <td>Ke x sisa y</td>
 
     </tr>
@@ -91,7 +91,7 @@
         <p>{{ App\Models\Company::find(1)->city }}, {{date("d F Y")}}</p>
         <p>{{ App\Models\Company::find(1)->officer_position }}</p>
         <br /><br /><br /><br /><br />
-        <p>{{ App\Models\Company::find(1)->officer_name }}</p>
+        <!-- <p>{{ App\Models\Company::find(1)->officer_name }}</p> -->
       </td>
     </tr>
     <tr>
@@ -106,7 +106,7 @@
       <td>Rp. {{number_format($payroll['tunjanganKendaraan'],0,',','.')}}</td>
 
       <td>Lain-lain</td>
-      <td></td>
+      <td>Rp. {{number_format($payroll->potlain,0,',','.')}}</td>
     </tr>
     <tr>
       <td>Pajak</td>
@@ -120,7 +120,7 @@
       <td><b>Rp. {{number_format($payroll['subtotalB'],0,',','.')}}</b></td>
 
       <td><b>Total Potongan</b></td>
-      <td></b></td>
+      <td><b>Rp. {{number_format($payroll->totalPotongan,0,',','.')}}</b></td>
     </tr>
     <tr>
       <td><b>Total Penghasilan</b></td>

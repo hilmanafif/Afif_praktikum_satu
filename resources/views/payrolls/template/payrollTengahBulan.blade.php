@@ -66,9 +66,11 @@
             <tr>
               <td style="border:none;height:100px;"></td>
             </tr>
+            <!--
             <tr>
               <td style="border:none">{{ App\Models\Company::find(1)->officer_name }}</td>
             </tr>
+            -->
           </table>
         </div>
     </div>

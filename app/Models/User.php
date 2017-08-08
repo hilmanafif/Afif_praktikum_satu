@@ -13,6 +13,7 @@ use App\Models\Jabatan;
 use App\Models\Tupel;
 use App\Models\Pendidikan;
 use App\Models\Pengalaman;
+use App\Models\Potongan;
 use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,7 +55,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(UserMeta::class);
     }
-
+    public function potongan()
+    {
+        return $this->hasOne(Potongan::class,'nip','employee_number');
+    }
     /**
      * User Roles
      *

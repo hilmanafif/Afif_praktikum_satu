@@ -193,6 +193,15 @@ Route::group(['middleware' => ['auth', 'active']], function () {
       ]);
       Route::get('payrolls/cetak/{id}', 'PayrollsController@cetakSlipGaji');
       Route::post('payrolls/cetakMultiple', 'PayrollsController@cetakMultipleSlipGaji');
+
+
+      // Tunjangan Pelaksana (Sementara)
+      Route::resource('tupels', 'TupelsController');
+      Route::post('tupels/search', [
+          'as' => 'tupels.search',
+          'uses' => 'TupelsController@search'
+      ]);
+
       // Payrolltype
       Route::resource('payrolltypes', 'PayrolltypesController');
       Route::post('payrolltypes/search', [
@@ -245,24 +254,3 @@ Route::group(['middleware' => ['auth', 'active']], function () {
         Route::get('roles/search', 'RoleController@index');
     });
 });
-
-// Tupel
-Route::resource('tupels', 'TupelsController');
-Route::post('tupels/search', [
-    'as' => 'tupels.search',
-    'uses' => 'TupelsController@search'
-]);
-
-// Tupel
-Route::resource('tupels', 'TupelsController');
-Route::post('tupels/search', [
-    'as' => 'tupels.search',
-    'uses' => 'TupelsController@search'
-]);
-
-// Tupel
-Route::resource('tupels', 'TupelsController');
-Route::post('tupels/search', [
-    'as' => 'tupels.search',
-    'uses' => 'TupelsController@search'
-]);

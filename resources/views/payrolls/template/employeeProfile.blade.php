@@ -33,6 +33,6 @@
     <td>{{$payroll->users->wilayahs->name}}</td>
 
     <td>Jabatan</td>
-    <td colspan="3">{{isset($payroll->users->jabatans->name)?$payroll->users->jabatans->name:"Tidak Diketahui"}}</td>
+    <td colspan="3">{{ $payroll->jabatan }}</td>
   </tr>
 </table>
