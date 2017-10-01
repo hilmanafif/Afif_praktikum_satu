@@ -155,8 +155,8 @@ class PayrollsController extends Controller
       // HANDLING DIREKTUR (SEMENTARA, nanti harus masukan jabatan_id ke payroll)
       $findlargestgapok = Payroll::where('title',$slip_name)->where('start_date',$start_date)->orderBy('gapok','DESC')->first();
 
-      $finddirektur = Payroll::where('user_id',370)->update(['gapok' => $findlargestgapok->gapok * 2.35]);
-      $finddirektur = Payroll::where('user_id',370)->first();
+      $finddirektur = Payroll::where('user_id',369)->update(['gapok' => $findlargestgapok->gapok * 2.35]);
+      $finddirektur = Payroll::where('user_id',369)->first();
       $finddirekturbidang = Payroll::where('user_id',30)->update(['gapok' => $finddirektur->gapok * 90 / 100]);
       $finddirekturbidang = Payroll::where('user_id',108)->update(['gapok' => $finddirektur->gapok * 90 / 100]);
 
