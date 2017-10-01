@@ -2,7 +2,7 @@
   @if (app('request')->input('payrolltype')=='1')
   <img src="{{ url(App\Models\Company::find(1)->logo->url('original')) }}" class="img-responsive center-block" style="padding:10px; max-height:150px;">
   @else
-  <img src="/var/www/html/app/public/upload/company/logos/1/original/logo-pdam.png" style="padding:10px;">
+  <img src="/var/app/public/upload/company/logos/1/original/logo-pdam.png" style="padding:10px;">
   @endif
 </div>
 <div class="col-md-10">

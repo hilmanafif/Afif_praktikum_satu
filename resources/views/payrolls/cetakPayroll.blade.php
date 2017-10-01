@@ -1,5 +1,5 @@
 <!-- <link rel="stylesheet" type="text/css" href="{{url('/css/app.css')}}"> -->
-<link rel="stylesheet" type="text/css" href="/var/www/html/app/public/css/app.css">
+<link rel="stylesheet" type="text/css" href="/var/app/public/css/app.css">
 
 <div class="row col-md-12">
   @include('payrolls.template.header')
