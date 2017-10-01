@@ -82,8 +82,10 @@ class PayrollsController extends Controller
       $payrolltype=$request->payrolltype;
       //HARDCODED PAYROLL TYPE
         //FIRST PHASE PAYROLL
+        $tergenerate = 0;
         foreach ($employees as $employee) {
         if ($payrolltype){
+          $tergenerate = $tergenerate + 1;
           //FIND GAPOK
           // $pangkat=$employee->pangkats;
           // $masakerja=User::masakerja($employee->id);
@@ -92,6 +94,11 @@ class PayrollsController extends Controller
                           ->first();
           if (!$gapok) {
             return "Gapok dengan pangkat ".$employee->pangkat_id." dan ruang ".$employee->ruang." tidak ditemukan";
+          }
+
+          // GAPOK calon pegawai hanya 80% gapok asli
+          if ($employee->statuskerja_id=1) {
+            $gapok->gaji_pokok = $gapok->gaji_pokok * 80 / 100;
           }
 
           $datas = ["title" => $slip_name,
@@ -112,7 +119,8 @@ class PayrollsController extends Controller
                     "payrolltype_id" => $payrolltype,
                     "approved" => 0];
           $result = $this->service->create($datas);
-          }
+        } // End if payrolltype
+
         //SECOND PHASE PAYROLL
         /*
         elseif ($payrolltype==2) {
@@ -135,11 +143,24 @@ class PayrollsController extends Controller
           $result = $this->service->create($datas);
         }
         */
+        /*
         else {
           return 404;
         }
+        */
+
+
       }
-      return redirect(route('payrollwizards',['button'=>'tostep2','status'=>'generated', 'total' => count($employees)]));
+
+      // HANDLING DIREKTUR (SEMENTARA, nanti harus masukan jabatan_id ke payroll)
+      $findlargestgapok = Payroll::where('title',$slip_name)->where('start_date',$start_date)->orderBy('gapok','DESC')->first();
+
+      $finddirektur = Payroll::where('user_id',370)->update(['gapok' => $findlargestgapok->gapok * 2.35]);
+      $finddirektur = Payroll::where('user_id',370)->first();
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['gapok' => $finddirektur->gapok * 90 / 100]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['gapok' => $finddirektur->gapok * 90 / 100]);
+
+      return redirect(route('payrollwizards',['button'=>'tostep2','status'=>'generated', 'total' => $tergenerate]));
     }
 
     /**
@@ -408,7 +429,7 @@ class PayrollsController extends Controller
               $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
               $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganPerumahan'];
               $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
-              
+
               $payroll['jumlahTunjangan']=0;
               $payroll['gajiBersih']=$payroll['totalPenghasilan']-$payroll['totalPotongan'];
               $payrolls[]=$payroll;
