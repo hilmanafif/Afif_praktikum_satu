@@ -8,9 +8,9 @@ return array(
 
     'pdf' => array(
         'enabled' => true,
-        'binary'  => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"',
+        //'binary'  => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"',
         // Ubuntu Linux / Docker
-        //'binary' => '/usr/local/bin/wkhtmltopdf.sh',
+        'binary' => '/usr/local/bin/wkhtmltopdf.sh',
         'timeout' => false,
         'options' => array(),
         'env'     => array(),
