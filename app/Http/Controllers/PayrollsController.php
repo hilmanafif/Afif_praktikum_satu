@@ -97,9 +97,9 @@ class PayrollsController extends Controller
           }
 
           // GAPOK calon pegawai hanya 80% gapok asli
-          if ($employee->statuskerja_id=1) {
-            $gapok->gaji_pokok = $gapok->gaji_pokok * 80 / 100;
-          }
+          //if ($employee->statuskerja_id=1) {
+          //  $gapok->gaji_pokok = $gapok->gaji_pokok * 80 / 100;
+          //}
 
           $datas = ["title" => $slip_name,
                     "user_id" => $employee->id,
