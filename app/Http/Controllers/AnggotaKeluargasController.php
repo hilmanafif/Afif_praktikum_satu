@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AnggotaKeluarga;
+use App\Models\User;
 use App\Services\AnggotaKeluargaService;
 use App\Http\Requests\AnggotaKeluargaCreateRequest;
 use App\Http\Requests\AnggotaKeluargaUpdateRequest;
+use DB;
 
 class AnggotaKeluargasController extends Controller
 {
@@ -143,5 +145,47 @@ class AnggotaKeluargasController extends Controller
         }
 
         return back()->with('message', 'Failed to update');
+    }
+    public function exec(){
+        
+        $users=User::all();
+        foreach ($users as $user) {
+            $anggotakeluarga=DB::table('temp_anggotakeluarga')->where('nipp',$user->employee_number)->first();
+            if ($anggotakeluarga) {
+                if ($anggotakeluarga->istri) {
+                    AnggotaKeluarga::create(['user_id'=>$user->id,
+                                             'nama'=>$anggotakeluarga->istri,
+                                             'hub_keluarga'=>"pasangan",
+                                             'tanggal_lahir'=>$anggotakeluarga->lahiristri,
+                                             'agama_id'=>1,
+                                             'is_active'=>1]);
+                }
+                if ($anggotakeluarga->anak1) {
+                    AnggotaKeluarga::create(['user_id'=>$user->id,
+                                             'nama'=>$anggotakeluarga->anak1,
+                                             'hub_keluarga'=>"anak",
+                                             'tanggal_lahir'=>$anggotakeluarga->lahiranak1,
+                                             'agama_id'=>1,
+                                             'is_active'=>1]);
+                }
+                if ($anggotakeluarga->anak2) {
+                    AnggotaKeluarga::create(['user_id'=>$user->id,
+                                             'nama'=>$anggotakeluarga->anak2,
+                                             'hub_keluarga'=>"anak",
+                                             'tanggal_lahir'=>$anggotakeluarga->lahiranak2,
+                                             'agama_id'=>1,
+                                             'is_active'=>1]);
+                }
+                if ($anggotakeluarga->anak3) {
+                    AnggotaKeluarga::create(['user_id'=>$user->id,
+                                             'nama'=>$anggotakeluarga->anak3,
+                                             'hub_keluarga'=>"anak",
+                                             'tanggal_lahir'=>$anggotakeluarga->lahiranak3,
+                                             'agama_id'=>1,
+                                             'is_active'=>1]);
+                }
+            }
+        }
+        return 8;
     }
 }
