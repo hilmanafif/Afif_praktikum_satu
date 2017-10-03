@@ -105,8 +105,10 @@ class PayrollsController extends Controller
           $subtotala = $gapok->gaji_pokok + $employee->tunjanganIstri($employee->id) + $employee->tunjanganAnak($employee->id) + $employee->natura($employee->id);
           $subtotalb = $employee->jabatans->Tunpres + $employee->jabatans->Tunjab + $employee->tunjanganPelaksana($employee->tupel_id) + $employee->jabatans->Tunken;
           $totalpenghasilan = $subtotala + $subtotalb;
-          //$totalpotongan = 0;
+          $totalpotongan = 0;
+          /*
           $totalpotongan = $employee->potongan->bpjs + $employee->potongan->dapenma + $employee->potongan->bpjskes + $employee->potongan->bpjspensiun + $employee->potongan->zakat + $employee->potongan->bjb + $employee->potongan->iurandw + $employee->potongan->tabungan + $employee->potongan->warung + $employee->potongan->pinjrutin + $employee->potongan->pinjperum + $employee->potongan->utangpeg + $employee->potongan->potlain + $employee->potongan->iuranykpp;
+          */
           $totalgajibersih = $totalpenghasilan - $totalpotongan;
 
           $datas = ["title" => $slip_name,
