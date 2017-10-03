@@ -75,7 +75,7 @@ class PayrollsController extends Controller
     }
 
     public function generatePayroll(Request $request){
-      $employees=User::where('statuskerja_id','=',1)->where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
+      $employees=User::where('id','!=',1)->where('id','!=',2)->where('statuskerja_id','=',1)->where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
       $start_date=$request->fromDate;
       $end_date=$request->toDate;
       $slip_name=$request->name;
@@ -97,9 +97,17 @@ class PayrollsController extends Controller
           }
 
           // GAPOK calon pegawai hanya 80% gapok asli
-          //if ($employee->statuskerja_id=1) {
-          //  $gapok->gaji_pokok = $gapok->gaji_pokok * 80 / 100;
-          //}
+          if ($employee->statuspegawai_id=1) {
+            $gapok->gaji_pokok = $gapok->gaji_pokok * 80 / 100;
+          }
+
+          // BAGIAN INI NANTI SECARA FISIK HARUS MASUK TABEL
+          $subtotala = $gapok->gaji_pokok + $employee->tunjanganIstri($employee->id) + $employee->tunjanganAnak($employee->id) + $employee->natura($employee->id);
+          $subtotalb = $employee->jabatans->Tunpres + $employee->jabatans->Tunjab + $employee->tunjanganPelaksana($employee->tupel_id) + $employee->jabatans->Tunken;
+          $totalpenghasilan = $subtotala + $subtotalb;
+          //$totalpotongan = 0;
+          $totalpotongan = $employee->potongan->bpjs + $employee->potongan->dapenma + $employee->potongan->bpjskes + $employee->potongan->bpjspensiun + $employee->potongan->zakat + $employee->potongan->bjb + $employee->potongan->iurandw + $employee->potongan->tabungan + $employee->potongan->warung + $employee->potongan->pinjrutin + $employee->potongan->pinjperum + $employee->potongan->utangpeg + $employee->potongan->potlain + $employee->potongan->iuranykpp;
+          $totalgajibersih = $totalpenghasilan - $totalpotongan;
 
           $datas = ["title" => $slip_name,
                     "user_id" => $employee->id,
@@ -116,8 +124,14 @@ class PayrollsController extends Controller
                     "tunjangan_jabatan" => $employee->jabatans->Tunjab,
                     "tunjangan_kendaraan" => $employee->jabatans->Tunken,
                     "tunjangan_pelaksana" => $employee->tunjanganPelaksana($employee->tupel_id),
+                    "subtotala" => $subtotala,
+                    "subtotalb" => $subtotalb,
+                    "totalpenghasilan" => $totalpenghasilan,
+                    "totalpotongan" => $totalpotongan,
+                    "totalgajibersih" => $totalgajibersih,
                     "payrolltype_id" => $payrolltype,
                     "approved" => 0];
+
           $result = $this->service->create($datas);
         } // End if payrolltype
 
@@ -153,12 +167,19 @@ class PayrollsController extends Controller
       }
 
       // HANDLING DIREKTUR (SEMENTARA, nanti harus masukan jabatan_id ke payroll)
-      $findlargestgapok = Payroll::where('title',$slip_name)->where('start_date',$start_date)->orderBy('gapok','DESC')->first();
+      $findlargestgaji = Payroll::where('title',$slip_name)->where('start_date',$start_date)->orderBy('totalgajibersih','DESC')->first();
 
-      $finddirektur = Payroll::where('user_id',369)->update(['gapok' => $findlargestgapok->gapok * 2.35]);
+      $finddirektur = Payroll::where('user_id',369)->update(['gapok' => 0]);
+      $finddirektur = Payroll::where('user_id',369)->update(['subtotala' => 0]);
+      $finddirektur = Payroll::where('user_id',369)->update(['tunjangan_istri' => 0]);
+      $finddirektur = Payroll::where('user_id',369)->update(['tunjangan_anak' => 0]);
+      $finddirektur = Payroll::where('user_id',369)->update(['tunjangan_natura' => 0]);
+      $finddirektur = Payroll::where('user_id',369)->update(['totalpenghasilan' => $findlargestgaji->totalgajibersih * 2.35]);
       $finddirektur = Payroll::where('user_id',369)->first();
-      $finddirekturbidang = Payroll::where('user_id',30)->update(['gapok' => $finddirektur->gapok * 90 / 100]);
-      $finddirekturbidang = Payroll::where('user_id',108)->update(['gapok' => $finddirektur->gapok * 90 / 100]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['gapok' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['totalpenghasilan' => $finddirektur->gapok * 90 / 100]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['gapok' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['totalpenghasilan' => $finddirektur->gapok * 90 / 100]);
 
       return redirect(route('payrollwizards',['button'=>'tostep2','status'=>'generated', 'total' => $tergenerate]));
     }

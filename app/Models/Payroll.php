@@ -28,6 +28,11 @@ class Payroll extends Model
     'tunjangan_jabatan',
     'tunjangan_kendaraan',
     'tunjangan_pelaksana',
+    'subtotala',
+    'subtotalb',
+    'totalpenghasilan',
+    'totalpotongan',
+    'totalgajibersih',
     'payrolltype_id',
     'approved',
     'employee_number'
