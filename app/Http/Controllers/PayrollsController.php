@@ -75,7 +75,8 @@ class PayrollsController extends Controller
     }
 
     public function generatePayroll(Request $request){
-      $employees=User::where('id','!=',1)->where('id','!=',2)->where('statuskerja_id','=',1)->where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
+      //$employees=User::where('id','!=',1)->where('id','!=',2)->where('statuskerja_id','=',1)->where('pangkat_id','!=',0)->where('ruang','!=',0)->get();
+      $employees=User::where('id','!=',1)->where('id','!=',2)->where('statuskerja_id','=',1)->where('pangkat_id','!=',0)->get();
       $start_date=$request->fromDate;
       $end_date=$request->toDate;
       $slip_name=$request->name;
