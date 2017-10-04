@@ -144,6 +144,11 @@ class User extends Authenticatable
       }
 
       $tunjanganIstri=$gapok*$tunjanganPersen*$jumlahPasangan;
+
+      if ($this->meta->jenis_kelamin == 'P') {
+        $tunjanganIstri = 0;
+      }
+      
       return $tunjanganIstri;
     }
 
