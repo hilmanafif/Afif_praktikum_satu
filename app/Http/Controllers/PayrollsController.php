@@ -177,12 +177,23 @@ class PayrollsController extends Controller
       $finddirektur = Payroll::where('user_id',369)->update(['tunjangan_istri' => 0]);
       $finddirektur = Payroll::where('user_id',369)->update(['tunjangan_anak' => 0]);
       $finddirektur = Payroll::where('user_id',369)->update(['tunjangan_natura' => 0]);
-      $finddirektur = Payroll::where('user_id',369)->update(['totalpenghasilan' => $findlargestgaji->totalgajibersih * 2.35]);
+      $finddirektur = Payroll::where('user_id',369)->update(['totalpenghasilan' => $findlargestgaji->totalpenghasilan * 2.35]);
+
       $finddirektur = Payroll::where('user_id',369)->first();
+
       $finddirekturbidang = Payroll::where('user_id',30)->update(['gapok' => 0]);
-      $finddirekturbidang = Payroll::where('user_id',30)->update(['totalpenghasilan' => $finddirektur->gapok * 90 / 100]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['subtotala' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['tunjangan_istri' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['tunjangan_anak' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['tunjangan_natura' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',30)->update(['totalpenghasilan' => $finddirektur->totalpenghasilan * 90 / 100]);
+
       $finddirekturbidang = Payroll::where('user_id',108)->update(['gapok' => 0]);
-      $finddirekturbidang = Payroll::where('user_id',108)->update(['totalpenghasilan' => $finddirektur->gapok * 90 / 100]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['subtotala' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['tunjangan_istri' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['tunjangan_anak' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['tunjangan_natura' => 0]);
+      $finddirekturbidang = Payroll::where('user_id',108)->update(['totalpenghasilan' => $finddirektur->totalpenghasilan * 90 / 100]);
 
       return redirect(route('payrollwizards',['button'=>'tostep2','status'=>'generated', 'total' => $tergenerate]));
     }
@@ -334,7 +345,7 @@ class PayrollsController extends Controller
         $payroll['subtotal']=$payroll->gapok;
         $payroll['subtotalA']=$payroll->gapok+$payroll['tunjanganIstri']+$payroll['tunjanganAnak']+$payroll['natura'];
         $payroll['subtotalB']=$payroll['tunjanganKinerja']+$payroll['tunjanganJabatan']+$payroll['tunjanganPelaksana']+$payroll['tunjanganKendaraan'];
-        $payroll['totalPenghasilan']=$payroll['subtotalA']+$payroll['subtotalB'];
+        $payroll['totalPenghasilan']=$payroll['totalpenghasilan'];
 
         $payroll['jumlahTunjangan']=0;
         $payroll['gajiBersih']=$payroll['totalPenghasilan']-$payroll['totalPotongan'];
