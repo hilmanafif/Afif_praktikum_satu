@@ -18,6 +18,7 @@ use App\Notifications\ResetPassword;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use DateTime;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
