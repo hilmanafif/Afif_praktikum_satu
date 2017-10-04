@@ -104,7 +104,7 @@ class User extends Authenticatable
     {
         //return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->count();
         // Hanya menghitung anak di bawah umur 21 tahun per hari ini
-        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->whereBetween('tanggal_lahir', [Carbon::now()->subYears(21), Carbon::now()])->get();
+        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->whereBetween('tanggal_lahir', [Carbon::now()->subYears(21), Carbon::now()])->count();
     }
     public function jumlahPasangan($id)
     {
