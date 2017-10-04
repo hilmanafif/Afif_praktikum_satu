@@ -101,7 +101,9 @@ class User extends Authenticatable
     }
     public function jumlahAnak($id)
     {
-        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->count();
+        //return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->count();
+        // Hanya menghitung anak di bawah umur 21 tahun per hari ini
+        return AnggotaKeluarga::where('user_id',$id)->where('hub_keluarga', 'anak')->where('is_active', 1)->whereBetween('tanggal_lahir', [Carbon::now()->subYears(21), Carbon::now()])->get();
     }
     public function jumlahPasangan($id)
     {
@@ -148,7 +150,7 @@ class User extends Authenticatable
       if ($this->meta->jenis_kelamin == 'P') {
         $tunjanganIstri = 0;
       }
-      
+
       return $tunjanganIstri;
     }
 
