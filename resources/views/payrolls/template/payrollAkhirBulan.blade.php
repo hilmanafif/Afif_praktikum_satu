@@ -1,136 +1,119 @@
-  <table class="table table-bordered">
-    <tr>
-      <td colspan="2"><b>Daftar Penerimaan</b></td>
-      <td colspan="5"><b>Daftar Potongan</b></td>
-    </tr>
-    <tr>
-      <td>Gaji Pokok</td>
-      <td>Rp. {{number_format($payroll->gapok,0,',','.')}}</td>
-
-      <td>BPJS Kesehatan</td>
-      <td>Rp. {{number_format($payroll->bpjskes,0,',','.')}}</td>
-
-      <td>BTN</td>
-      <td><div style="min-width:100px"></div></td>
-      <td>Ke x sisa y</td>
-    </tr>
-    <tr>
-      <td>Tunjangan Istri</td>
-      <td>Rp. {{number_format($payroll['tunjanganIstri'],0,',','.')}}</td>
-
-      <td>BPJS KT</td>
-      <td>Rp. {{number_format($payroll->bpjs,0,',','.')}}</td>
-
-      <td>Kendaraan</td>
-      <td></td>
-      <td>Ke x sisa y</td>
-    </tr>
-    <tr>
-      <td>Tunjangan Anak</td>
-      <td>Rp. {{number_format($payroll['tunjanganAnak'],0,',','.')}}</td>
-
-      <td>BPJS Pensiun</td>
-      <td>Rp. {{number_format($payroll->bpjspensiun,0,',','.')}}</td>
-
-      <td>Kop. Rutin</td>
-      <td>Rp. {{number_format($payroll->pinjrutin,0,',','.')}}</td>
-      <td>Ke x sisa y</td>
-    </tr>
-    <tr>
-      <td>Natura</td>
-      <td>Rp. {{number_format($payroll['natura'],0,',','.')}}</td>
-
-      <td>Dapenma</td>
-      <td>Rp. {{number_format($payroll->dapenma,0,',','.')}}</td>
-
-      <td>Kop. Perum</td>
-      <td>Rp. {{number_format($payroll->pinjperum,0,',','.')}}</td>
-      <td>Ke x sisa y</td>
-    </tr>
-    <tr>
-      <td>Honor</td>
-      <td></td>
-
-      <td>Hutang Pegawai</td>
-      <td>Rp. {{number_format($payroll->utangpeg,0,',','.')}}</td>
-
-      <td>Kop. Kredit</td>
-      <td></td>
-      <td>Ke x sisa y</td>
-    </tr>
-    <tr>
-      <td><b>Sub Total A</b></td>
-      <td><b>Rp. {{number_format($payroll->subtotalA,0,',','.')}}</b></td>
-
-      <td>ZIS</td>
-      <td>Rp. {{number_format($payroll->zakat,0,',','.')}}</td>
-
-      <td>BJB</td>
-      <td>Rp. {{number_format($payroll->bjb,0,',','.')}}</td>
-      <td>Ke x sisa y</td>
-    </tr>
-    <tr>
-      <td>Tunjangan Jabatan</td>
-      <td>Rp. {{number_format($payroll['tunjanganJabatan'],0,',','.')}}</td>
-
-      <td>Iuran DW</td>
-      <td>Rp. {{number_format($payroll->iurandw,0,',','.')}}</td>
-
-      <td>Waserda</td>
-      <td>Rp. {{number_format($payroll->warung,0,',','.')}}</td>
-      <td>Ke x sisa y</td>
-
-    </tr>
-    <tr>
-      <td>Tunjangan Kinerja</td>
-      <td>Rp. {{number_format($payroll['tunjanganKinerja'],0,',','.')}}</td>
-
-      <td>Iuran Koperasi</td>
-      <td></td>
-      <td colspan="3" rowspan="6" style="text-align:center;">
-        <p>{{ App\Models\Company::find(1)->city }}, {{date("d F Y")}}</p>
-        <p>{{ App\Models\Company::find(1)->officer_position }}</p>
-        <br /><br /><br /><br /><br />
-        <!-- <p>{{ App\Models\Company::find(1)->officer_name }}</p> -->
-      </td>
-    </tr>
-    <tr>
-      <td>Tunjangan Pelaksana</td>
-      <td>Rp. {{number_format($payroll['tunjanganPelaksana'],0,',','.')}}</td>
-
-      <td>Inkop Pamsi</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td>Tunjangan Kendaraan</td>
-      <td>Rp. {{number_format($payroll['tunjanganKendaraan'],0,',','.')}}</td>
-
-      <td>Lain-lain</td>
-      <td>Rp. {{number_format($payroll->potlain,0,',','.')}}</td>
-    </tr>
-    <tr>
-      <td>Pajak</td>
-      <td></td>
-
-      <td>PPh 21</td>
-      <td></td>
-    </tr>
-    <tr>
-      <td><b>Sub Total B</b></td>
-      <td><b>Rp. {{number_format($payroll['subtotalB'],0,',','.')}}</b></td>
-
-      <td><b>Total Potongan</b></td>
-      <td><b>Rp. {{number_format($payroll->totalPotongan,0,',','.')}}</b></td>
-    </tr>
-    <tr>
-      <td><b>Total Penghasilan</b></td>
-      <td><b>Rp. {{number_format($payroll->totalPenghasilan,0,',','.')}}</b></td>
-      <td colspan="2"></td>
-    </tr>
-    <tr>
-      <td colspan="2"></td>
-
-      <td><b>Gaji Bersih</b></td>
-      <td><b>Rp. {{number_format($payroll->gajiBersih,0,',','.')}}</b></td>
-    </tr>
-  </table>
+<table class="slip">
+	<thead>
+		<tr>
+			<th colspan="2">Daftar Penghasilan</td>
+			<th colspan="5">Daftar Potongan</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="attr">Gaji Pokok</td>
+			<td class="outl nominal">{{number_format($payroll->gapok,0,',','.')}}</td>
+		    <td class="attr">BPJS Kesehatan</td>
+			<td class="outl nominal">{{number_format($payroll->bpjskes,0,',','.')}}</td>
+			<td class="attr">BTN</td>
+			<td class="outl"><div style="min-width:100px"></div></td>
+			<td class="attr2">Ke <b>X</b> Sisa <b>Y</b></td>
+		</tr>
+		<tr>
+			<td class="attr">Tunjangan Istri</td>
+			<td class="outl nominal">{{number_format($payroll['tunjanganIstri'],0,',','.')}}</td>
+			<td class="attr">BPJS KT</td>
+			<td class="outl nominal">{{number_format($payroll->bpjs,0,',','.')}}</td>
+			<td class="attr">Kendaraan</td>
+			<td class="outl"></td>
+			<td class="attr2">Ke <b>X</b> Sisa <b>Y</b></td>
+		</tr>
+		<tr>
+			<td class="attr">Tunjangan Anak</td>
+			<td class="outl nominal">{{number_format($payroll['tunjanganAnak'],0,',','.')}}</td>
+			<td class="attr">BPJS Pensiun</td>
+			<td class="outl nominal">{{number_format($payroll->bpjspensiun,0,',','.')}}</td>
+			<td class="attr">Kop. Rutin</td>
+			<td class="outl nominal">{{number_format($payroll->pinjrutin,0,',','.')}}</td>
+			<td class="attr2">Ke <b>X</b> Sisa <b>Y</b></td>
+		</tr>
+		<tr>
+			<td class="attr">Natura</td>	
+			<td class="outl nominal">{{number_format($payroll['natura'],0,',','.')}}</td>
+			<td class="attr">Dapenma</td>
+			<td class="outl nominal">{{number_format($payroll->dapenma,0,',','.')}}</td>
+			<td class="attr">Kop. Perum</td>
+			<td class="outl nominal">{{number_format($payroll->pinjperum,0,',','.')}}</td>
+			<td class="attr2">Ke <b>X</b> Sisa <b>Y</b></td>
+		</tr>
+		<tr>
+			<td class="attr">Honor</td>
+			<td class="outl"></td>
+			<td class="attr">Hutang Pegawai</td>
+			<td class="outl nominal">{{number_format($payroll->utangpeg,0,',','.')}}</td>
+			<td class="attr">Kop. Kredit</td>
+			<td class="outl"></td>
+			<td class="attr2">Ke <b>X</b> Sisa <b>Y</b></td>
+		</tr>
+		<tr>
+			<td class="attr3">Sub Total A</td>
+			<td class="attr3 nominal">{{number_format($payroll->subtotalA,0,',','.')}}</td>
+			<td class="attr">ZIS</td>
+			<td class="outl nominal">{{number_format($payroll->zakat,0,',','.')}}</td>
+			<td class="attr">BJB</td>
+			<td class="outl nominal">{{number_format($payroll->bjb,0,',','.')}}</td>
+			<td class="attr2">Ke <b>X</b> Sisa <b>Y</b></td>
+		</tr>
+		<tr>
+			<td class="attr">Tunjangan Jabatan</td>
+			<td class="outl nominal">{{number_format($payroll['tunjanganJabatan'],0,',','.')}}</td>
+			<td class="attr">Iuran DW</td>
+			<td class="outl nominal">{{number_format($payroll->iurandw,0,',','.')}}</td>
+			<td class="attr">Waserda</td>
+			<td class="outl nominal">{{number_format($payroll->warung,0,',','.')}}</td>
+		</tr>
+		<tr>
+			<td class="attr">Tunjangan Kinerja</td>
+			<td class="outl nominal">{{number_format($payroll['tunjanganKinerja'],0,',','.')}}</td>
+			<td class="attr">Iuran Koperasi</td>
+			<td class="outl"></td>
+			<td  class="attr" colspan="3" rowspan="6" style="text-align:center;">
+				<p>&nbsp;</p>
+				<p>{{ App\Models\Company::find(1)->city }}, {{date("d F Y")}}</p>
+				<p>{{ App\Models\Company::find(1)->officer_position }}</p>
+				<br /><br /><br /><br /><br />
+				<p>{{ App\Models\Company::find(1)->officer_name }}</p>
+			</td>
+		</tr>
+		<tr>
+			<td class="attr">Tunjangan Pelaksana</td>
+			<td class="outl nominal">{{number_format($payroll['tunjanganPelaksana'],0,',','.')}}</td>
+			<td class="attr">Inkop Pamsi</td>
+			<td class="outl"></td>
+		</tr>
+		<tr>
+			<td class="attr">Tunjangan Kendaraan</td>
+			<td class="outl nominal">{{number_format($payroll['tunjanganKendaraan'],0,',','.')}}</td>
+			<td class="attr">Lain-lain</td>
+			<td class="outl nominal">{{number_format($payroll->potlain,0,',','.')}}</td>
+		</tr>
+		<tr>
+			<td class="attr">Pajak</td>
+			<td class="outl"></td>
+			<td class="attr">PPh 21</td>
+			<td class="outl"></td>
+		</tr>
+		<tr>
+			<td class="attr3">Sub Total B</td>
+			<td class="attr3 nominal">{{number_format($payroll['subtotalB'],0,',','.')}}</td>
+			<td class="attr3">Total Potongan</td>
+			<td class="attr3 nominal">{{number_format($payroll->totalPotongan,0,',','.')}}</td>
+		</tr>
+		<tr>
+			<td class="attr total">Total Penghasilan</td>
+			<td class="outl nominal total" style="font-weight:bold;">{{number_format($payroll->totalPenghasilan,0,',','.')}}</td>
+			<td class="attr" colspan="2"></td>
+		</tr>
+		<tr>
+			<td class="attr" colspan="2"></td>
+			<td class="nett">Gaji Bersih</td>
+			<td class="nett nominal">{{number_format($payroll->gajiBersih,0,',','.')}}</td>
+		</tr>
+	</tbody>
+</table>

@@ -181,7 +181,8 @@ optgroup {
 
 table {
   border-collapse: collapse;
-  border-spacing: 0; }
+  border-spacing: 0; 
+  }
 
 td,
 th {
@@ -1113,7 +1114,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #eeeeee; }
+  border-top: 4px solid #000; }
 
 .sr-only {
   position: absolute;
@@ -4049,7 +4050,7 @@ tbody.collapse.in {
   .breadcrumb > li {
     display: inline-block; }
     .breadcrumb > li + li:before {
-      content: "/ ";
+      content: "/ ";
       padding: 0 5px;
       color: #ccc; }
   .breadcrumb > .active {
@@ -5891,3 +5892,58 @@ html, body {
 }
 
 /*# sourceMappingURL=app.css.map */
+
+/*
+|--------------------------------------------------------------------------
+| Slip Gaji by Aban
+|--------------------------------------------------------------------------
+*/
+
+.slip {
+font-family: Tahoma, Arial, Verdana;
+font-size:125% !important;
+border-collapse: separate;
+border-spacing: 5px 5px;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0px; }
+  .slip > thead > tr > th,
+  .slip > thead > tr > td,
+  .slip > tbody > tr > th,
+  .slip > tbody > tr > td,
+  .slip > tfoot > tr > th,
+  .slip > tfoot > tr > td {
+    padding: 3px 5px;
+    line-height: 1.428571429;
+    vertical-align: top;
+    border-top: 1px solid #ddd; }
+  .slip > thead > tr > th {
+  text-transform: uppercase;
+    vertical-align: bottom;
+    border: none !important;
+	font-size:130% !important;
+	color: #000 !important;
+	background-color:#ddd !important;}
+  .slip > caption + thead > tr:first-child > th,
+  .slip > caption + thead > tr:first-child > td,
+  .slip > colgroup + thead > tr:first-child > th,
+  .slip > colgroup + thead > tr:first-child > td,
+  .slip > thead:first-child > tr:first-child > th,
+  .slip > thead:first-child > tr:first-child > td {
+    border-top: 0; }
+  .slip > tbody + tbody {
+    border-top: 2px solid #ddd; }
+  .slip .slip {
+    background-color: #fff; }
+
+.attr {font-weight:bold;border:none !important;color:#000 !important;}
+.outl {border: 1px solid #ddd !important;}
+.attr2 {font-weight:normal;border:none !important}
+.attr3 {font-weight:bold;border-top:1px solid #000 !important;border-bottom:2px solid #000 !important;border-left:none !important;border-right:none !important;color:#000 !important;}
+.total {font-size:135%;}
+.nominal {text-align:right;color:#000 !important;}
+.nett {font-weight:bold;border-top:2px solid #000 !important;border-bottom:5px double #000 !important;border-left:none !important;border-right:none !important;font-size:140%;color:#000 !important;}
+.title, .content {color:#000 !important;}
+.title {font-weight:bold;}
+h3.title {margin-top:-10px}
+.payroll_title {color:#000;font-weight:bold;font-size:150%}

@@ -1,38 +1,35 @@
-<table class="table table-bordered">
+<table class="slip" style="margin-top:-40px;">
   <tr>
-    <td>NIPP</td>
-    <td>{{$payroll->users->employee_number}}</td>
-
-    <td>Wilayah</td>
-    <td>{{$payroll->users->wilayahs->name}}</td>
-
-    <td>Kode Jabatan</td>
-    <td>{{isset($payroll->users->jabatans->kode)?$payroll->users->jabatans->kode:"Tidak Diketahui"}}</td>
-
-    <td rowspan="3" style="max-width:100px;">
-      @if (app('request')->input('payrolltype')=='1')
-      <img src="{{url('foto/'.str_replace(' ','',$payroll->users->employee_number).'.png')}}" style="width:100px;" class="img-responsive center-block">
-      @else
-      <img src="/var/app/public/foto/{{ str_replace(' ','',$payroll->users->employee_number) }}.png" style="width:100px;" class="img-responsive center-block">
-      @endif
+	<td colspan="6" class="attr">&nbsp;</td>
+	<td class="attr" rowspan="4" style="max-width:90px;">
+		@if (app('request')->input('payrolltype')=='1')
+		<img src="{{url('foto/'.str_replace(' ','',$payroll->users->employee_number).'.png')}}" style="border:1px solid #000;width:110px;" class="img-responsive center-block" />
+		@else
+		<!--<img src="file:///D:\laravel_jerbeehrm\public\foto\{{ str_replace(' ','',$payroll->users->employee_number) }}.png" style="border:2px solid #ddd;width:80%;" class="img-responsive center-block" />-->
+		<img src="/var/app/public/foto/{{ str_replace(' ','',$payroll->users->employee_number) }}.png" style="border:1px solid #ddd;width:110px;" class="img-responsive center-block" />
+		@endif
     </td>
-
   </tr>
   <tr>
-    <td>Nama</td>
-    <td>{{$payroll->name}}</td>
-
-    <td>Gol/Ruang</td>
-    <td>{{$payroll->users->pangkats->kode}}/{{$payroll->users->ruang}}</td>
-
-    <td>Kode Wilayah</td>
-    <td>{{$payroll->users->wilayahs->kode}}</td>
+    <td class="attr">NIPP</td>
+    <td class="outl content">{{$payroll->users->employee_number}}</td>
+    <td class="attr">Wilayah</td>
+    <td class="outl content">{{$payroll->users->wilayahs->name}}</td>
+    <td class="attr">Kode Jabatan</td>
+    <td class="outl content">{{isset($payroll->users->jabatans->kode)?$payroll->users->jabatans->kode:"Tidak Diketahui"}}</td>
   </tr>
   <tr>
-    <td>Kota</td>
-    <td>{{$payroll->users->wilayahs->name}}</td>
-
-    <td>Jabatan</td>
-    <td colspan="3">{{ $payroll->jabatan }}</td>
+    <td class="attr">Nama</td>
+    <td class="outl content">{{$payroll->name}}</td>
+    <td class="attr">Gol/Ruang</td>
+    <td class="outl content">{{$payroll->users->pangkats->kode}}/{{$payroll->users->ruang}}</td>
+    <td class="attr">Kode Wilayah</td>
+    <td class="outl content">{{$payroll->users->wilayahs->kode}}</td>
+  </tr>
+  <tr>
+    <td class="attr">Kota</td>
+    <td class="outl content">{{$payroll->users->wilayahs->name}}</td>
+    <td class="attr">Jabatan</td>
+    <td colspan="3" class="outl content">{{ $payroll->jabatan }}</td>
   </tr>
 </table>
