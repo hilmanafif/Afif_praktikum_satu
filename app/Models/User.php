@@ -176,6 +176,9 @@ class User extends Authenticatable
       if ($jumlahPasangan>1) {
         $jumlahPasangan=1;
       }
+      if ($this->meta->jenis_kelamin == 'P') {
+        $jumlahPasangan=0;
+      }
       if ($jumlahAnak>2) {
         $jumlahAnak=2;
       }
